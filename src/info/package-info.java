@@ -1,8 +1,0 @@
-/**
- * 
- */
-/**
- * @author arabtech
- *
- */
-package info;
