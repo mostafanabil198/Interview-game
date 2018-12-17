@@ -7,6 +7,7 @@ import java.util.Stack;
 import eg.edu.alexu.csd.oop.cs51.GameInfo;
 import eg.edu.alexu.csd.oop.cs51.iterators.Collections;
 import eg.edu.alexu.csd.oop.cs51.iterators.IteratorI;
+import eg.edu.alexu.csd.oop.cs51.objects.Movable;
 import eg.edu.alexu.csd.oop.cs51.objects.Skill;
 import eg.edu.alexu.csd.oop.cs51.objects.player.interviewee;
 import eg.edu.alexu.csd.oop.cs51.tasks.Task;
@@ -14,7 +15,7 @@ import eg.edu.alexu.csd.oop.game.GameEngine;
 
 public class SnapShot {
 	private int score;
-	private Collections<Skill> leftStack, rightStack;
+	private Collections<Movable> leftStack, rightStack;
 	private int time;
 	private int leftColorCounter;
 	private int rightColorCounter;
