@@ -1,6 +1,7 @@
 package eg.edu.alexu.csd.oop.cs51.objects;
 
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -15,14 +16,21 @@ private int x,y,width,height;
 private String imagePath;
 private boolean visible;
 private BufferedImage[] buffered_image;
- public  AbstractObject(int width,int height,String imagePath,boolean visible) throws IOException {
+ public  AbstractObject(int width,int height,String imagePath,boolean visible) {
 	// TODO Auto-generated constructor stub
 	 buffered_image=new BufferedImage[1];
 	 this.width=width;
 	 this.height=height;
 	 this.imagePath=imagePath;
 	 this.visible=visible;
-	 BufferedImage image=ImageIO.read(getClass().getResourceAsStream(this.imagePath));
+	BufferedImage img = null;
+	try {
+		img = ImageIO.read(new File(imagePath));
+	} catch (IOException e) {
+		e.printStackTrace();
+	}
+	BufferedImage imgScaled=(BufferedImage) img.getScaledInstance(width, height, java.awt.Image.SCALE_AREA_AVERAGING);
+	buffered_image[0]=imgScaled;
 }
 	@Override
 	public int getX() {
