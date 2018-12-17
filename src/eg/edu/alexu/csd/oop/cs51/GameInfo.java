@@ -5,14 +5,15 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
 
-import eg.edu.alexu.csd.oop.cs51.objects.Skill;
+import eg.edu.alexu.csd.oop.cs51.objects.Movable;
+import eg.edu.alexu.csd.oop.cs51.objects.player.Interviewee;
 import eg.edu.alexu.csd.oop.cs51.snapshots.SnapShot;
 import eg.edu.alexu.csd.oop.cs51.tasks.Task;
 
 public class GameInfo {
 	private static volatile GameInfo instance;
 	private int score;
-	private Stack<Skill> leftStack, rightStack;
+	private Stack<Movable> leftStack, rightStack;
 	private int numOfLives;
 	private int time;
 	private Map<String, Task> gameTasks;
@@ -21,16 +22,41 @@ public class GameInfo {
 	private Color leftColor;
 	private Color rightColor;
 	private SnapShot checkPoint;
+	private Interviewee player;
+	private int playerHandWidth;
+	private int playerWidth;
+	private int playerHeight;
+	private String ImagePath;
+	private boolean visible;
+	private int leftStackHeight;
+	private int rightStackHeight;
+	private int leftHand;
+	private int rightHand;
+	private int renderSpeed;
+	
 	
 	
 	
 	private GameInfo() {
-		leftStack = new Stack<Skill>();
-		rightStack = new Stack<Skill>();
+		playerWidth = 200;
+		playerHeight = 300;
+		ImagePath = "";
+		visible = true;
+		leftStack = new Stack<Movable>();
+		rightStack = new Stack<Movable>();
 		gameTasks = new HashMap<>();
+		player = new Interviewee(playerWidth,playerHeight,ImagePath,visible);
+		playerHandWidth = player.getHandWidth();
+		leftStackHeight = rightStackHeight = player.getHandHeightPosition();
+		leftHand = player.getLeftHandPosition();
+		rightHand = player.getRightHandPosition();
+		
+		
 		
 	}
 	
+	
+
 	public static GameInfo getInstance() {
 		if(instance == null) {
 			synchronized (GameInfo.class) {
@@ -43,6 +69,32 @@ public class GameInfo {
 		return instance;
 	}
 	
+	public void addToRightStack(Movable skill) {
+		if(rightColor == skill.getColor()) {
+			rightColorCounter++;
+		} else {
+			rightColor = skill.getColor();
+			rightColorCounter = 1;
+		}
+		rightStack.push(skill);
+		int skillHight = rightStack.peek().getHeight();
+		rightStackHeight = skillHight * rightStack.size();
+		
+	}
+	
+	public void addToLeftStack(Movable skill) {
+		if(leftColor == skill.getColor()) {
+			leftColorCounter++;
+		} else {
+			leftColor = skill.getColor();
+			leftColorCounter = 1;
+		}
+		leftStack.push(skill);
+		int skillHight = leftStack.peek().getHeight();
+		leftStackHeight = skillHight * leftStack.size();
+		
+	}
+	
 	
 	
 	public int getScore() {
@@ -53,19 +105,19 @@ public class GameInfo {
 		this.score = score;
 	}
 
-	public Stack<Skill> getLeftStack() {
+	public Stack<Movable> getLeftStack() {
 		return leftStack;
 	}
 
-	public void setLeftStack(Stack<Skill> leftStack) {
+	public void setLeftStack(Stack<Movable> leftStack) {
 		this.leftStack = leftStack;
 	}
 
-	public Stack<Skill> getRightStack() {
+	public Stack<Movable> getRightStack() {
 		return rightStack;
 	}
 
-	public void setRightStack(Stack<Skill> rightStack) {
+	public void setRightStack(Stack<Movable> rightStack) {
 		this.rightStack = rightStack;
 	}
 
@@ -91,6 +143,10 @@ public class GameInfo {
 
 	public void setGameTasks(Map<String, Task> gameTasks) {
 		this.gameTasks = gameTasks;
+	}
+	
+	public void addTask(String taskName, Task task) {
+		gameTasks.put(taskName, task);
 	}
 
 	public int getLeftColorCounter() {
@@ -131,6 +187,46 @@ public class GameInfo {
 
 	public void setCheckPoint(SnapShot checkPoint) {
 		this.checkPoint = checkPoint;
+	}
+	
+	public Interviewee getPlayer() {
+		return player;
+	}
+	
+	public int getPlayerHandWidth() {
+		return playerHandWidth;
+	}
+	
+	public int getLeftStackHeight() {
+		return leftStackHeight;
+	}
+
+
+
+	public int getRightStackHeight() {
+		return rightStackHeight;
+	}
+
+
+
+	public int getLeftHand() {
+		return leftHand;
+	}
+
+
+
+	public int getRightHand() {
+		return rightHand;
+	}
+	
+	public int getRenderSpeed() {
+		return renderSpeed;
+	}
+
+
+
+	public void setRenderSpeed(int renderSpeed) {
+		this.renderSpeed = renderSpeed;
 	}
 
 

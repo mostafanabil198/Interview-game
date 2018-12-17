@@ -10,7 +10,7 @@ public class MovingState implements State {
 	private int velocityY;
 	private Random random;
     private GameInfo gameInfo=GameInfo.getInstance();
-    private double renderTime=1/(gameInfo.getRenderSpeed);
+    private double renderTime=1/(gameInfo.getRenderSpeed());
     private static final double gravity=9.8;
 	public MovingState() {
 		velocityY = 0;
@@ -21,9 +21,13 @@ public class MovingState implements State {
 	public void doAction(Movable movable) {
 		movable.setState(this);
 	}
-	public void updatePosition(double x,double y) {
+	public void updatePosition(Movable movable) {
+		int x=movable.getX();
+		int y=movable.getY();
 		x+=velocityX*renderTime;
-		y=velocityY*renderTime+0.5*gravity*renderTime*renderTime;
+		y=(int) (velocityY*renderTime+0.5*gravity*renderTime*renderTime);
+		movable.setX(x);
+		movable.setY(y);
 	}
 
 }

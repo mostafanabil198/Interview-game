@@ -35,7 +35,21 @@ public abstract class Movable extends AbstractObject implements Observer{
 //        } else if (spot.equals(anObject))
 //        
 //    }
-    public void doAction() {
-    	state.doAction();
+
+    public Color getColor() {
+        return color;
+    }
+    
+    public String getName() {
+        return name;
+    }
+    public State getState() {
+        return state;
+    }
+    public int getWidth() {
+        return OBJECT_WIDTH;
+    }
+    public int getHeight() {
+        return OBJECT_HEIGHT;
     }
 }

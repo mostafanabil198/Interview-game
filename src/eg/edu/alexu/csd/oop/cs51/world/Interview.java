@@ -7,6 +7,7 @@ import eg.edu.alexu.csd.oop.game.World;
 
 public class Interview implements World{
 
+    
     @Override
     public List<GameObject> getConstantObjects() {
         // TODO Auto-generated method stub
