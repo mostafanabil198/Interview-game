@@ -25,7 +25,8 @@ public class MovingState implements State {
 		int x=movable.getX();
 		int y=movable.getY();
 		x+=velocityX*renderTime;
-		y=(int) (velocityY*renderTime+0.5*gravity*renderTime*renderTime);
+		y+=(int) (velocityY*renderTime+0.5*gravity*renderTime*renderTime);
+		velocityY+=gravity*renderTime;
 		movable.setX(x);
 		movable.setY(y);
 	}
