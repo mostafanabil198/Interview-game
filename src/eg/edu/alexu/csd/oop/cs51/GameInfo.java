@@ -218,6 +218,16 @@ public class GameInfo {
 	public int getRightHand() {
 		return rightHand;
 	}
+	
+	public int getRenderSpeed() {
+		return renderSpeed;
+	}
+
+
+
+	public void setRenderSpeed(int renderSpeed) {
+		this.renderSpeed = renderSpeed;
+	}
 
 
 }
