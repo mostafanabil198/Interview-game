@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Stack;
 
 import eg.edu.alexu.csd.oop.cs51.objects.Skill;
+import eg.edu.alexu.csd.oop.cs51.objects.player.interviewee;
 import eg.edu.alexu.csd.oop.cs51.snapshots.SnapShot;
 import eg.edu.alexu.csd.oop.cs51.tasks.Task;
 
@@ -21,16 +22,41 @@ public class GameInfo {
 	private Color leftColor;
 	private Color rightColor;
 	private SnapShot checkPoint;
+	private interviewee player;
+	private int playerHandWidth;
+	private int playerWidth;
+	private int playerHeight;
+	private String ImagePath;
+	private boolean visible;
+	private int leftStackHeight;
+	private int rightStackHeight;
+	private int leftHand;
+	private int rightHand;
+	private int renderSpeed;
+	
 	
 	
 	
 	private GameInfo() {
+		playerWidth = 200;
+		playerHeight = 300;
+		ImagePath = "";
+		visible = true;
 		leftStack = new Stack<Skill>();
 		rightStack = new Stack<Skill>();
 		gameTasks = new HashMap<>();
+		player = new interviewee(playerWidth,playerHeight,ImagePath,visible);
+		playerHandWidth = player.getHandWidht();
+		leftStackHeight = rightStackHeight = player.getHandHeightPosition();
+		leftHand = player.getLeftHandPosition();
+		rightHand = player.getRightHandPosition();
+		
+		
 		
 	}
 	
+	
+
 	public static GameInfo getInstance() {
 		if(instance == null) {
 			synchronized (GameInfo.class) {
@@ -41,6 +67,32 @@ public class GameInfo {
 			}
 		}
 		return instance;
+	}
+	
+	public void addToRightStack(Skill skill) {
+		if(rightColor == skill.getColor()) {
+			rightColorCounter++;
+		} else {
+			rightColor = skill.getColor();
+			rightColorCounter = 1;
+		}
+		rightStack.push(skill);
+		int skillHight =(Skill) rightStack.peek().getHeight();
+		rightStackHeight = skillHight * rightStack.size();
+		
+	}
+	
+	public void addToLeftStack(Skill skill) {
+		if(leftColor == skill.getColor()) {
+			leftColorCounter++;
+		} else {
+			leftColor = skill.getColor();
+			leftColorCounter = 1;
+		}
+		leftStack.push(skill);
+		int skillHight = leftStack.peek().getHeight();
+		leftStackHeight = skillHight * leftStack.size();
+		
 	}
 	
 	
@@ -92,6 +144,10 @@ public class GameInfo {
 	public void setGameTasks(Map<String, Task> gameTasks) {
 		this.gameTasks = gameTasks;
 	}
+	
+	public void addTask(String taskName, Task task) {
+		gameTasks.put(taskName, task);
+	}
 
 	public int getLeftColorCounter() {
 		return leftColorCounter;
@@ -131,6 +187,36 @@ public class GameInfo {
 
 	public void setCheckPoint(SnapShot checkPoint) {
 		this.checkPoint = checkPoint;
+	}
+	
+	public interviewee getPlayer() {
+		return player;
+	}
+	
+	public int getPlayerHandWidth() {
+		return playerHandWidth;
+	}
+	
+	public int getLeftStackHeight() {
+		return leftStackHeight;
+	}
+
+
+
+	public int getRightStackHeight() {
+		return rightStackHeight;
+	}
+
+
+
+	public int getLeftHand() {
+		return leftHand;
+	}
+
+
+
+	public int getRightHand() {
+		return rightHand;
 	}
 
 
