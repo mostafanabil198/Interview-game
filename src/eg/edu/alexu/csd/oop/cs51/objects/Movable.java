@@ -35,7 +35,7 @@ public abstract class Movable extends AbstractObject implements Observer{
 //        } else if (spot.equals(anObject))
 //        
 //    }
-    
+
     public Color getColor() {
         return color;
     }
