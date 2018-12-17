@@ -12,7 +12,7 @@ public abstract class Movable extends AbstractObject implements Observer{
     private String name;
     private Color color;
     private State state;
-    
+
     
     public Movable(String path, String name, Color color, Collision collision) {
         super(OBJECT_WIDTH, OBJECT_HEIGHT, path, false);
@@ -21,21 +21,17 @@ public abstract class Movable extends AbstractObject implements Observer{
         this.color = color;
     }
     
+    public Movable(Movable movable) {
+        super(movable);
+        this.name = new String(movable.name);
+        this.color = new Color(movable.color.getRGB());
+        this.state = movable.state.clone();
+    }
+    
     public void setState(State state) {
         this.state = state;
     }
     
-//    @Override
-//    public void update(String spot) {
-//        if(spot.equals("vanishGround")) {
-//           // state = ground state
-//            setVisible(false);
-//        } else if (spot.equals("rightStack")) {
-//            
-//        } else if (spot.equals(anObject))
-//        
-//    }
-
     public Color getColor() {
         return color;
     }
@@ -52,4 +48,5 @@ public abstract class Movable extends AbstractObject implements Observer{
     public int getHeight() {
         return OBJECT_HEIGHT;
     }
+    public abstract Movable clone();
 }
