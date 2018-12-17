@@ -81,7 +81,9 @@ public class GameInfo {
 		rightStackHeight = skillHight * rightStack.size();
 		
 	}
-	
+
+
+
 	public void addToLeftStack(Movable skill) {
 		if(leftColor == skill.getColor()) {
 			leftColorCounter++;
@@ -229,5 +231,14 @@ public class GameInfo {
 		this.renderSpeed = renderSpeed;
 	}
 
+	public void setLeftHand(int leftHand) {
+		this.leftHand = leftHand;
+	}
+
+
+
+	public void setRightHand(int rightHand) {
+		this.rightHand = rightHand;
+	}
 
 }
