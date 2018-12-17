@@ -5,15 +5,15 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
 
-import eg.edu.alexu.csd.oop.cs51.objects.Skill;
-import eg.edu.alexu.csd.oop.cs51.objects.player.interviewee;
+import eg.edu.alexu.csd.oop.cs51.objects.Movable;
+import eg.edu.alexu.csd.oop.cs51.objects.player.Interviewee;
 import eg.edu.alexu.csd.oop.cs51.snapshots.SnapShot;
 import eg.edu.alexu.csd.oop.cs51.tasks.Task;
 
 public class GameInfo {
 	private static volatile GameInfo instance;
 	private int score;
-	private Stack<Skill> leftStack, rightStack;
+	private Stack<Movable> leftStack, rightStack;
 	private int numOfLives;
 	private int time;
 	private Map<String, Task> gameTasks;
@@ -22,7 +22,7 @@ public class GameInfo {
 	private Color leftColor;
 	private Color rightColor;
 	private SnapShot checkPoint;
-	private interviewee player;
+	private Interviewee player;
 	private int playerHandWidth;
 	private int playerWidth;
 	private int playerHeight;
@@ -42,11 +42,11 @@ public class GameInfo {
 		playerHeight = 300;
 		ImagePath = "";
 		visible = true;
-		leftStack = new Stack<Skill>();
-		rightStack = new Stack<Skill>();
+		leftStack = new Stack<Movable>();
+		rightStack = new Stack<Movable>();
 		gameTasks = new HashMap<>();
-		player = new interviewee(playerWidth,playerHeight,ImagePath,visible);
-		playerHandWidth = player.getHandWidht();
+		player = new Interviewee(playerWidth,playerHeight,ImagePath,visible);
+		playerHandWidth = player.getHandWidth();
 		leftStackHeight = rightStackHeight = player.getHandHeightPosition();
 		leftHand = player.getLeftHandPosition();
 		rightHand = player.getRightHandPosition();
@@ -69,7 +69,7 @@ public class GameInfo {
 		return instance;
 	}
 	
-	public void addToRightStack(Skill skill) {
+	public void addToRightStack(Movable skill) {
 		if(rightColor == skill.getColor()) {
 			rightColorCounter++;
 		} else {
@@ -77,12 +77,12 @@ public class GameInfo {
 			rightColorCounter = 1;
 		}
 		rightStack.push(skill);
-		int skillHight =(Skill) rightStack.peek().getHeight();
+		int skillHight = rightStack.peek().getHeight();
 		rightStackHeight = skillHight * rightStack.size();
 		
 	}
 	
-	public void addToLeftStack(Skill skill) {
+	public void addToLeftStack(Movable skill) {
 		if(leftColor == skill.getColor()) {
 			leftColorCounter++;
 		} else {
@@ -105,19 +105,19 @@ public class GameInfo {
 		this.score = score;
 	}
 
-	public Stack<Skill> getLeftStack() {
+	public Stack<Movable> getLeftStack() {
 		return leftStack;
 	}
 
-	public void setLeftStack(Stack<Skill> leftStack) {
+	public void setLeftStack(Stack<Movable> leftStack) {
 		this.leftStack = leftStack;
 	}
 
-	public Stack<Skill> getRightStack() {
+	public Stack<Movable> getRightStack() {
 		return rightStack;
 	}
 
-	public void setRightStack(Stack<Skill> rightStack) {
+	public void setRightStack(Stack<Movable> rightStack) {
 		this.rightStack = rightStack;
 	}
 
@@ -189,7 +189,7 @@ public class GameInfo {
 		this.checkPoint = checkPoint;
 	}
 	
-	public interviewee getPlayer() {
+	public Interviewee getPlayer() {
 		return player;
 	}
 	
