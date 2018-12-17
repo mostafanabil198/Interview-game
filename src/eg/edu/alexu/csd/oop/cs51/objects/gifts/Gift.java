@@ -1,5 +1,7 @@
 package eg.edu.alexu.csd.oop.cs51.objects.gifts;
 
-public abstract class Gift {
+import eg.edu.alexu.csd.oop.cs51.objects.Movable;
+
+public abstract class Gift extends Movable{
 
 }
