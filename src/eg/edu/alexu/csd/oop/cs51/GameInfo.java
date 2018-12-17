@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
 
+import eg.edu.alexu.csd.oop.cs51.iterators.Collections;
+import eg.edu.alexu.csd.oop.cs51.iterators.StackContainer;
 import eg.edu.alexu.csd.oop.cs51.objects.Movable;
 import eg.edu.alexu.csd.oop.cs51.objects.player.Interviewee;
 import eg.edu.alexu.csd.oop.cs51.snapshots.SnapShot;
@@ -13,7 +15,7 @@ import eg.edu.alexu.csd.oop.cs51.tasks.Task;
 public class GameInfo {
 	private static volatile GameInfo instance;
 	private int score;
-	private Stack<Movable> leftStack, rightStack;
+	private Collections<Movable> leftStack, rightStack;
 	private int numOfLives;
 	private int time;
 	private Map<String, Task> gameTasks;
@@ -42,8 +44,8 @@ public class GameInfo {
 		playerHeight = 300;
 		ImagePath = "";
 		visible = true;
-		leftStack = new Stack<Movable>();
-		rightStack = new Stack<Movable>();
+		leftStack = new StackContainer<Movable>();
+		rightStack = new StackContainer<Movable>();
 		gameTasks = new HashMap<>();
 		player = new Interviewee(playerWidth,playerHeight,ImagePath,visible);
 		playerHandWidth = player.getHandWidth();
@@ -76,9 +78,11 @@ public class GameInfo {
 			rightColor = skill.getColor();
 			rightColorCounter = 1;
 		}
-		rightStack.push(skill);
+		rightStack.add(skill);
 		int skillHight = rightStack.peek().getHeight();
 		rightStackHeight = skillHight * rightStack.size();
+		skill.setX(rightHand - playerHandWidth);
+		skill.setY(rightStackHeight);
 		
 	}
 
@@ -90,10 +94,12 @@ public class GameInfo {
 		} else {
 			leftColor = skill.getColor();
 			leftColorCounter = 1;
-		}
-		leftStack.push(skill);
+		}		
+		leftStack.add(skill);
 		int skillHight = leftStack.peek().getHeight();
 		leftStackHeight = skillHight * leftStack.size();
+		skill.setX(leftHand);
+		skill.setY(leftStackHeight);
 		
 	}
 	
@@ -107,19 +113,19 @@ public class GameInfo {
 		this.score = score;
 	}
 
-	public Stack<Movable> getLeftStack() {
+	public Collections<Movable> getLeftStack() {
 		return leftStack;
 	}
 
-	public void setLeftStack(Stack<Movable> leftStack) {
+	public void setLeftStack(Collections<Movable> leftStack) {
 		this.leftStack = leftStack;
 	}
 
-	public Stack<Movable> getRightStack() {
+	public Collections<Movable> getRightStack() {
 		return rightStack;
 	}
 
-	public void setRightStack(Stack<Movable> rightStack) {
+	public void setRightStack(Collections<Movable> rightStack) {
 		this.rightStack = rightStack;
 	}
 
