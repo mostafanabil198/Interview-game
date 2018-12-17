@@ -8,8 +8,8 @@ import eg.edu.alexu.csd.oop.cs51.GameInfo;
 import eg.edu.alexu.csd.oop.cs51.iterators.Collections;
 import eg.edu.alexu.csd.oop.cs51.iterators.IteratorI;
 import eg.edu.alexu.csd.oop.cs51.objects.Movable;
-import eg.edu.alexu.csd.oop.cs51.objects.Skill;
-import eg.edu.alexu.csd.oop.cs51.objects.player.interviewee;
+//import eg.edu.alexu.csd.oop.cs51.objects.Skill;
+import eg.edu.alexu.csd.oop.cs51.objects.player.Interviewee;
 import eg.edu.alexu.csd.oop.cs51.tasks.Task;
 import eg.edu.alexu.csd.oop.game.GameEngine;
 
@@ -45,11 +45,11 @@ public class SnapShot {
 		rightStack.clear();
 		IteratorI iterator = GameInfo.getInstance().getLeftStack().createIterator();
 		while (iterator.hasNext()) {
-			leftStack.add((Skill) iterator.next().clone());
+			leftStack.add(((Movable) iterator.next()).clone());
 		}
 		iterator = GameInfo.getInstance().getRightStack().createIterator();
 		while (iterator.hasNext()) {
-			rightStack.add((Skill) iterator.next().clone());
+			rightStack.add(((Movable) iterator.next()).clone());
 		}
 
 		/*
@@ -65,11 +65,11 @@ public class SnapShot {
 		GameInfo.getInstance().getRightStack().clear();
 		IteratorI iterator = leftStack.createIterator();
 		while (iterator.hasNext()) {
-			GameInfo.getInstance().getLeftStack().add(iterator.next().clone());
+			GameInfo.getInstance().getLeftStack().add(((Movable)iterator.next()).clone());
 		}
 		iterator = rightStack.createIterator();
 		while (iterator.hasNext()) {
-			GameInfo.getInstance().getRightStack().add(iterator.next().clone());
+			GameInfo.getInstance().getRightStack().add(((Movable)iterator.next()).clone());
 		}
 	}
 	
