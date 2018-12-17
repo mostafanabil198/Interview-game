@@ -6,10 +6,14 @@ import eg.edu.alexu.csd.oop.cs51.objects.Skill;
 
 public class CollectState implements State {
 	private GameInfo gameInfo = GameInfo.getInstance();
-	String position;
+	private String position;
 
 	public CollectState(String position) {
 		this.position = position;
+	}
+
+	public CollectState(CollectState collectState) {
+		this.position=collectState.position;
 	}
 
 	@Override
@@ -22,5 +26,8 @@ public class CollectState implements State {
 			gameInfo.addToLeftStack(movable);
 		}
 
+	}
+	public State clone() {
+		return new CollectState(this);
 	}
 }
