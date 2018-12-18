@@ -72,10 +72,10 @@ public class GameInfo {
 	}
 	
 	public void addToRightStack(Movable skill) {
-		if(rightColor == skill.getColor()) {
+		if(rightStack.peek().getClass().isAssignableFrom(skill.getClass())) {
 			rightColorCounter++;
 		} else {
-			rightColor = skill.getColor();
+			//rightColor = skill.getColor();
 			rightColorCounter = 1;
 		}
 		rightStack.add(skill);
@@ -89,10 +89,10 @@ public class GameInfo {
 
 
 	public void addToLeftStack(Movable skill) {
-		if(leftColor == skill.getColor()) {
+		if(leftStack.peek().getClass().isAssignableFrom(skill.getClass())) {
 			leftColorCounter++;
 		} else {
-			leftColor = skill.getColor();
+			//leftColor = skill.getColor();
 			leftColorCounter = 1;
 		}		
 		leftStack.add(skill);
