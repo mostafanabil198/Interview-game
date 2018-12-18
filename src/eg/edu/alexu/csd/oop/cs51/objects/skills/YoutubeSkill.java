@@ -8,7 +8,7 @@ import eg.edu.alexu.csd.oop.cs51.objects.states.VanishState;
 import eg.edu.alexu.csd.oop.cs51.observer.Collision;
 
 public class YoutubeSkill extends Movable implements Skill {
-    private static final String PATH = "res/youtube.png";
+    private static final String PATH = "res/YoutubeSkill.png";
 
     public YoutubeSkill(String name, Collision collision) {
         super(PATH, name, collision);

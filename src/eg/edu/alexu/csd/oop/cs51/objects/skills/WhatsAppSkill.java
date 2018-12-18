@@ -8,7 +8,7 @@ import eg.edu.alexu.csd.oop.cs51.objects.states.VanishState;
 import eg.edu.alexu.csd.oop.cs51.observer.Collision;
 
 public class WhatsAppSkill extends Movable implements Skill {
-	private static final String PATH = "res/whatsapp.png";
+	private static final String PATH = "res/WhatsAppSkill.png";
 
     public WhatsAppSkill(String name, Collision collision) {
         super(PATH, name, collision);

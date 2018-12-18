@@ -9,7 +9,7 @@ import eg.edu.alexu.csd.oop.cs51.objects.states.VanishState;
 import eg.edu.alexu.csd.oop.cs51.observer.Collision;
 
 public class FaceBookSkill extends Movable implements Skill {
-    private static final String PATH = "res/facebook.png";
+    private static final String PATH = "res/FaceBookSkill.png";
 
     public FaceBookSkill(String name, Collision collision) {
         super(PATH, name, collision);
