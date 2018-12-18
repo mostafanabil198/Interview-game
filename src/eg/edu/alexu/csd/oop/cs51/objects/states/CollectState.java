@@ -5,29 +5,30 @@ import eg.edu.alexu.csd.oop.cs51.objects.Movable;
 import eg.edu.alexu.csd.oop.cs51.objects.Skill;
 
 public class CollectState implements State {
-	private GameInfo gameInfo = GameInfo.getInstance();
-	private String position;
+    private GameInfo gameInfo = GameInfo.getInstance();
+    private String position;
 
-	public CollectState(String position) {
-		this.position = position;
-	}
+    public CollectState(String position) {
+        this.position = position;
+    }
 
-	public CollectState(CollectState collectState) {
-		this.position=collectState.position;
-	}
+    public CollectState(CollectState collectState) {
+        this.position = new String(collectState.position);
+    }
 
-	@Override
-	public void doAction(Movable movable) {
-		movable.setState(this);
+    @Override
+    public void doAction(Movable movable) {
+        movable.setState(this);
 
-		if (position.equals("right")) {
-			gameInfo.addToRightStack(movable);
-		} else if (position.equals("left")) {
-			gameInfo.addToLeftStack(movable);
-		}
+        if (position.equals("right")) {
+            gameInfo.addToRightStack(movable);
+        } else if (position.equals("left")) {
+            gameInfo.addToLeftStack(movable);
+        }
 
-	}
-	public State clone() {
-		return new CollectState(this);
-	}
+    }
+
+    public State clone() {
+        return new CollectState(this);
+    }
 }
