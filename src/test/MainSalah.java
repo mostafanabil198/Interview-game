@@ -1,10 +1,11 @@
 package test;
 
+import java.awt.Color;
+
 public class MainSalah {
 
     public static void main(String[] args) {
-       Skill1 s = new Skill1();
-
+        Color c = Color.black;
     }
 
 }

@@ -1,5 +1,4 @@
 package eg.edu.alexu.csd.oop.cs51.objects.skills;
-
 import java.awt.Color;
 
 import eg.edu.alexu.csd.oop.cs51.objects.Movable;
@@ -9,15 +8,15 @@ import eg.edu.alexu.csd.oop.cs51.objects.states.MovingState;
 import eg.edu.alexu.csd.oop.cs51.objects.states.VanishState;
 import eg.edu.alexu.csd.oop.cs51.observer.Collision;
 
-public class CV extends Movable implements Skill {
-    private static final String PATH = "res/cvSkill.jpg";
-    
-    public CV(Collision collision) {
-        super(PATH, "CV", Color.BLACK, collision);
+public class FaceBookSkill extends Movable implements Skill {
+    private static final String PATH = "res/facebook.png";
+
+    public FaceBookSkill(String name, Collision collision) {
+        super(PATH, name, collision);
     }
-    
-    public CV(CV cv) {
-        super(cv);
+
+    public FaceBookSkill(FaceBookSkill faceBookSkill) {
+        super(faceBookSkill);
     }
     
     @Override
@@ -37,7 +36,6 @@ public class CV extends Movable implements Skill {
 
     @Override
     public Movable clone() {
-        return new CV(this);
+        return new FaceBookSkill(this);
     }
-
 }
