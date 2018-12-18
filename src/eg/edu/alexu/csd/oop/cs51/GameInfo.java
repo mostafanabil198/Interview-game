@@ -9,6 +9,7 @@ import eg.edu.alexu.csd.oop.cs51.iterators.Collections;
 import eg.edu.alexu.csd.oop.cs51.iterators.StackContainer;
 import eg.edu.alexu.csd.oop.cs51.objects.Movable;
 import eg.edu.alexu.csd.oop.cs51.objects.player.Interviewee;
+import eg.edu.alexu.csd.oop.cs51.observer.Collision;
 import eg.edu.alexu.csd.oop.cs51.snapshots.SnapShot;
 import eg.edu.alexu.csd.oop.cs51.tasks.Task;
 
@@ -35,10 +36,14 @@ public class GameInfo {
 	private int leftHand;
 	private int rightHand;
 	private int renderSpeed;
+	private Collision collision;
 	
 	
 	
 	
+	
+
+
 	private GameInfo() {
 		playerWidth = 200;
 		playerHeight = 300;
@@ -246,5 +251,16 @@ public class GameInfo {
 	public void setRightHand(int rightHand) {
 		this.rightHand = rightHand;
 	}
+	
+	public Collision getCollision() {
+		return collision;
+	}
+
+
+
+	public void setCollision(Collision collision) {
+		this.collision = collision;
+	}
+
 
 }
