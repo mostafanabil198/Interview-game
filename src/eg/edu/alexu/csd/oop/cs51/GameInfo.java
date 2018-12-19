@@ -1,17 +1,22 @@
 package eg.edu.alexu.csd.oop.cs51;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Stack;
 
 import eg.edu.alexu.csd.oop.cs51.iterators.Collections;
+import eg.edu.alexu.csd.oop.cs51.iterators.IteratorI;
+import eg.edu.alexu.csd.oop.cs51.iterators.LinkedListContainer;
 import eg.edu.alexu.csd.oop.cs51.iterators.StackContainer;
 import eg.edu.alexu.csd.oop.cs51.objects.Movable;
 import eg.edu.alexu.csd.oop.cs51.objects.player.Interviewee;
 import eg.edu.alexu.csd.oop.cs51.observer.Collision;
 import eg.edu.alexu.csd.oop.cs51.snapshots.SnapShot;
 import eg.edu.alexu.csd.oop.cs51.tasks.Task;
+import eg.edu.alexu.csd.oop.game.GameObject;
 
 public class GameInfo {
 	private static volatile GameInfo instance;
@@ -19,7 +24,7 @@ public class GameInfo {
 	private Collections<Movable> leftStack, rightStack;
 	private int numOfLives;
 	private int time;
-	private Map<String, Task> gameTasks;
+	private Collections<Task> gameTasks;
 	private int leftColorCounter;
 	private int rightColorCounter;	
 	private Color leftColor;
@@ -37,6 +42,10 @@ public class GameInfo {
 	private int rightHand;
 	private int renderSpeed;
 	private Collision collision;
+	private List<String> allSkills;
+	private Collections<GameObject> moving; 
+	private Collections<GameObject> control; 
+	private Collections<GameObject> constant; 
 	
 	
 	
@@ -51,12 +60,16 @@ public class GameInfo {
 		visible = true;
 		leftStack = new StackContainer<Movable>();
 		rightStack = new StackContainer<Movable>();
-		gameTasks = new HashMap<>();
+		gameTasks = new LinkedListContainer<Task>();
 		player = new Interviewee(playerWidth,playerHeight,ImagePath,visible);
 		playerHandWidth = player.getHandWidth();
 		leftStackHeight = rightStackHeight = player.getHandHeightPosition();
 		leftHand = player.getLeftHandPosition();
 		rightHand = player.getRightHandPosition();
+		allSkills = new ArrayList<String>();
+		moving = new LinkedListContainer<GameObject>();
+		control = new LinkedListContainer<GameObject>();
+		constant = new LinkedListContainer<GameObject>();
 		
 		
 		
@@ -77,15 +90,23 @@ public class GameInfo {
 	}
 	
 	public void addToRightStack(Movable skill) {
-		if(rightStack.peek().getClass().isAssignableFrom(skill.getClass())) {
+		rightStackHeight = player.getHandHeightPosition();
+		if((rightStack.size() > 0) && rightStack.peek().getClass().isAssignableFrom(skill.getClass())) {
+			rightStack.add(skill);
 			rightColorCounter++;
+			if(rightColorCounter == 3) {
+				// method to check number of smae color
+				checkTask(rightStack.pop(), rightStack.pop(), rightStack.pop());
+				rightColorCounter = numOfSameColor(rightStack);
+			}
 		} else {
-			//rightColor = skill.getColor();
+			//rightColor = skill.getColor();		
+			rightStack.add(skill);
 			rightColorCounter = 1;
 		}
-		rightStack.add(skill);
+		//rightStack.add(skill);
 		int skillHight = rightStack.peek().getHeight();
-		rightStackHeight = skillHight * rightStack.size();
+		rightStackHeight -= skillHight * rightStack.size();
 		skill.setX(rightHand - playerHandWidth);
 		skill.setY(rightStackHeight);
 		
@@ -94,17 +115,66 @@ public class GameInfo {
 
 
 	public void addToLeftStack(Movable skill) {
-		if(leftStack.peek().getClass().isAssignableFrom(skill.getClass())) {
+		leftStackHeight = player.getHandHeightPosition();
+		if((leftStack.size()>0) && leftStack.peek().getClass().isAssignableFrom(skill.getClass())) {
+			leftStack.add(skill);
 			leftColorCounter++;
+			if(leftColorCounter == 3) {
+				checkTask(leftStack.pop(), leftStack.pop(), leftStack.pop());
+				leftColorCounter = numOfSameColor(leftStack);
+			}
 		} else {
-			//leftColor = skill.getColor();
+			leftStack.add(skill);
 			leftColorCounter = 1;
 		}		
-		leftStack.add(skill);
+		//leftStack.add(skill);
 		int skillHight = leftStack.peek().getHeight();
-		leftStackHeight = skillHight * leftStack.size();
+		leftStackHeight -= skillHight * leftStack.size();
 		skill.setX(leftHand);
 		skill.setY(leftStackHeight);
+		
+	}
+	
+	private int numOfSameColor(Collections<Movable> stack) {
+		int counter = 1;
+		
+		IteratorI i = stack.createIterator();
+		if(!i.hasNext()) {
+			return 0 ;
+		} else {
+			Movable m = (Movable) i.next();
+			String name = ImagePath.getClass().getSimpleName();
+			if(i.hasNext()) {
+				while(i.hasNext()) {
+				if(name.equals(i.next().getClass().getSimpleName())) {
+					counter ++;
+				}
+				 else {
+					break;
+				}
+				}
+			}
+			return counter;
+		}
+	}
+	
+	
+	private void checkTask(Movable task1 , Movable task2, Movable task3) {
+		IteratorI i = gameTasks.createIterator();
+		while(i.hasNext()) {
+			Task t = (Task) i.next();
+			if(t.checkAchived(task1,task2,task3)) {
+				score++;
+				gameTasks.remove(t);
+				break;
+				
+			}
+		}
+		
+		
+	}
+	
+	private void removeFromContainer() {
 		
 	}
 	
@@ -150,16 +220,16 @@ public class GameInfo {
 		this.time = time;
 	}
 
-	public Map<String, Task> getGameTasks() {
+	public Collections<Task> getGameTasks() {
 		return gameTasks;
 	}
 
-	public void setGameTasks(Map<String, Task> gameTasks) {
+	public void setGameTasks(Collections<Task> gameTasks) {
 		this.gameTasks = gameTasks;
 	}
 	
-	public void addTask(String taskName, Task task) {
-		gameTasks.put(taskName, task);
+	public void addTask(Task task) {
+		gameTasks.add(task);
 	}
 
 	public int getLeftColorCounter() {
@@ -261,6 +331,46 @@ public class GameInfo {
 	public void setCollision(Collision collision) {
 		this.collision = collision;
 	}
+	
+	public List<String> getAllSkills() {
+		return allSkills;
+	}
+
+	
+	public Collections<GameObject> getMoving() {
+		return moving;
+	}
+
+
+
+	public void setMoving(Collections<GameObject> moving) {
+		this.moving = moving;
+	}
+
+
+
+	public Collections<GameObject> getControl() {
+		return control;
+	}
+
+
+
+	public void setControl(Collections<GameObject> control) {
+		this.control = control;
+	}
+
+
+
+	public Collections<GameObject> getConstant() {
+		return constant;
+	}
+
+
+
+	public void setConstant(Collections<GameObject> constant) {
+		this.constant = constant;
+	}
+
 
 
 }
