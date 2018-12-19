@@ -1,12 +1,13 @@
 package eg.edu.alexu.csd.oop.cs51.iterators;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
 public class LinkedListContainer<T> implements Collections<T> {
 
-	private List<T> list = new LinkedList<T>();
+	private List<T> list = new ArrayList<T>();
 
 	@Override
 	public IteratorI createIterator() {

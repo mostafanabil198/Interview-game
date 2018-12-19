@@ -1,41 +1,34 @@
 package eg.edu.alexu.csd.oop.cs51.tasks;
 
-import java.awt.Color;
+import java.util.ArrayList;
+import java.util.List;
+
+import eg.edu.alexu.csd.oop.cs51.objects.Movable;
+import eg.edu.alexu.csd.oop.cs51.objects.states.VanishState;
 
 public class Task {
-	
-	private String skill1;
-	private String skill2;
-	private String skill3;
-	private Color  skillsColor;
+
+	private List<String> skills;
 	private String companyName;
-	
-	public Task (String skill1, String skill2,String skill3,String companyName,Color skillsColor) {
-		this.skill1 = skill1;
-		this.skill2 = skill2;
-		this.skill3 = skill3;
+
+	public Task(String skill1, String skill2, String skill3, String companyName) {
+		skills = new ArrayList<String>();
+		skills.add(skill1);
+		skills.add(skill2);
+		skills.add(skill3);
 		this.companyName = companyName;
-		this.skillsColor = skillsColor;	
 	}
 
-	public String getSkill1() {
-		return skill1;
-	}
-
-	public String getSkill2() {
-		return skill2;
-	}
-
-	public String getSkill3() {
-		return skill3;
-	}
-
-	public Color getSkillsColor() {
-		return skillsColor;
-	}
-
-	public String getCompanyName() {
-		return companyName;
+	public boolean checkAchived(Movable one, Movable two, Movable three) {
+		if (one.getClass().getSimpleName().equals(companyName)) {
+			if (skills.contains(one.getName()) && skills.contains(two.getName()) && skills.contains(three.getName())) {
+				return true;
+			}
+		}
+		new VanishState().doAction(one);
+		new VanishState().doAction(two);
+		new VanishState().doAction(three);
+		return false;
 	}
 
 }

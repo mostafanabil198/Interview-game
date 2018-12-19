@@ -1,8 +1,10 @@
 package eg.edu.alexu.csd.oop.cs51.objects.skills;
 
+import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -11,6 +13,8 @@ import java.util.Enumeration;
 import java.util.List;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
+
+import javax.imageio.ImageIO;
 
 import eg.edu.alexu.csd.oop.cs51.objects.Skill;
 
@@ -23,6 +27,7 @@ public class SkillLoader {
     }
     
     public void load() {
+        supported = new ArrayList<Class<? extends Skill>>();
         List<File> jars = getJars();
         for(File jar: jars) {
             loadSkillFromJar(jar.getPath());
@@ -52,18 +57,22 @@ public class SkillLoader {
                 Class c = loader.loadClass(className);
                 if(Skill.class.isAssignableFrom(c)) {
                     supported.add(c);
+                    
                     String name = c.getName();
-                    String[] namearr = name.split(".");
+                    String[] namearr = name.split("\\.");
                     File targetFile = new File("res/"+namearr[namearr.length - 1]+".png");
-                    if(!new File("res").exists()) {
+                    File dir = new File("res");
+                    if(!dir.exists()) {
                         new File("res").mkdirs();
                     }
                     if(!targetFile.exists()) {
                         targetFile.createNewFile();
                     }
-                    OutputStream outStream = new FileOutputStream(targetFile);
-                    outStream.write(loader.getResourceAsStream(c.getPackageName().replace(".", "/") +"/res/"+namearr[namearr.length - 1]+".png").readAllBytes());
-                    outStream.close();
+                    String packageName = c.getPackage().getName().replace(".", "/");
+                    String resName = packageName +"/res/"+namearr[namearr.length - 1]+".png";
+                    InputStream is = loader.getResourceAsStream(resName);
+                    BufferedImage im = ImageIO.read(is);
+                    ImageIO.write(im, "png", targetFile);
                 }
             }
             loader.close();
