@@ -11,7 +11,7 @@ public class ExtraLife extends Movable {
     private static final String PATH = "res/cvSkill.jpg";
     
     public ExtraLife(Collision collision) {
-        super(PATH, "ExtraLife", Color.BLACK, collision);
+        super(PATH, "", collision);
     }
     
     @Override
@@ -26,6 +26,12 @@ public class ExtraLife extends Movable {
             new VanishState().doAction(this);
         }
         
+    }
+
+    @Override
+    public Movable clone() {
+        // TODO Auto-generated method stub
+        return null;
     }
 
 }
