@@ -8,7 +8,7 @@ public class Interviewee extends AbstractObject{
 	    super(width, height, imagePath, visible, "");
 		// TODO Auto-generated constructor stub
 		////////////////////////////////////////////////////will be optimized later
-		handWidth=25;
+		handWidth=80;
 	}
 	
 	public int getHandWidth() {
@@ -22,7 +22,7 @@ public class Interviewee extends AbstractObject{
 	}
 	////////////////////////////////////////////////////will be optimized later
 	public int getHandHeightPosition() {
-		return getHeight();
+		return getY()+158;
 	}
 	
 	
