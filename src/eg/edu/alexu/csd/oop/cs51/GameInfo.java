@@ -1,11 +1,7 @@
 package eg.edu.alexu.csd.oop.cs51;
 
-import java.awt.Color;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Stack;
 
 import eg.edu.alexu.csd.oop.cs51.factory.CompanyFactory;
 import eg.edu.alexu.csd.oop.cs51.iterators.Collections;
@@ -35,6 +31,7 @@ public class GameInfo {
     private int time;
 
     private Collections<Movable> leftStack, rightStack;
+
     private Collections<Task> gameTasks;
     private Collections<GameObject> moving;
     private Collections<GameObject> control;
@@ -46,15 +43,12 @@ public class GameInfo {
     
     private Interviewee player;
 
-    private String ImagePath;
-    
     private List<String> allSkills;
     
     private CompanyFactory companyFactory;
     //giftsfactory too
 
     private GameInfo() {
-        ImagePath = "";
         leftStack = new StackContainer<Movable>();
         rightStack = new StackContainer<Movable>();
         gameTasks = new LinkedListContainer<Task>();
@@ -133,7 +127,7 @@ public class GameInfo {
             return 0;
         } else {
             Movable m = (Movable) i.next();
-            String name = ImagePath.getClass().getSimpleName();
+            String name = m.getClass().getSimpleName();
             if (i.hasNext()) {
                 while (i.hasNext()) {
                     if (name.equals(i.next().getClass().getSimpleName())) {
@@ -158,10 +152,6 @@ public class GameInfo {
 
             }
         }
-
-    }
-    //bta3t eh?
-    private void removeFromContainer() {
 
     }
 
@@ -325,6 +315,14 @@ public class GameInfo {
         this.companyFactory = companyFactory;
     }
 
+    public void setLeftStackHeight(int leftStackHeight) {
+        this.leftStackHeight = leftStackHeight;
+    }
+
+    public void setRightStackHeight(int rightStackHeight) {
+        this.rightStackHeight = rightStackHeight;
+    }
+    
     private void fillSkills() {
         allSkills = new ArrayList<String>();
         allSkills.add("CV");
