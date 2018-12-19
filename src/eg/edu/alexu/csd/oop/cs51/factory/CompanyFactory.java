@@ -22,7 +22,7 @@ public class CompanyFactory implements ICompanyFactory {
 			if(companyName.equals(classes.get(i).getSimpleName())) {
 			    try {
                     Constructor con = classes.get(i).getConstructor(String.class, Collision.class);
-                    Movable movable = con.newInstance(skillName, GameInfo.getInstance().getCollision());
+                    Movable movable = (Movable) con.newInstance(skillName, GameInfo.getInstance().getCollision());
                     return movable;
                 } catch (Exception e) {
                     e.printStackTrace();
