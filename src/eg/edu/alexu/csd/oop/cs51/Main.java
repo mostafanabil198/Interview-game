@@ -3,8 +3,12 @@ package eg.edu.alexu.csd.oop.cs51;
 public class Main {
 
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
-
+//        GameInfo.getInstance();
+//        load the skills;
+//        GameInfo.getInstance().setCompanyFactory(companyFactory);
+//        create strategy;
+//        create world
+//        start game
     }
 
 }

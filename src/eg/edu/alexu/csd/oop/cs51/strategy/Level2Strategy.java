@@ -6,11 +6,12 @@ import java.util.List;
 import java.util.Map;
 
 import eg.edu.alexu.csd.oop.cs51.GameInfo;
+import eg.edu.alexu.csd.oop.cs51.objects.Movable;
 import eg.edu.alexu.csd.oop.cs51.objects.Skill;
 import eg.edu.alexu.csd.oop.cs51.tasks.Task;
 
 public class Level2Strategy implements Strategy {
-	private List<Class<? extends Skill>> supported;
+    private List<Class<? extends Movable>> supported;
 	private List<String> skills;
 	private static final int fireRate = 3;
 	private static final boolean obaque = false;
@@ -19,6 +20,7 @@ public class Level2Strategy implements Strategy {
 	public Map<String, Object> doOperation() {
 		Map<String, Object> map = new HashMap<>();
 		skills = GameInfo.getInstance().getAllSkills();
+		supported = GameInfo.getInstance().getCompanyFactory().getSupportedCompanies();
 		for (int i = 0; i < 4; i++) {
 			Collections.shuffle(supported);
 			String companyName = supported.get(0).getSimpleName();

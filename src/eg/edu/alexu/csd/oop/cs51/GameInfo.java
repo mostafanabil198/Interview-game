@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Stack;
 
+import eg.edu.alexu.csd.oop.cs51.factory.CompanyFactory;
 import eg.edu.alexu.csd.oop.cs51.iterators.Collections;
 import eg.edu.alexu.csd.oop.cs51.iterators.IteratorI;
 import eg.edu.alexu.csd.oop.cs51.iterators.LinkedListContainer;
@@ -48,6 +49,9 @@ public class GameInfo {
     private String ImagePath;
     
     private List<String> allSkills;
+    
+    private CompanyFactory companyFactory;
+    //giftsfactory too
 
     private GameInfo() {
         ImagePath = "";
@@ -311,6 +315,14 @@ public class GameInfo {
 
     public void setConstant(Collections<GameObject> constant) {
         this.constant = constant;
+    }
+    
+    public CompanyFactory getCompanyFactory() {
+        return companyFactory;
+    }
+    
+    public void setCompanyFactory(CompanyFactory companyFactory) {
+        this.companyFactory = companyFactory;
     }
 
     private void fillSkills() {
