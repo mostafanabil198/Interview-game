@@ -4,7 +4,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 
 import eg.edu.alexu.csd.oop.cs51.GameInfo;
 import eg.edu.alexu.csd.oop.cs51.objects.Skill;
@@ -12,8 +11,6 @@ import eg.edu.alexu.csd.oop.cs51.tasks.Task;
 
 public class Level2Strategy implements Strategy {
 	private List<Class<? extends Skill>> supported;
-	private Task task;
-	private Random random;
 	private List<String> skills;
 	private static final int fireRate = 3;
 	private static final boolean obaque = false;
