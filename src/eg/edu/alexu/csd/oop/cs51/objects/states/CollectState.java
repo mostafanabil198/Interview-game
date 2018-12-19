@@ -2,7 +2,6 @@ package eg.edu.alexu.csd.oop.cs51.objects.states;
 
 import eg.edu.alexu.csd.oop.cs51.GameInfo;
 import eg.edu.alexu.csd.oop.cs51.objects.Movable;
-import eg.edu.alexu.csd.oop.cs51.objects.Skill;
 
 public class CollectState implements State {
     private GameInfo gameInfo = GameInfo.getInstance();

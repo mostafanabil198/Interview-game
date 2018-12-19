@@ -9,9 +9,9 @@ import eg.edu.alexu.csd.oop.cs51.observer.Collision;
 
 public class CompanyFactory implements ICompanyFactory {
     
-    private ArrayList<Class<Movable>> classes;
+    private ArrayList<Class<? extends Movable>> classes;
     
-     public CompanyFactory(ArrayList<Class<Movable>> classes) {
+     public CompanyFactory(ArrayList<Class<? extends Movable>> classes) {
          this.classes = classes;
          
      }
@@ -30,6 +30,10 @@ public class CompanyFactory implements ICompanyFactory {
             }
         }
         return null;
+    }
+    
+    public ArrayList<Class<? extends Movable>> getSupportedCompanies(){
+        return classes;
     }
 
 }

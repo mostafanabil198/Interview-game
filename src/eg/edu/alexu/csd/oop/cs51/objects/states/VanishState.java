@@ -5,26 +5,26 @@ import eg.edu.alexu.csd.oop.cs51.objects.Movable;
 import eg.edu.alexu.csd.oop.cs51.objects.Skill;
 
 public class VanishState implements State {
-	private FlyweightFactory flyweight=new FlyweightFactory();
 
-	public VanishState(VanishState vanishState) {
-	}
-	public VanishState() {
-        // TODO Auto-generated constructor stub
+    public VanishState(VanishState vanishState) {
     }
-	@Override
-	public void doAction(Movable movable) {
-		movable.setState(this);
-		movable.setVisible(false);
-		if(Skill.class.isAssignableFrom(movable.getClass())) {
-			flyweight.addVanishedSkill(movable);
-		}
-		else {
-			flyweight.addVanishedGift(movable);
-		}
-		
-	}
-public State clone() {
-	return new VanishState(this);
-}
+
+    public VanishState() {
+    }
+
+    @Override
+    public void doAction(Movable movable) {
+        movable.setState(this);
+        movable.setVisible(false);
+        if (Skill.class.isAssignableFrom(movable.getClass())) {
+            FlyweightFactory.addVanishedSkill(movable);
+        } else {
+            FlyweightFactory.addVanishedGift(movable);
+        }
+
+    }
+
+    public State clone() {
+        return new VanishState(this);
+    }
 }

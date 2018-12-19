@@ -1,15 +1,12 @@
 package eg.edu.alexu.csd.oop.cs51.snapshots;
 
-import java.awt.Color;
 import java.util.List;
 import java.util.Map;
 import java.util.Stack;
-
 import eg.edu.alexu.csd.oop.cs51.GameInfo;
 import eg.edu.alexu.csd.oop.cs51.iterators.Collections;
 import eg.edu.alexu.csd.oop.cs51.iterators.IteratorI;
 import eg.edu.alexu.csd.oop.cs51.objects.Movable;
-//import eg.edu.alexu.csd.oop.cs51.objects.Skill;
 import eg.edu.alexu.csd.oop.cs51.objects.player.Interviewee;
 import eg.edu.alexu.csd.oop.cs51.observer.Collision;
 import eg.edu.alexu.csd.oop.cs51.tasks.Task;
@@ -22,10 +19,17 @@ public class SnapShot {
 	private int time;
 	private int leftColorCounter;
 	private int rightColorCounter;
-	private Color leftColor;
-	private Color rightColor;
 	private int playerPositionX;
 	private int playerPositionY;
+	private int leftStackHeight;
+	private int rightStackHeight;
+	private int leftHand;
+	private int rightHand;
+	private int numOfLives;
+	
+	
+	private Collections<GameObject> moving; 
+	private Collections<GameObject> control; 
 
 	public SnapShot() {
 		score = GameInfo.getInstance().getScore();
@@ -33,15 +37,17 @@ public class SnapShot {
 		time = GameInfo.getInstance().getTime();
 		leftColorCounter = GameInfo.getInstance().getLeftColorCounter();
 		rightColorCounter = GameInfo.getInstance().getRightColorCounter();
-		fillColors();
 		playerPositionX = GameInfo.getInstance().getPlayer().getX();
 		playerPositionY = GameInfo.getInstance().getPlayer().getY();
 
-	}
+		leftStackHeight = GameInfo.getInstance().getLeftStackHeight();
+		rightStackHeight = GameInfo.getInstance().getRightStackHeight();
+		leftHand = GameInfo.getInstance().getLeftHand();
+		rightHand = GameInfo.getInstance().getRightHand();
+		numOfLives = GameInfo.getInstance().getNumOfLives();
+		
+		
 
-	private void fillColors() {
-		leftColor = new Color(GameInfo.getInstance().getLeftColor().getRGB());
-		rightColor = new Color(GameInfo.getInstance().getRightColor().getRGB());
 	}
 
 	private void fillStacksForSave() {
@@ -49,11 +55,11 @@ public class SnapShot {
 		rightStack.clear();
 		IteratorI iterator = GameInfo.getInstance().getLeftStack().createIterator();
 		while (iterator.hasNext()) {
-			leftStack.add(((Movable) iterator.next()).clone());
+			leftStack.add((Movable) ((Movable) iterator.next()).clone());
 		}
 		iterator = GameInfo.getInstance().getRightStack().createIterator();
 		while (iterator.hasNext()) {
-			rightStack.add(((Movable) iterator.next()).clone());
+			rightStack.add((Movable) ((Movable) iterator.next()).clone());
 		}
 
 		/*
@@ -69,11 +75,11 @@ public class SnapShot {
 		GameInfo.getInstance().getRightStack().clear();
 		IteratorI iterator = leftStack.createIterator();
 		while (iterator.hasNext()) {
-			GameInfo.getInstance().getLeftStack().add(((Movable) iterator.next()).clone());
+			GameInfo.getInstance().getLeftStack().add((Movable) ((Movable)iterator.next()).clone());
 		}
 		iterator = rightStack.createIterator();
 		while (iterator.hasNext()) {
-			GameInfo.getInstance().getRightStack().add(((Movable) iterator.next()).clone());
+			GameInfo.getInstance().getRightStack().add((Movable) ((Movable)iterator.next()).clone());
 		}
 	}
 
@@ -82,8 +88,6 @@ public class SnapShot {
 		fillStacksForLoad();
 		GameInfo.getInstance().setLeftColorCounter(leftColorCounter);
 		GameInfo.getInstance().setRightColorCounter(rightColorCounter);
-		GameInfo.getInstance().setLeftColor(new Color(leftColor.getRGB()));
-		GameInfo.getInstance().setRightColor(new Color(rightColor.getRGB()));
 		GameInfo.getInstance().getPlayer().setX(playerPositionX);
 		GameInfo.getInstance().getPlayer().setY(playerPositionY);
 	}

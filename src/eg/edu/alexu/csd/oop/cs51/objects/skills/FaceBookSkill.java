@@ -1,5 +1,4 @@
 package eg.edu.alexu.csd.oop.cs51.objects.skills;
-import java.awt.Color;
 
 import eg.edu.alexu.csd.oop.cs51.objects.Movable;
 import eg.edu.alexu.csd.oop.cs51.objects.Skill;
