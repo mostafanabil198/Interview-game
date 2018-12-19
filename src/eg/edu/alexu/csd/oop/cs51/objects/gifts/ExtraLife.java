@@ -1,6 +1,5 @@
 package eg.edu.alexu.csd.oop.cs51.objects.gifts;
 
-import java.awt.Color;
 
 import eg.edu.alexu.csd.oop.cs51.objects.Movable;
 import eg.edu.alexu.csd.oop.cs51.objects.states.VanishState;

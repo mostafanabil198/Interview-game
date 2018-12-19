@@ -7,7 +7,6 @@ import java.util.Map;
 
 import eg.edu.alexu.csd.oop.cs51.GameInfo;
 import eg.edu.alexu.csd.oop.cs51.objects.Movable;
-import eg.edu.alexu.csd.oop.cs51.objects.Skill;
 import eg.edu.alexu.csd.oop.cs51.tasks.Task;
 
 public class Level2Strategy implements Strategy {

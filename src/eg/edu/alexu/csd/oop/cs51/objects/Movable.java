@@ -1,7 +1,5 @@
 package eg.edu.alexu.csd.oop.cs51.objects;
 
-import java.awt.Color;
-
 import eg.edu.alexu.csd.oop.cs51.objects.states.State;
 import eg.edu.alexu.csd.oop.cs51.observer.Collision;
 import eg.edu.alexu.csd.oop.cs51.observer.Observer;
