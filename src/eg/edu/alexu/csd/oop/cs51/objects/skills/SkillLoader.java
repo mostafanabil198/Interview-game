@@ -62,7 +62,7 @@ public class SkillLoader {
                         targetFile.createNewFile();
                     }
                     OutputStream outStream = new FileOutputStream(targetFile);
-                    outStream.write(loader.getResourceAsStream(c.getPackageName().replace(".", "/") +"/res/"+namearr[namearr.length - 1]+".png").readAllBytes());
+                    outStream.write(loader.getResourceAsStream(c.getPackage().getName().replace(".", "/") +"/res/"+namearr[namearr.length - 1]+".png").readAllBytes());
                     outStream.close();
                 }
             }
