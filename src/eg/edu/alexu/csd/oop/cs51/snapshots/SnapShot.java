@@ -1,9 +1,17 @@
 package eg.edu.alexu.csd.oop.cs51.snapshots;
 
+import java.util.List;
+import java.util.Map;
+import java.util.Stack;
 import eg.edu.alexu.csd.oop.cs51.GameInfo;
 import eg.edu.alexu.csd.oop.cs51.iterators.Collections;
 import eg.edu.alexu.csd.oop.cs51.iterators.IteratorI;
 import eg.edu.alexu.csd.oop.cs51.objects.Movable;
+import eg.edu.alexu.csd.oop.cs51.objects.player.Interviewee;
+import eg.edu.alexu.csd.oop.cs51.observer.Collision;
+import eg.edu.alexu.csd.oop.cs51.tasks.Task;
+import eg.edu.alexu.csd.oop.game.GameEngine;
+import eg.edu.alexu.csd.oop.game.GameObject;
 
 public class SnapShot {
 	private int score;
@@ -13,6 +21,15 @@ public class SnapShot {
 	private int rightColorCounter;
 	private int playerPositionX;
 	private int playerPositionY;
+	private int leftStackHeight;
+	private int rightStackHeight;
+	private int leftHand;
+	private int rightHand;
+	private int numOfLives;
+	
+	
+	private Collections<GameObject> moving; 
+	private Collections<GameObject> control; 
 
 	public SnapShot() {
 		score = GameInfo.getInstance().getScore();
@@ -22,6 +39,15 @@ public class SnapShot {
 		rightColorCounter = GameInfo.getInstance().getRightColorCounter();
 		playerPositionX = GameInfo.getInstance().getPlayer().getX();
 		playerPositionY = GameInfo.getInstance().getPlayer().getY();
+
+		leftStackHeight = GameInfo.getInstance().getLeftStackHeight();
+		rightStackHeight = GameInfo.getInstance().getRightStackHeight();
+		leftHand = GameInfo.getInstance().getLeftHand();
+		rightHand = GameInfo.getInstance().getRightHand();
+		numOfLives = GameInfo.getInstance().getNumOfLives();
+		
+		
+
 	}
 
 	private void fillStacksForSave() {
@@ -43,7 +69,7 @@ public class SnapShot {
 		 * rightStack.push(GameInfo.getInstance().getRightStack().get(i).clone()); }
 		 */
 	}
-	
+
 	private void fillStacksForLoad() {
 		GameInfo.getInstance().getLeftStack().clear();
 		GameInfo.getInstance().getRightStack().clear();
@@ -56,7 +82,6 @@ public class SnapShot {
 			GameInfo.getInstance().getRightStack().add((Movable) ((Movable)iterator.next()).clone());
 		}
 	}
-	
 
 	public void startFromCheckpoint() {
 		GameInfo.getInstance().setScore(score);
