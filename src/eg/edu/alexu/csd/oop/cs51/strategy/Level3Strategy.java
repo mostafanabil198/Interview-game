@@ -19,11 +19,11 @@ public class Level3Strategy implements Strategy {
 	public Map<String, Object> doOperation() {
 		allSkills = GameInfo.getInstance().getAllSkills();
 		supported = GameInfo.getInstance().getCompanyFactory().getSupportedCompanies();
+		Collections.shuffle(supported);
 		for (int i = 0; i < 5; i++) {
-			Collections.shuffle(supported);
 			Collections.shuffle(allSkills);
 			GameInfo.getInstance().addTask(
-					new Task(allSkills.get(0), allSkills.get(1), allSkills.get(2), supported.get(0).getSimpleName()));
+					new Task(allSkills.get(0), allSkills.get(1), allSkills.get(2), supported.get(i).getSimpleName()));
 		}
 
 		Map<String, Object> map = new HashMap<>();

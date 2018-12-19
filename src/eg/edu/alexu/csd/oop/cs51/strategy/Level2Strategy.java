@@ -20,9 +20,9 @@ public class Level2Strategy implements Strategy {
 		Map<String, Object> map = new HashMap<>();
 		skills = GameInfo.getInstance().getAllSkills();
 		supported = GameInfo.getInstance().getCompanyFactory().getSupportedCompanies();
+		Collections.shuffle(supported);
 		for (int i = 0; i < 4; i++) {
-			Collections.shuffle(supported);
-			String companyName = supported.get(0).getSimpleName();
+			String companyName = supported.get(i).getSimpleName();
 			Collections.shuffle(skills);
 			GameInfo.getInstance().addTask(new Task(skills.get(0), skills.get(1), skills.get(2), companyName));
 		}
