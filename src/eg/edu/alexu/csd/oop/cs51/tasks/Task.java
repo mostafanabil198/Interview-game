@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import eg.edu.alexu.csd.oop.cs51.objects.Movable;
+import eg.edu.alexu.csd.oop.cs51.objects.states.VanishState;
 
 public class Task {
 
@@ -24,6 +25,9 @@ public class Task {
 				return true;
 			}
 		}
+		new VanishState().doAction(one);
+		new VanishState().doAction(two);
+		new VanishState().doAction(three);
 		return false;
 	}
 
