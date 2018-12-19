@@ -1,17 +1,10 @@
 package eg.edu.alexu.csd.oop.cs51.snapshots;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Stack;
 import eg.edu.alexu.csd.oop.cs51.GameInfo;
 import eg.edu.alexu.csd.oop.cs51.iterators.Collections;
 import eg.edu.alexu.csd.oop.cs51.iterators.IteratorI;
 import eg.edu.alexu.csd.oop.cs51.objects.AbstractObject;
 import eg.edu.alexu.csd.oop.cs51.objects.Movable;
-import eg.edu.alexu.csd.oop.cs51.objects.player.Interviewee;
-import eg.edu.alexu.csd.oop.cs51.observer.Collision;
-import eg.edu.alexu.csd.oop.cs51.tasks.Task;
-import eg.edu.alexu.csd.oop.game.GameEngine;
 import eg.edu.alexu.csd.oop.game.GameObject;
 
 public class SnapShot {
