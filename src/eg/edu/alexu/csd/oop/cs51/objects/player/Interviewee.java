@@ -11,7 +11,10 @@ public class Interviewee extends AbstractObject{
 
 	public Interviewee() {
 	    super(WIDTH, HEIGHT, PATH, true, "");
-
+	}
+	
+	public Interviewee(Interviewee interviewee) {
+	    super(interviewee);
 	}
 	
 	public int getHandWidth() {
@@ -27,9 +30,9 @@ public class Interviewee extends AbstractObject{
 	public int getHandHeightPosition() {
 		return getY()+158;
 	}
-	
-	
-	
-	
 
+    @Override
+    public AbstractObject clone() {
+        return new Interviewee(this);
+    }
 }

@@ -13,4 +13,9 @@ public class Background extends AbstractObject{
         super(background);
     }
 
+    @Override
+    public AbstractObject clone() {
+        return new Background(this);
+    }
+
 }

@@ -43,5 +43,4 @@ public abstract class Movable extends AbstractObject implements Observer{
     public int getHeight() {
         return OBJECT_HEIGHT;
     }
-    public abstract Movable clone();
 }

@@ -107,5 +107,7 @@ public abstract class AbstractObject implements GameObject {
         // TODO Auto-generated method stub
         return buffered_image;
     }
+    
+    public abstract AbstractObject clone();
 
 }
