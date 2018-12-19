@@ -133,7 +133,7 @@ public class GameInfo {
             return 0;
         } else {
             Movable m = (Movable) i.next();
-            String name = ImagePath.getClass().getSimpleName();
+            String name = m.getClass().getSimpleName();
             if (i.hasNext()) {
                 while (i.hasNext()) {
                     if (name.equals(i.next().getClass().getSimpleName())) {
@@ -158,10 +158,6 @@ public class GameInfo {
 
             }
         }
-
-    }
-    //bta3t eh?
-    private void removeFromContainer() {
 
     }
 
