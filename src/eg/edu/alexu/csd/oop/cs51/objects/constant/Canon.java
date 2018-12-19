@@ -29,7 +29,7 @@ public class Canon extends AbstractObject {
 		this.factory=factory;
 	}
 
-	public void createObject() {
+	public Movable createObject() {
 		fillSkillArray();
 		fillGiftArray();
 		int rand = random.nextInt(100) + 1;
@@ -48,14 +48,15 @@ public class Canon extends AbstractObject {
 			movableObject = flyWeight.getSkill(company, skill);
 			if(movableObject==null) {
 				try {
-					movableObject=factory.createNewMovable(company);
-					movableObject.setName(skill);
+					movableObject=factory.createNewMovable(company,skill);
 				} catch (InstantiationException | IllegalAccessException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}		
 			}
 		}
+		setmovableObject();
+		return movableObject;
 	}
 	public void setmovableObject() {
 		Pair topLeft = new Pair(0, 0);
@@ -77,6 +78,7 @@ public class Canon extends AbstractObject {
 		}
 		movableObject.setX(x);
 		movableObject.setY(y);
+		movableObject.setVisible(true);
 		state.doAction(movableObject);
 
 	}
