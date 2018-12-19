@@ -6,13 +6,13 @@ public class Interviewee extends AbstractObject{
     private static final String PATH = "res/interviewee.png";
     private static final int WIDTH = 50;
     private static final int HEIGHT = 50;
-	private static final int HINDWIDTH = 25;
+	private static final int HANDWIDTH = 25;
 	public Interviewee() {
 	    super(WIDTH, HEIGHT, PATH, true, "");
 	}
 	
 	public int getHandWidth() {
-		return HINDWIDTH;
+		return HANDWIDTH;
 	}
 	public int getLeftHandPosition() {
 		return getX();
