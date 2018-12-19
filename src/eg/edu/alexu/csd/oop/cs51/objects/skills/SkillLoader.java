@@ -30,7 +30,6 @@ public class SkillLoader {
         supported = new ArrayList<Class<? extends Skill>>();
         List<File> jars = getJars();
         for(File jar: jars) {
-            System.out.println("sss");
             loadSkillFromJar(jar.getPath());
         }
     }
