@@ -3,6 +3,7 @@ package eg.edu.alexu.csd.oop.cs51.objects.skills;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -62,7 +63,10 @@ public class SkillLoader {
                         targetFile.createNewFile();
                     }
                     OutputStream outStream = new FileOutputStream(targetFile);
-                    outStream.write(loader.getResourceAsStream(c.getPackage().getName().replace(".", "/") +"/res/"+namearr[namearr.length - 1]+".png").readAllBytes());
+                    String packageName = c.getPackage().getName().replace(".", "/");
+                    String resName = packageName +"/res/"+namearr[namearr.length - 1]+".png";
+                    InputStream is = loader.getResourceAsStream(resName);
+                    outStream.write(is.readAllBytes());
                     outStream.close();
                 }
             }
