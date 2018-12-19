@@ -1,6 +1,7 @@
 package eg.edu.alexu.csd.oop.cs51.snapshots;
 
 import java.awt.Color;
+import java.util.List;
 import java.util.Map;
 import java.util.Stack;
 
@@ -10,8 +11,10 @@ import eg.edu.alexu.csd.oop.cs51.iterators.IteratorI;
 import eg.edu.alexu.csd.oop.cs51.objects.Movable;
 //import eg.edu.alexu.csd.oop.cs51.objects.Skill;
 import eg.edu.alexu.csd.oop.cs51.objects.player.Interviewee;
+import eg.edu.alexu.csd.oop.cs51.observer.Collision;
 import eg.edu.alexu.csd.oop.cs51.tasks.Task;
 import eg.edu.alexu.csd.oop.game.GameEngine;
+import eg.edu.alexu.csd.oop.game.GameObject;
 
 public class SnapShot {
 	private int score;
@@ -33,6 +36,7 @@ public class SnapShot {
 		fillColors();
 		playerPositionX = GameInfo.getInstance().getPlayer().getX();
 		playerPositionY = GameInfo.getInstance().getPlayer().getY();
+
 	}
 
 	private void fillColors() {
@@ -59,20 +63,19 @@ public class SnapShot {
 		 * rightStack.push(GameInfo.getInstance().getRightStack().get(i).clone()); }
 		 */
 	}
-	
+
 	private void fillStacksForLoad() {
 		GameInfo.getInstance().getLeftStack().clear();
 		GameInfo.getInstance().getRightStack().clear();
 		IteratorI iterator = leftStack.createIterator();
 		while (iterator.hasNext()) {
-			GameInfo.getInstance().getLeftStack().add(((Movable)iterator.next()).clone());
+			GameInfo.getInstance().getLeftStack().add(((Movable) iterator.next()).clone());
 		}
 		iterator = rightStack.createIterator();
 		while (iterator.hasNext()) {
-			GameInfo.getInstance().getRightStack().add(((Movable)iterator.next()).clone());
+			GameInfo.getInstance().getRightStack().add(((Movable) iterator.next()).clone());
 		}
 	}
-	
 
 	public void startFromCheckpoint() {
 		GameInfo.getInstance().setScore(score);
