@@ -1,4 +1,4 @@
-package eg.edu.alexu.csd.oop.cs51.objects.constant;
+package eg.edu.alexu.csd.oop.cs51.objects.skills;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -12,7 +12,7 @@ import eg.edu.alexu.csd.oop.cs51.objects.states.MovingState;
 import eg.edu.alexu.csd.oop.cs51.objects.states.State;
 import javafx.util.Pair;
 
-public class Canon extends AbstractObject {
+public class Canon {
 	private ArrayList<String> companies;
 	private ArrayList<String> skills;
 	private ArrayList<String> gifts;
@@ -22,8 +22,7 @@ public class Canon extends AbstractObject {
 	private FlyweightFactory flyWeight = new FlyweightFactory();
 	private ICompanyFactory factory;
 
-	public Canon(int width, int height, String imagePath, boolean visible, ArrayList<String> companies, String type,CompanyFactory factory) {
-		super(width, height, imagePath, visible, "");
+	public Canon(ArrayList<String> companies, String type,CompanyFactory factory) {
 		this.companies = companies;
 		this.canonType = type;
 		this.factory=factory;
