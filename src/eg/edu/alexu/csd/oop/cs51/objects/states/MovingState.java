@@ -30,7 +30,7 @@ public class MovingState implements State {
 	@Override
 	public void doAction(Movable movable) {
 		movable.setState(this);
-		gameInfo.getMoving().add(movable);
+		gameInfo.getMoving().addFirst(movable);
 		movable.setCollision(GameInfo.getInstance().getCollision());
 	}
 
