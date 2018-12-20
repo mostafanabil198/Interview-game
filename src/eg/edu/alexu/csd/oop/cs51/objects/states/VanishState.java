@@ -19,7 +19,8 @@ public class VanishState implements State {
 		movable.setState(this);
 		movable.setVisible(false);
 		if (CollectState.class.isAssignableFrom(prevState.getClass())) {
-			GameInfo.getInstance().getControl().remove(movable);
+//			GameInfo.getInstance().getControl().remove(movable);
+			GameInfo.getInstance().getMoving().remove(movable);
 			FlyweightFactory.addVanishedSkill(movable);
 		} else if (MovingState.class.isAssignableFrom(prevState.getClass())) {
 			GameInfo.getInstance().getMoving().remove(movable);

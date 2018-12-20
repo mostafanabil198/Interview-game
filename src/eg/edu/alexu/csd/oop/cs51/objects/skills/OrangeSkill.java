@@ -27,8 +27,13 @@ public class OrangeSkill extends Movable implements Skill {
 		} else if (spot.equals("leftStack")) {
 			new CollectState("left").doAction(this);
 		} else {
-			MovingState state = (MovingState) getState();
-			state.updatePosition(this);
+			if(MovingState.class.isAssignableFrom(getState().getClass())) {
+        		MovingState state = (MovingState) getState();
+	            state.updatePosition(this);
+        	} else if (CollectState.class.isAssignableFrom(getState().getClass())) {
+        		CollectState state = (CollectState) getState();
+	            state.updatePosition(this);
+        	}
 		}
 
 	}

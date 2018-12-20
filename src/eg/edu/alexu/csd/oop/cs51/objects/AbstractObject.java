@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -31,19 +32,17 @@ public abstract class AbstractObject implements GameObject {
         } catch (IOException e) {
             e.printStackTrace();
         }
-//        Graphics2D g2d = img.createGraphics();
-//        g2d.drawImage(img, width, height, null);
-//        g2d.setPaint(Color.WHITE);
-//        g2d.setFont(new Font("Bernard MT Condensed", Font.BOLD, 8));
-//        FontMetrics fm = g2d.getFontMetrics();
-//        int y = img.getHeight()/2;
-//        int x = img.getWidth()/2 - fm.stringWidth(skillName)/2;
-//        g2d.drawString(skillName, x, y);
-//        g2d.dispose();
-//        BufferedImage imgScaled = (BufferedImage) img.getScaledInstance(width,
-//                height, java.awt.Image.SCALE_AREA_AVERAGING);
+        Graphics2D g2d = img.createGraphics();
+        g2d.setPaint(Color.WHITE);
+        g2d.setFont(new Font("Bernard MT Condensed", Font.BOLD, 24));
+        FontMetrics fm = g2d.getFontMetrics();
+        int y = img.getHeight()/2 + 20;
+        int x = img.getWidth()/2 - fm.stringWidth(skillName)/2;
+        g2d.drawString(skillName, x, y);
+        g2d.dispose();
+        BufferedImage imgScaled = resize(img, width, height);
         
-        buffered_image[0] = img;
+        buffered_image[0] = imgScaled;
     }
     
     public AbstractObject(AbstractObject abstractObject) {
@@ -110,4 +109,14 @@ public abstract class AbstractObject implements GameObject {
     
     public abstract AbstractObject clone();
 
+    private static BufferedImage resize(BufferedImage img, int newW, int newH) { 
+        Image tmp = img.getScaledInstance(newW, newH, Image.SCALE_SMOOTH);
+        BufferedImage dimg = new BufferedImage(newW, newH, BufferedImage.TYPE_INT_ARGB);
+
+        Graphics2D g2d = dimg.createGraphics();
+        g2d.drawImage(tmp, 0, 0, null);
+        g2d.dispose();
+
+        return dimg;
+    }  
 }
