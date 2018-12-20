@@ -9,14 +9,14 @@ public class MovingState implements State {
 	private int velocityX;
 	private int velocityY;
 	private double renderTime;
-	private static final double gravity = 9.8;
+	private static final int gravity = 2;
 
 	public MovingState() {
-	    renderTime = 1 / (GameInfo.getInstance().getRenderSpeed());
+		renderTime = (GameInfo.getInstance().getRenderSpeed()) / 10;
 	}
 
 	public MovingState(MovingState movingState) {
-	    renderTime = 1 / (GameInfo.getInstance().getRenderSpeed());
+		renderTime = (GameInfo.getInstance().getRenderSpeed()) / 10;
 		this.velocityX = movingState.velocityX;
 		this.velocityY = movingState.velocityY;
 	}
@@ -32,8 +32,12 @@ public class MovingState implements State {
 		int x = movable.getX();
 		int y = movable.getY();
 		x += velocityX * renderTime;
-		y += (int) (velocityY * renderTime + 0.5 * gravity * renderTime * renderTime);
-		velocityY += gravity * renderTime;
+		if(velocityX < 0) {
+			y += (int) ((x-1366)*(x-1366)) / 300000;
+		} else {
+			y += (int) (x) * (x) / 100000;
+		}
+		//velocityY += gravity * renderTime;
 		movable.setX(x);
 		movable.setY(y);
 	}

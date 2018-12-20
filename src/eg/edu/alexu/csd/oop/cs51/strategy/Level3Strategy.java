@@ -12,7 +12,7 @@ import eg.edu.alexu.csd.oop.cs51.tasks.Task;
 public class Level3Strategy implements Strategy {
     private List<Class<? extends Movable>> supported;
 	private List<String> allSkills;
-	private static final int FIRE_RATE = 2;
+	private static final int FIRE_RATE = 40;
 	private static final boolean OPAQUE = false;
 	private static final int REFRESH_SPEED = 3;
 	private static final int CONTROL_SPEED = 15;

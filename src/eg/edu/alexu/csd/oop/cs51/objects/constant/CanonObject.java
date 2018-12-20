@@ -4,8 +4,8 @@ import eg.edu.alexu.csd.oop.cs51.objects.AbstractObject;
 
 public class CanonObject extends AbstractObject{
     private static final String PATH = "res/canons.png";
-    private static final int WIDTH = 50;
-    private static final int HEIGHT = 50;
+    private static final int WIDTH = 1366;
+    private static final int HEIGHT = 150;
 
     public CanonObject() {
         super(WIDTH, HEIGHT, PATH, true, "");
