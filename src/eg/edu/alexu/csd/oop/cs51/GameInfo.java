@@ -16,320 +16,320 @@ import eg.edu.alexu.csd.oop.cs51.tasks.Task;
 import eg.edu.alexu.csd.oop.game.GameObject;
 
 public class GameInfo {
-    private static volatile GameInfo instance;
-    
-    private int score;
-    private int leftStackHeight;
-    private int rightStackHeight;
-    private int leftHand;
-    private int rightHand;
-    private int renderSpeed;
-    private int playerHandWidth;
-    private int leftColorCounter;
-    private int rightColorCounter;
-    private int numOfLives;
-    private int time;
+	private static volatile GameInfo instance;
 
-    private Collections<Movable> leftStack, rightStack;
+	private int score;
+	private int leftStackHeight;
+	private int rightStackHeight;
+	private int leftHand;
+	private int rightHand;
+	private int renderSpeed;
+	private int playerHandWidth;
+	private int leftColorCounter;
+	private int rightColorCounter;
+	private int numOfLives;
+	private int time;
 
-    private Collections<Task> gameTasks;
-    private Collections<GameObject> moving;
-    private Collections<GameObject> control;
-    private Collections<GameObject> constant;
+	private Collections<Movable> leftStack, rightStack;
 
-    private Collision collision;
+	private Collections<Task> gameTasks;
+	private Collections<GameObject> moving;
+	private Collections<GameObject> control;
+	private Collections<GameObject> constant;
 
-    private SnapShot checkPoint;
-    
-    private Interviewee player;
+	private Collision collision;
 
-    private List<String> allSkills;
-    
-    private CompanyFactory companyFactory;
-    //giftsfactory too
+	private SnapShot checkPoint;
 
-    private GameInfo() {
-        leftStack = new StackContainer<Movable>();
-        rightStack = new StackContainer<Movable>();
-        gameTasks = new LinkedListContainer<Task>();
-        player = new Interviewee();
-        playerHandWidth = player.getHandWidth();
-        leftStackHeight = rightStackHeight = player.getHandHeightPosition();
-        leftHand = player.getLeftHandPosition();
-        rightHand = player.getRightHandPosition();
-        fillSkills();
-        moving = new LinkedListContainer<GameObject>();
-        control = new LinkedListContainer<GameObject>();
-        constant = new LinkedListContainer<GameObject>();
-    }
+	private Interviewee player;
 
-    public static GameInfo getInstance() {
-        if (instance == null) {
-            synchronized (GameInfo.class) {
-                if (instance == null) {
-                    instance = new GameInfo();
-                }
-            }
-        }
-        return instance;
-    }
+	private List<String> allSkills;
 
-    public void addToRightStack(Movable skill) {
-        rightStackHeight = player.getHandHeightPosition();
-        if ((rightStack.size() > 0) && rightStack.peek().getClass()
-                .isAssignableFrom(skill.getClass())) {
-            rightStack.add(skill);
-            rightColorCounter++;
-            if (rightColorCounter == 3) {
-                // method to check number of same color
-                checkTask(rightStack.pop(), rightStack.pop(), rightStack.pop());
-                rightColorCounter = numOfSameColor(rightStack);
-            }
-        } else {
-            // rightColor = skill.getColor();
-            rightStack.add(skill);
-            rightColorCounter = 1;
-        }
-        // rightStack.add(skill);
-        int skillHight = rightStack.peek().getHeight();
-        rightStackHeight -= skillHight * rightStack.size();
-        skill.setX(rightHand - playerHandWidth);
-        skill.setY(rightStackHeight);
+	private CompanyFactory companyFactory;
+	// giftsfactory too
 
-    }
+	private GameInfo() {
+		leftStack = new StackContainer<Movable>();
+		rightStack = new StackContainer<Movable>();
+		gameTasks = new LinkedListContainer<Task>();
+		player = new Interviewee();
+		playerHandWidth = player.getHandWidth();
+		leftStackHeight = rightStackHeight = player.getHandHeightPosition();
+		leftHand = player.getLeftHandPosition();
+		rightHand = player.getRightHandPosition();
+		fillSkills();
+		moving = new LinkedListContainer<GameObject>();
+		control = new LinkedListContainer<GameObject>();
+		constant = new LinkedListContainer<GameObject>();
+		control.add(player);
+	}
 
-    public void addToLeftStack(Movable skill) {
-        leftStackHeight = player.getHandHeightPosition();
-        if ((leftStack.size() > 0) && leftStack.peek().getClass()
-                .isAssignableFrom(skill.getClass())) {
-            leftStack.add(skill);
-            leftColorCounter++;
-            if (leftColorCounter == 3) {
-                checkTask(leftStack.pop(), leftStack.pop(), leftStack.pop());
-                leftColorCounter = numOfSameColor(leftStack);
-            }
-        } else {
-            leftStack.add(skill);
-            leftColorCounter = 1;
-        }
-        // leftStack.add(skill);
-        int skillHight = leftStack.peek().getHeight();
-        leftStackHeight -= skillHight * leftStack.size();
-        skill.setX(leftHand);
-        skill.setY(leftStackHeight);
+	public static GameInfo getInstance() {
+		if (instance == null) {
+			synchronized (GameInfo.class) {
+				if (instance == null) {
+					instance = new GameInfo();
+				}
+			}
+		}
+		return instance;
+	}
 
-    }
-    ///mesh fahem 7aga
-    private int numOfSameColor(Collections<Movable> stack) {
-        int counter = 1;
-        IteratorI i = stack.createIterator();
-        if (!i.hasNext()) {
-            return 0;
-        } else {
-            Movable m = (Movable) i.next();
-            String name = m.getClass().getSimpleName();
-            if (i.hasNext()) {
-                while (i.hasNext()) {
-                    if (name.equals(i.next().getClass().getSimpleName())) {
-                        counter++;
-                    } else {
-                        break;
-                    }
-                }
-            }
-            return counter;
-        }
-    }
+	public void addToRightStack(Movable skill) {
+		rightStackHeight = player.getHandHeightPosition();
+		if ((rightStack.size() > 0) && rightStack.peek().getClass().isAssignableFrom(skill.getClass())) {
+			rightStack.add(skill);
+			rightColorCounter++;
+			if (rightColorCounter == 3) {
+				// method to check number of same color
+				checkTask(rightStack.pop(), rightStack.pop(), rightStack.pop());
+				rightColorCounter = numOfSameColor(rightStack);
+			}
+		} else {
+			// rightColor = skill.getColor();
+			rightStack.add(skill);
+			rightColorCounter = 1;
+		}
+		// rightStack.add(skill);
+		int skillHight = rightStack.peek().getHeight();
+		rightStackHeight -= skillHight * rightStack.size();
+		skill.setX(rightHand - playerHandWidth);
+		skill.setY(rightStackHeight);
 
-    private void checkTask(Movable task1, Movable task2, Movable task3) {
-        IteratorI i = gameTasks.createIterator();
-        while (i.hasNext()) {
-            Task t = (Task) i.next();
-            if (t.checkAchived(task1, task2, task3)) {
-                score++;
-                gameTasks.remove(t);
-                break;
+	}
 
-            }
-        }
+	public void addToLeftStack(Movable skill) {
+		leftStackHeight = player.getHandHeightPosition();
+		if ((leftStack.size() > 0) && leftStack.peek().getClass().isAssignableFrom(skill.getClass())) {
+			leftStack.add(skill);
+			leftColorCounter++;
+			if (leftColorCounter == 3) {
+				checkTask(leftStack.pop(), leftStack.pop(), leftStack.pop());
+				leftColorCounter = numOfSameColor(leftStack);
+			}
+		} else {
+			leftStack.add(skill);
+			leftColorCounter = 1;
+		}
+		// leftStack.add(skill);
+		int skillHight = leftStack.peek().getHeight();
+		leftStackHeight -= skillHight * leftStack.size();
+		skill.setX(leftHand);
+		skill.setY(leftStackHeight);
 
-    }
+	}
 
-    public int getScore() {
-        return score;
-    }
+	/// mesh fahem 7aga
+	private int numOfSameColor(Collections<Movable> stack) {
+		int counter = 1;
+		IteratorI i = stack.createIterator();
+		if (!i.hasNext()) {
+			return 0;
+		} else {
+			Movable m = (Movable) i.next();
+			String name = m.getClass().getSimpleName();
+			if (i.hasNext()) {
+				while (i.hasNext()) {
+					if (name.equals(i.next().getClass().getSimpleName())) {
+						counter++;
+					} else {
+						break;
+					}
+				}
+			}
+			return counter;
+		}
+	}
 
-    public void setScore(int score) {
-        this.score = score;
-    }
+	private void checkTask(Movable task1, Movable task2, Movable task3) {
+		IteratorI i = gameTasks.createIterator();
+		while (i.hasNext()) {
+			Task t = (Task) i.next();
+			if (t.checkAchived(task1, task2, task3)) {
+				score++;
+				gameTasks.remove(t);
+				break;
 
-    public Collections<Movable> getLeftStack() {
-        return leftStack;
-    }
+			}
+		}
 
-    public void setLeftStack(Collections<Movable> leftStack) {
-        this.leftStack = leftStack;
-    }
+	}
 
-    public Collections<Movable> getRightStack() {
-        return rightStack;
-    }
+	public int getScore() {
+		return score;
+	}
 
-    public void setRightStack(Collections<Movable> rightStack) {
-        this.rightStack = rightStack;
-    }
+	public void setScore(int score) {
+		this.score = score;
+	}
 
-    public int getNumOfLives() {
-        return numOfLives;
-    }
+	public Collections<Movable> getLeftStack() {
+		return leftStack;
+	}
 
-    public void setNumOfLives(int numOfLives) {
-        this.numOfLives = numOfLives;
-    }
+	public void setLeftStack(Collections<Movable> leftStack) {
+		this.leftStack = leftStack;
+	}
 
-    public int getTime() {
-        return time;
-    }
+	public Collections<Movable> getRightStack() {
+		return rightStack;
+	}
 
-    public void setTime(int time) {
-        this.time = time;
-    }
+	public void setRightStack(Collections<Movable> rightStack) {
+		this.rightStack = rightStack;
+	}
 
-    public Collections<Task> getGameTasks() {
-        return gameTasks;
-    }
+	public int getNumOfLives() {
+		return numOfLives;
+	}
 
-    public void setGameTasks(Collections<Task> gameTasks) {
-        this.gameTasks = gameTasks;
-    }
+	public void setNumOfLives(int numOfLives) {
+		this.numOfLives = numOfLives;
+	}
 
-    public void addTask(Task task) {
-        gameTasks.add(task);
-    }
+	public int getTime() {
+		return time;
+	}
 
-    public int getLeftColorCounter() {
-        return leftColorCounter;
-    }
+	public void setTime(int time) {
+		this.time = time;
+	}
 
-    public void setLeftColorCounter(int leftColorCounter) {
-        this.leftColorCounter = leftColorCounter;
-    }
+	public Collections<Task> getGameTasks() {
+		return gameTasks;
+	}
 
-    public int getRightColorCounter() {
-        return rightColorCounter;
-    }
+	public void setGameTasks(Collections<Task> gameTasks) {
+		this.gameTasks = gameTasks;
+	}
 
-    public void setRightColorCounter(int rightColorCounter) {
-        this.rightColorCounter = rightColorCounter;
-    }
+	public void addTask(Task task) {
+		gameTasks.add(task);
+	}
 
-    public SnapShot getCheckPoint() {
-        return checkPoint;
-    }
+	public int getLeftColorCounter() {
+		return leftColorCounter;
+	}
 
-    public void setCheckPoint(SnapShot checkPoint) {
-        this.checkPoint = checkPoint;
-    }
+	public void setLeftColorCounter(int leftColorCounter) {
+		this.leftColorCounter = leftColorCounter;
+	}
 
-    public Interviewee getPlayer() {
-        return player;
-    }
+	public int getRightColorCounter() {
+		return rightColorCounter;
+	}
 
-    public int getPlayerHandWidth() {
-        return playerHandWidth;
-    }
+	public void setRightColorCounter(int rightColorCounter) {
+		this.rightColorCounter = rightColorCounter;
+	}
 
-    public int getLeftStackHeight() {
-        return leftStackHeight;
-    }
+	public SnapShot getCheckPoint() {
+		return checkPoint;
+	}
 
-    public int getRightStackHeight() {
-        return rightStackHeight;
-    }
+	public void setCheckPoint(SnapShot checkPoint) {
+		this.checkPoint = checkPoint;
+	}
 
-    public int getLeftHand() {
-        return leftHand;
-    }
+	public Interviewee getPlayer() {
+		return player;
+	}
 
-    public int getRightHand() {
-        return rightHand;
-    }
+	public int getPlayerHandWidth() {
+		return playerHandWidth;
+	}
 
-    public int getRenderSpeed() {
-        return renderSpeed;
-    }
+	public int getLeftStackHeight() {
+		return leftStackHeight;
+	}
 
-    public void setRenderSpeed(int renderSpeed) {
-        this.renderSpeed = renderSpeed;
-    }
+	public int getRightStackHeight() {
+		return rightStackHeight;
+	}
 
-    public void setLeftHand(int leftHand) {
-        this.leftHand = leftHand;
-    }
+	public int getLeftHand() {
+		return leftHand;
+	}
 
-    public void setRightHand(int rightHand) {
-        this.rightHand = rightHand;
-    }
+	public int getRightHand() {
+		return rightHand;
+	}
 
-    public Collision getCollision() {
-        return collision;
-    }
+	public int getRenderSpeed() {
+		return renderSpeed;
+	}
 
-    public void setCollision(Collision collision) {
-        this.collision = collision;
-    }
+	public void setRenderSpeed(int renderSpeed) {
+		this.renderSpeed = renderSpeed;
+	}
 
-    public List<String> getAllSkills() {
-        return allSkills;
-    }
+	public void setLeftHand(int leftHand) {
+		this.leftHand = leftHand;
+	}
 
-    public Collections<GameObject> getMoving() {
-        return moving;
-    }
+	public void setRightHand(int rightHand) {
+		this.rightHand = rightHand;
+	}
 
-    public void setMoving(Collections<GameObject> moving) {
-        this.moving = moving;
-    }
+	public Collision getCollision() {
+		return collision;
+	}
 
-    public Collections<GameObject> getControl() {
-        return control;
-    }
+	public void setCollision(Collision collision) {
+		this.collision = collision;
+	}
 
-    public void setControl(Collections<GameObject> control) {
-        this.control = control;
-    }
+	public List<String> getAllSkills() {
+		return allSkills;
+	}
 
-    public Collections<GameObject> getConstant() {
-        return constant;
-    }
+	public Collections<GameObject> getMoving() {
+		return moving;
+	}
 
-    public void setConstant(Collections<GameObject> constant) {
-        this.constant = constant;
-    }
-    
-    public CompanyFactory getCompanyFactory() {
-        return companyFactory;
-    }
-    
-    public void setCompanyFactory(CompanyFactory companyFactory) {
-        this.companyFactory = companyFactory;
-    }
+	public void setMoving(Collections<GameObject> moving) {
+		this.moving = moving;
+	}
 
-    public void setLeftStackHeight(int leftStackHeight) {
-        this.leftStackHeight = leftStackHeight;
-    }
+	public Collections<GameObject> getControl() {
+		return control;
+	}
 
-    public void setRightStackHeight(int rightStackHeight) {
-        this.rightStackHeight = rightStackHeight;
-    }
-    
-    private void fillSkills() {
-        allSkills = new ArrayList<String>();
-        allSkills.add("CV");
-        allSkills.add("PS");
-        allSkills.add("Java");
-        allSkills.add("C++");
-        allSkills.add("Flutter");
-        allSkills.add("Linux");
-    }
+	public void setControl(Collections<GameObject> control) {
+		this.control = control;
+	}
+
+	public Collections<GameObject> getConstant() {
+		return constant;
+	}
+
+	public void setConstant(Collections<GameObject> constant) {
+		this.constant = constant;
+	}
+
+	public CompanyFactory getCompanyFactory() {
+		return companyFactory;
+	}
+
+	public void setCompanyFactory(CompanyFactory companyFactory) {
+		this.companyFactory = companyFactory;
+	}
+
+	public void setLeftStackHeight(int leftStackHeight) {
+		this.leftStackHeight = leftStackHeight;
+	}
+
+	public void setRightStackHeight(int rightStackHeight) {
+		this.rightStackHeight = rightStackHeight;
+	}
+
+	private void fillSkills() {
+		allSkills = new ArrayList<String>();
+		allSkills.add("CV");
+		allSkills.add("PS");
+		allSkills.add("Java");
+		allSkills.add("C++");
+		allSkills.add("Flutter");
+		allSkills.add("Linux");
+	}
 }

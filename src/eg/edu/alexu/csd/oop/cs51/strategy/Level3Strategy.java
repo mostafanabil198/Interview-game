@@ -13,7 +13,7 @@ public class Level3Strategy implements Strategy {
     private List<Class<? extends Movable>> supported;
 	private List<String> allSkills;
 	private static final int fireRate = 2;
-    private static final boolean obaque = false;
+    private static final boolean opaque = false;
 
 	@Override
 	public Map<String, Object> doOperation() {
@@ -28,7 +28,7 @@ public class Level3Strategy implements Strategy {
 
 		Map<String, Object> map = new HashMap<>();
 		map.put("fireRate", fireRate);
-		map.put("obaque", obaque);
+		map.put("opaque", opaque);
 		return map;
 	}
 

@@ -13,7 +13,7 @@ public class Level2Strategy implements Strategy {
     private List<Class<? extends Movable>> supported;
 	private List<String> skills;
 	private static final int fireRate = 3;
-	private static final boolean obaque = false;
+	private static final boolean opaque = false;
 
 	@Override
 	public Map<String, Object> doOperation() {
@@ -27,7 +27,7 @@ public class Level2Strategy implements Strategy {
 			GameInfo.getInstance().addTask(new Task(skills.get(0), skills.get(1), skills.get(2), companyName));
 		}
 		map.put("fireRaate", fireRate);
-		map.put("obaque", obaque);
+		map.put("opaque", opaque);
 		return map;
 	}
 
