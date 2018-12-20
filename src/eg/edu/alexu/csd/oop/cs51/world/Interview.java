@@ -75,11 +75,7 @@ public class Interview implements World {
 			canonRight.createObject();
 		}
 		refreshCounter++;
-		if(GameInfo.getInstance().getCollision() == null) {
-			System.out.println("null");
-		}else {
 		GameInfo.getInstance().getCollision().notifyObservers();
-		}
 		if (GameInfo.getInstance().getGameTasks().size() == 0) {
 			return false;
 		}
