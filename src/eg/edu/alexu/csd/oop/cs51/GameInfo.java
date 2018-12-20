@@ -61,7 +61,7 @@ public class GameInfo {
 		leftStack = new StackContainer<Movable>();
 		rightStack = new StackContainer<Movable>();
 		gameTasks = new LinkedListContainer<Task>();
-		player = new Interviewee(playerWidth,playerHeight,ImagePath,visible);
+		player = new Interviewee();
 		playerHandWidth = player.getHandWidth();
 		leftStackHeight = rightStackHeight = player.getHandHeightPosition();
 		leftHand = player.getLeftHandPosition();
@@ -76,6 +76,9 @@ public class GameInfo {
 	}
 	
 	
+
+	
+
 
 	public static GameInfo getInstance() {
 		if(instance == null) {
@@ -370,6 +373,17 @@ public class GameInfo {
 	public void setConstant(Collections<GameObject> constant) {
 		this.constant = constant;
 	}
+	
+	public boolean isVisible() {
+		return visible;
+	}
+
+
+
+	public void setVisible(boolean visible) {
+		this.visible = visible;
+	}
+
 
 
 
