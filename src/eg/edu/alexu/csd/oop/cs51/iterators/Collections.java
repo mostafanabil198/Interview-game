@@ -5,6 +5,7 @@ import java.util.Collection;
 public interface Collections<T> {
 	public IteratorI createIterator();
 	public void add(T a);
+	public void addFirst(T a);
 	public T peek();
 	public T pop();
 	public boolean remove(T obj);
