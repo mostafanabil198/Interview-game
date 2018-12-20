@@ -38,6 +38,7 @@ public class Canon {
             movableObject = FlyweightFactory.getGift(gift);
             if (movableObject == null) {
                 // factory lel gifts
+            	movableObject = new FaceBookSkill("cv", GameInfo.getInstance().getCollision());
             }
         } else {
             int CompanyIndex = random.nextInt(companies.size());
@@ -63,7 +64,6 @@ public class Canon {
         Point topRight = new Point(100, 0);
         int x = 0, y = 0;
         MovingState state = new MovingState();
-        state.doAction(movableObject);
         if (canonType.equals("left")) {
             x = (int) topLeft.getX();
             y = (int) topLeft.getY();
