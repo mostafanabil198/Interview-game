@@ -8,12 +8,10 @@ import eg.edu.alexu.csd.oop.cs51.objects.states.MovingState;
 
 public class Collision {
     private static final int GroundY = 10;
-    private GameInfo gameInfo;
     private LinkedListContainer<Observer> list;
     private IteratorI iterator;
 
     public Collision() {
-        gameInfo = GameInfo.getInstance();
         list = new LinkedListContainer<Observer>();
     }
 
@@ -22,11 +20,11 @@ public class Collision {
     }
 
     public void notifyObservers() {
-        int leftX = gameInfo.getLeftHand();
-        int rightX = gameInfo.getRightHand();
-        int leftY = gameInfo.getLeftStackHeight();
-        int rightY = gameInfo.getRightStackHeight();
-        int handWidth = gameInfo.getPlayerHandWidth();
+        int leftX = GameInfo.getInstance().getLeftHand();
+        int rightX = GameInfo.getInstance().getRightHand();
+        int leftY = GameInfo.getInstance().getLeftStackHeight();
+        int rightY = GameInfo.getInstance().getRightStackHeight();
+        int handWidth = GameInfo.getInstance().getPlayerHandWidth();
         iterator = list.createIterator();
         while (iterator.hasNext()) {
             Observer observer = (Observer) iterator.next();
