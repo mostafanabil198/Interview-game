@@ -5,11 +5,11 @@ import eg.edu.alexu.csd.oop.cs51.objects.states.State;
 import eg.edu.alexu.csd.oop.cs51.observer.Collision;
 import eg.edu.alexu.csd.oop.cs51.observer.Observer;
 
-public abstract class Movable extends AbstractObject implements Observer {
-	private static final int OBJECT_WIDTH = 130;
-	private static final int OBJECT_HEIGHT = 105;
-	private String name;
-	private State state;
+public abstract class Movable extends AbstractObject implements Observer{
+    private static final int OBJECT_WIDTH = 80;
+    private static final int OBJECT_HEIGHT = 65;
+    private String name;
+    private State state;
 
 	public Movable(String path, String name, Collision collision) {
 		super(OBJECT_WIDTH, OBJECT_HEIGHT, path, false, name);

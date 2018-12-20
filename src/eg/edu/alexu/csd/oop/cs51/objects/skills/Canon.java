@@ -44,7 +44,7 @@ public class Canon {
             int CompanyIndex = random.nextInt(companies.size());
             String company = companies.get(CompanyIndex);
             int SkillIndex = random.nextInt(skills.size());
-            String skill = companies.get(SkillIndex);
+            String skill = skills.get(SkillIndex);
             movableObject = FlyweightFactory.getSkill(company, skill);
             if (movableObject == null) {
                 try {
@@ -60,19 +60,19 @@ public class Canon {
     }
 
     public void setmovableObject() {
-        Point topLeft = new Point(0, 0);
-        Point topRight = new Point(1000, 0);
+        Point topLeft = new Point(0, 70);
+        Point topRight = new Point(1366, 70);
         int x = 0, y = 0;
         MovingState state = new MovingState();
         if (canonType.equals("left")) {
             x = (int) topLeft.getX();
             y = (int) topLeft.getY();
-            state.setVelocityX(random.nextInt(5) + 1);
+            state.setVelocityX(random.nextInt(3) + 1);
             state.setVelocityY(0);
         } else if (canonType.equals("right")) {
             x = (int) topRight.getX();
             y = (int) topRight.getY();
-            state.setVelocityX((random.nextInt(5) + 1) * -1);
+            state.setVelocityX((random.nextInt(3) + 1) * -1);
             state.setVelocityY(0);
         }
         movableObject.setX(x);
