@@ -72,7 +72,7 @@ public class Interview implements World {
 	public boolean refresh() {
 		
 		GameInfo.getInstance().updateHandPositions();
-		if (refreshCounter > fireRate) {
+		if (refreshCounter > 200) {
 			refreshCounter = 0;
 			canonLeft.createObject();
 			canonRight.createObject();

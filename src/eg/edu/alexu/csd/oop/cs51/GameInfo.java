@@ -345,5 +345,6 @@ public class GameInfo {
 	public void updateHandPositions() {
 		rightHand = player.getRightHandPosition();
 		leftHand = player.getLeftHandPosition();
+		
 	}
 }

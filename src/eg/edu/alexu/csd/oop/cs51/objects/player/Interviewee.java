@@ -39,4 +39,10 @@ public class Interviewee extends AbstractObject {
 	public AbstractObject clone() {
 		return new Interviewee(this);
 	}
+	
+	@Override
+	public void setY(int y) {
+		// TODO Auto-generated method stub
+		super.setY(500);
+	}
 }
