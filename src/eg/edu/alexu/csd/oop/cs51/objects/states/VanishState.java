@@ -15,15 +15,19 @@ public class VanishState implements State {
 
     @Override
     public void doAction(Movable movable) {
+    	State prevState=movable.getState();
         movable.setState(this);
         movable.setVisible(false);
-        if (Skill.class.isAssignableFrom(movable.getClass())) {
+        if (CollectState.class.isAssignableFrom(prevState.getClass())) {
             GameInfo.getInstance().getControl().remove(movable);
             FlyweightFactory.addVanishedSkill(movable);
-        } else {
+        }
+        else if(MovingState.class.isAssignableFrom(prevState.getClass())){
+        	GameInfo.getInstance().getMoving().remove(movable);
+            FlyweightFactory.addVanishedSkill(movable);
+        }else {
             FlyweightFactory.addVanishedGift(movable);
         }
-
     }
 
     public State clone() {
