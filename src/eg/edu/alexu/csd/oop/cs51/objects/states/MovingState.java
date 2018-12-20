@@ -8,17 +8,21 @@ import eg.edu.alexu.csd.oop.cs51.objects.Movable;
 public class MovingState implements State {
 	private int velocityX;
 	private int velocityY;
-	private GameInfo gameInfo = GameInfo.getInstance();
-	private double renderTime = 1 / (gameInfo.getRenderSpeed());
+	private GameInfo gameInfo;
+	private double renderTime;
 	private static final double gravity = 9.8;
 
 	public MovingState() {
+	    renderTime = 1 / (gameInfo.getRenderSpeed());
+	    gameInfo = GameInfo.getInstance();
 		Random random = new Random();
 		velocityY = 0;
 		velocityX = random.nextInt(10) + 1;
 	}
 
 	public MovingState(MovingState movingState) {
+	    renderTime = 1 / (gameInfo.getRenderSpeed());
+	    gameInfo = GameInfo.getInstance();
 		this.velocityX = movingState.velocityX;
 		this.velocityY = movingState.velocityY;
 	}
@@ -26,6 +30,8 @@ public class MovingState implements State {
 	@Override
 	public void doAction(Movable movable) {
 		movable.setState(this);
+		gameInfo.getMoving().add(movable);
+		movable.setCollision(GameInfo.getInstance().getCollision());
 	}
 
 	public void updatePosition(Movable movable) {

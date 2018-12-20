@@ -61,6 +61,7 @@ public class GameInfo {
         moving = new LinkedListContainer<GameObject>();
         control = new LinkedListContainer<GameObject>();
         constant = new LinkedListContainer<GameObject>();
+        collision = new Collision();
     }
 
     public static GameInfo getInstance() {

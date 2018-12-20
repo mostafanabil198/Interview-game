@@ -23,6 +23,10 @@ public abstract class Movable extends AbstractObject implements Observer{
         this.state = movable.state.clone();
     }
     
+    public void setCollision(Collision collision) {
+        collision.addObserver(this);
+    }
+    
     public void setState(State state) {
         this.state = state;
     }

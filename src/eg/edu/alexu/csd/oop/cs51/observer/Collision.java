@@ -4,6 +4,7 @@ import eg.edu.alexu.csd.oop.cs51.GameInfo;
 import eg.edu.alexu.csd.oop.cs51.iterators.IteratorI;
 import eg.edu.alexu.csd.oop.cs51.iterators.LinkedListContainer;
 import eg.edu.alexu.csd.oop.cs51.objects.Movable;
+import eg.edu.alexu.csd.oop.cs51.objects.states.MovingState;
 
 public class Collision {
     private static final int GroundY = 10;
@@ -30,6 +31,9 @@ public class Collision {
         while (iterator.hasNext()) {
             Observer observer = (Observer) iterator.next();
             Movable movable = ((Movable) observer);
+            if(!movable.getState().getClass().equals(MovingState.class)) {
+                list.remove(observer);
+            }
             if (movable.getY() == GroundY) {
                 movable.update("vanish");
             } else if (movable.getX() >= leftX && movable.getX() <= Math.abs(leftX + handWidth)) {

@@ -2,8 +2,10 @@ package eg.edu.alexu.csd.oop.cs51.objects.skills;
 
 import java.awt.Point;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
+import eg.edu.alexu.csd.oop.cs51.GameInfo;
 import eg.edu.alexu.csd.oop.cs51.factory.CompanyFactory;
 import eg.edu.alexu.csd.oop.cs51.factory.ICompanyFactory;
 import eg.edu.alexu.csd.oop.cs51.flyweight.FlyweightFactory;
@@ -11,9 +13,9 @@ import eg.edu.alexu.csd.oop.cs51.objects.Movable;
 import eg.edu.alexu.csd.oop.cs51.objects.states.MovingState;
 
 public class Canon {
-    private ArrayList<String> companies;
-    private ArrayList<String> skills;
-    private ArrayList<String> gifts;
+    private List<String> companies;
+    private List<String> skills;
+    private List<String> gifts;
     private Random random;
     private Movable movableObject;
     private String canonType;
@@ -81,11 +83,7 @@ public class Canon {
     }
 
     public void fillSkillArray() {
-        skills.add("CV");
-        skills.add("ProblemSolving");
-        skills.add("Java");
-        skills.add("C++");
-        skills.add("Android");
+        skills = GameInfo.getInstance().getAllSkills();
     }
 
     public void fillGiftArray() {
