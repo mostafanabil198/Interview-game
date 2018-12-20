@@ -15,6 +15,7 @@ public class FlyweightFactory {
 	        if (vanishedSkills.containsKey(company)) {
 	        	if(!vanishedSkills.get(company).isEmpty()) {
 	        	      p = vanishedSkills.get(company).remove(0);
+	        	      System.out.println("returned from fly");
 	        	      p.setName(skillname);
 	        	}
 	        }

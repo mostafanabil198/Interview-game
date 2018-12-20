@@ -15,7 +15,7 @@ public class Level1Strategy implements Strategy {
 	private static final int FIRE_RATE = 75;
 	private static final boolean OPAQUE = false;
 	private static final int REFRESH_SPEED = 10;
-	private static final int CONTROL_SPEED = 10;
+	private static final int CONTROL_SPEED = 30;
 
 	@Override
 	public Map<String, Object> doOperation() {
