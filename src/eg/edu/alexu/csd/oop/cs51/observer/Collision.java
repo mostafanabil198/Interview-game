@@ -4,6 +4,7 @@ import eg.edu.alexu.csd.oop.cs51.GameInfo;
 import eg.edu.alexu.csd.oop.cs51.iterators.IteratorI;
 import eg.edu.alexu.csd.oop.cs51.iterators.LinkedListContainer;
 import eg.edu.alexu.csd.oop.cs51.objects.Movable;
+import eg.edu.alexu.csd.oop.cs51.objects.states.CollectState;
 import eg.edu.alexu.csd.oop.cs51.objects.states.MovingState;
 
 public class Collision {
@@ -18,7 +19,11 @@ public class Collision {
 	public void addObserver(Observer observer) {
 		list.add(observer);
 	}
-
+	
+	public void removeObserver(Observer observer) {
+		list.remove(observer);
+	}
+	
 	public void notifyObservers() {
 		int leftX = GameInfo.getInstance().getLeftHand();
 		int rightX = GameInfo.getInstance().getRightHand();
@@ -29,8 +34,9 @@ public class Collision {
 		while (iterator.hasNext()) {
 			Observer observer = (Observer) iterator.next();
 			Movable movable = ((Movable) observer);
-			if (!movable.getState().getClass().equals(MovingState.class)) {
-				list.remove(observer);
+			if (movable.getState().getClass().equals(CollectState.class)) {
+//				list.remove(observer);
+				movable.update("noCollision");
 				continue;
 			}
 			if (movable.getY() == GroundY) {
