@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.BorderPane?>
 
 
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="eg.edu.alexu.csd.oop.cs51.menu.control">
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
    <center>
       <AnchorPane prefHeight="700.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
          <children>

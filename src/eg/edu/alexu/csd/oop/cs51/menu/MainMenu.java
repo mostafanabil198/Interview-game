@@ -17,7 +17,7 @@ public class MainMenu extends Application {
 		FXMLLoader fxmlLoader = new FXMLLoader();
 		fxmlLoader.setLocation(getClass().getResource("view/MainMenu.fxml"));
 		BorderPane borderPane = null ;
-		Control c = new Control(borderPane);
+		Control c = new Control(primaryStage);
 		fxmlLoader.setController(c);
 		try {
 			borderPane = fxmlLoader.load();
