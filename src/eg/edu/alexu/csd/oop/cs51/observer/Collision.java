@@ -45,6 +45,9 @@ public class Collision {
                     movable.update("right");
                 }
             }
+            else {
+            	movable.update("noCollision");
+            }
 
         }
     }

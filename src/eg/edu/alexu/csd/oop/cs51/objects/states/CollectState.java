@@ -22,11 +22,11 @@ public class CollectState implements State {
         movable.setState(this);
 
         if (position.equals("right")) {
-            gameInfo.getControl().add(movable);
+            gameInfo.getControl().addFirst(movable);
             gameInfo.getMoving().remove(movable);
             gameInfo.addToRightStack(movable);
         } else if (position.equals("left")) {
-            gameInfo.getControl().add(movable);
+            gameInfo.getControl().addFirst(movable);
             gameInfo.getMoving().remove(movable);
             gameInfo.addToLeftStack(movable);
         }

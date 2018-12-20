@@ -15,9 +15,6 @@ public class MovingState implements State {
 	public MovingState() {
 	    renderTime = 1 / (gameInfo.getRenderSpeed());
 	    gameInfo = GameInfo.getInstance();
-		Random random = new Random();
-		velocityY = 0;
-		velocityX = random.nextInt(10) + 1;
 	}
 
 	public MovingState(MovingState movingState) {
@@ -30,7 +27,7 @@ public class MovingState implements State {
 	@Override
 	public void doAction(Movable movable) {
 		movable.setState(this);
-		gameInfo.getMoving().add(movable);
+		gameInfo.getMoving().addFirst(movable);
 		movable.setCollision(GameInfo.getInstance().getCollision());
 	}
 
