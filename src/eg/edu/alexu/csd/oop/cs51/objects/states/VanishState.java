@@ -1,5 +1,6 @@
 package eg.edu.alexu.csd.oop.cs51.objects.states;
 
+import eg.edu.alexu.csd.oop.cs51.GameInfo;
 import eg.edu.alexu.csd.oop.cs51.flyweight.FlyweightFactory;
 import eg.edu.alexu.csd.oop.cs51.objects.Movable;
 import eg.edu.alexu.csd.oop.cs51.objects.Skill;
@@ -17,6 +18,7 @@ public class VanishState implements State {
         movable.setState(this);
         movable.setVisible(false);
         if (Skill.class.isAssignableFrom(movable.getClass())) {
+            GameInfo.getInstance().getControl().remove(movable);
             FlyweightFactory.addVanishedSkill(movable);
         } else {
             FlyweightFactory.addVanishedGift(movable);

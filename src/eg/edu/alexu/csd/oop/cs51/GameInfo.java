@@ -64,6 +64,9 @@ public class GameInfo {
 		control.add(player);
 	}
 
+	
+
+
 	public static GameInfo getInstance() {
 		if (instance == null) {
 			synchronized (GameInfo.class) {
@@ -306,6 +309,8 @@ public class GameInfo {
 	public void setConstant(Collections<GameObject> constant) {
 		this.constant = constant;
 	}
+	
+
 
 	public CompanyFactory getCompanyFactory() {
 		return companyFactory;

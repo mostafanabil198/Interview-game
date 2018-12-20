@@ -7,6 +7,7 @@ import eg.edu.alexu.csd.oop.cs51.strategy.Strategy;
 import eg.edu.alexu.csd.oop.cs51.world.Interview;
 import eg.edu.alexu.csd.oop.game.GameEngine;
 
+
 public class Main {
 	public static void main(String[] args) {
 		GameInfo.getInstance();
@@ -17,7 +18,7 @@ public class Main {
 		// MAIN MENU
 		// HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
 		Strategy strategy = new Level1Strategy();
-		Interview world = new Interview(strategy);
+		Interview world = new Interview(strategy, 10, 10);
 		GameEngine game = new GameEngine();
 		game.start("Interview Game", world);
 	}

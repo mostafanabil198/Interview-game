@@ -19,4 +19,11 @@ public class CanonObject extends AbstractObject{
     public AbstractObject clone() {
         return new CanonObject(this);
     }
+    @Override
+    public void setX(int x) {
+    }
+    
+    @Override
+    public void setY(int y) {
+    }
 }
