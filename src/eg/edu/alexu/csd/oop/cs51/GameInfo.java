@@ -62,6 +62,7 @@ public class GameInfo {
 		control = new LinkedListContainer<GameObject>();
 		constant = new LinkedListContainer<GameObject>();
 		control.add(player);
+		collision = new Collision();
 	}
 
 	

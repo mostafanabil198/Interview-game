@@ -15,9 +15,6 @@ public class MovingState implements State {
 	public MovingState() {
 	    renderTime = 1 / (gameInfo.getRenderSpeed());
 	    gameInfo = GameInfo.getInstance();
-		Random random = new Random();
-		velocityY = 0;
-		velocityX = random.nextInt(10) + 1;
 	}
 
 	public MovingState(MovingState movingState) {
