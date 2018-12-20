@@ -17,7 +17,6 @@ public class CollectState implements State {
 	@Override
 	public void doAction(Movable movable) {
 		movable.setState(this);
-
 		if (position.equals("right")) {
 			// GameInfo.getInstance().getControl().addFirst(movable);
 			// GameInfo.getInstance().getMoving().remove(movable);
