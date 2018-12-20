@@ -12,8 +12,10 @@ import eg.edu.alexu.csd.oop.cs51.tasks.Task;
 public class Level1Strategy implements Strategy {
 	private List<Class<? extends Movable>> supported;
 	private List<String> allSkills;
-	private static final int fireRate = 5;
-    private static final boolean opaque = false;
+	private static final int FIRE_RATE = 5;
+	private static final boolean OPAQUE = false;
+	private static final int REFRESH_SPEED = 10;
+	private static final int CONTROL_SPEED = 10;
 
 	@Override
 	public Map<String, Object> doOperation() {
@@ -27,8 +29,10 @@ public class Level1Strategy implements Strategy {
 		}
 
 		Map<String, Object> map = new HashMap<>();
-		map.put("fireRate", fireRate);
-		map.put("opaque", opaque);
+		map.put("fireRate", FIRE_RATE);
+		map.put("opaque", OPAQUE);
+		map.put("refreshSpeed", REFRESH_SPEED);
+		map.put("controlSpeed", CONTROL_SPEED);
 		return map;
 	}
 

@@ -3,6 +3,8 @@ package eg.edu.alexu.csd.oop.cs51.world;
 import java.util.List;
 import java.util.Map;
 
+import javax.sound.midi.Soundbank;
+
 import eg.edu.alexu.csd.oop.cs51.GameInfo;
 import eg.edu.alexu.csd.oop.cs51.objects.constant.Background;
 import eg.edu.alexu.csd.oop.cs51.objects.constant.CanonObject;
@@ -16,80 +18,88 @@ public class Interview implements World {
 	private boolean opaque;
 	private Canon canonRight;
 	private Canon canonLeft;
-	private int width, height;
+	private int width, height, speed, controlSpeed;
+	private String status;
 	private Background background;
 	private CanonObject canonObject;
-	
+	private int refreshCounter;
+
 	public Interview(Strategy strategy, int width, int height) {
 		this.width = width;
 		this.height = height;
-		Map<String,Object> levelData = strategy.doOperation();
+		refreshCounter = 0;
+		Map<String, Object> levelData = strategy.doOperation();
 		this.opaque = (boolean) levelData.get("opaque");
 		this.fireRate = (int) levelData.get("fireRate");
+		this.speed = (int) levelData.get("refreshSpeed");
+		this.controlSpeed = (int) levelData.get("controlSpeed");
 		canonLeft = new Canon("left", GameInfo.getInstance().getCompanyFactory());
 		canonRight = new Canon("right", GameInfo.getInstance().getCompanyFactory());
-		background = new Background(width,height);
+		background = new Background(width, height);
 		canonObject = new CanonObject();
 		GameInfo.getInstance().getConstant().add(background);
-		// n8ir da lw mrsmsh l objects t7teh n5leh fl constant
 		GameInfo.getInstance().getMoving().add(canonObject);
-		
-		
-		
-	 }
+
+	}
 
 	@Override
 	public List<GameObject> getConstantObjects() {
-		// TODO Auto-generated method stub
-		return null;
+		return (List<GameObject>) GameInfo.getInstance().getConstant().getCollection();
 	}
 
 	@Override
 	public List<GameObject> getMovableObjects() {
-		// TODO Auto-generated method stub
-		return null;
+		return (List<GameObject>) GameInfo.getInstance().getMoving().getCollection();
 	}
 
 	@Override
 	public List<GameObject> getControlableObjects() {
-		// TODO Auto-generated method stub
-		return null;
+		return (List<GameObject>) GameInfo.getInstance().getControl().getCollection();
 	}
 
 	@Override
 	public int getWidth() {
-		// TODO Auto-generated method stub
-		return 0;
+		return width;
 	}
 
 	@Override
 	public int getHeight() {
-		// TODO Auto-generated method stub
-		return 0;
+		return height;
 	}
 
 	@Override
 	public boolean refresh() {
-		// TODO Auto-generated method stub
-		return false;
+		if (refreshCounter > fireRate) {
+			refreshCounter = 0;
+			canonLeft.createObject();
+			canonRight.createObject();
+		}
+		refreshCounter++;
+		if(GameInfo.getInstance().getCollision() == null) {
+			System.out.println("null");
+		}else {
+		GameInfo.getInstance().getCollision().notifyObservers();
+		}
+		if (GameInfo.getInstance().getGameTasks().size() == 0) {
+			return false;
+		}
+		return true;
+
 	}
 
 	@Override
 	public String getStatus() {
-		// TODO Auto-generated method stub
-		return null;
+		return status;
 	}
 
 	@Override
 	public int getSpeed() {
-		// TODO Auto-generated method stub
-		return 0;
+		return speed;
 	}
 
 	@Override
 	public int getControlSpeed() {
-		// TODO Auto-generated method stub
-		return 0;
+		return controlSpeed;
 	}
 
 }

@@ -12,8 +12,10 @@ import eg.edu.alexu.csd.oop.cs51.tasks.Task;
 public class Level2Strategy implements Strategy {
     private List<Class<? extends Movable>> supported;
 	private List<String> skills;
-	private static final int fireRate = 3;
-	private static final boolean opaque = false;
+	private static final int FIRE_RATE = 3;
+	private static final boolean OPAQUE = false;
+	private static final int REFRESH_SPEED = 7;
+	private static final int CONTROL_SPEED = 10;
 
 	@Override
 	public Map<String, Object> doOperation() {
@@ -26,8 +28,10 @@ public class Level2Strategy implements Strategy {
 			Collections.shuffle(skills);
 			GameInfo.getInstance().addTask(new Task(skills.get(0), skills.get(1), skills.get(2), companyName));
 		}
-		map.put("fireRaate", fireRate);
-		map.put("opaque", opaque);
+		map.put("fireRate", FIRE_RATE);
+		map.put("opaque", OPAQUE);
+		map.put("refreshSpeed", REFRESH_SPEED);
+		map.put("controlSpeed", CONTROL_SPEED);
 		return map;
 	}
 
