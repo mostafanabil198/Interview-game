@@ -21,10 +21,10 @@ public class Canon {
     private String canonType;
     private ICompanyFactory factory;
 
-    public Canon(ArrayList<String> companies, String type,CompanyFactory factory) {
-        this.companies = companies;
+    public Canon(String type, CompanyFactory factory) {
+        this.companies = factory.getCompaniesNames();
         this.canonType = type;
-        this.factory=factory;
+        this.factory = factory;
         random = new Random();
     }
 
@@ -36,8 +36,8 @@ public class Canon {
             int GiftIndex = random.nextInt(gifts.size());
             String gift = companies.get(GiftIndex);
             movableObject = FlyweightFactory.getGift(gift);
-            if(movableObject==null) {
-                //factory lel gifts
+            if (movableObject == null) {
+                // factory lel gifts
             }
         } else {
             int CompanyIndex = random.nextInt(companies.size());
@@ -45,18 +45,19 @@ public class Canon {
             int SkillIndex = random.nextInt(skills.size());
             String skill = companies.get(SkillIndex);
             movableObject = FlyweightFactory.getSkill(company, skill);
-            if(movableObject==null) {
+            if (movableObject == null) {
                 try {
-                    movableObject=factory.createNewMovable(company,skill);
+                    movableObject = factory.createNewMovable(company, skill);
                 } catch (InstantiationException | IllegalAccessException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
-                }       
+                }
             }
         }
         setmovableObject();
         return movableObject;
     }
+
     public void setmovableObject() {
         Point topLeft = new Point(0, 0);
         Point topRight = new Point(100, 0);
@@ -68,8 +69,7 @@ public class Canon {
             y = (int) topLeft.getY();
             state.setVelocityX(random.nextInt(5) + 1);
             state.setVelocityY(0);
-        }
-        else if (canonType.equals("right")) {
+        } else if (canonType.equals("right")) {
             x = (int) topRight.getX();
             y = (int) topRight.getY();
             state.setVelocityX((random.nextInt(5) + 1) * -1);
@@ -87,6 +87,6 @@ public class Canon {
     }
 
     public void fillGiftArray() {
-// fill the gift array
+        // fill the gift array
     }
 }
