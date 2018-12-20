@@ -54,7 +54,10 @@ public class GameInfo {
 		gameTasks = new LinkedListContainer<Task>();
 		player = new Interviewee();
 		playerHandWidth = player.getHandWidth();
-		leftStackHeight = rightStackHeight = player.getHandHeightPosition();
+		player.setX(100);
+		player.setY(500);
+		leftStackHeight = player.getHandHeightPosition();
+		rightStackHeight = player.getHandHeightPosition();
 		leftHand = player.getLeftHandPosition();
 		rightHand = player.getRightHandPosition();
 		fillSkills();
@@ -337,5 +340,10 @@ public class GameInfo {
 		allSkills.add("C++");
 		allSkills.add("Flutter");
 		allSkills.add("Linux");
+	}
+	
+	public void updateHandPositions() {
+		rightHand = player.getRightHandPosition();
+		leftHand = player.getLeftHandPosition();
 	}
 }

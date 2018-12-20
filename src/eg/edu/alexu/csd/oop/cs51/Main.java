@@ -18,7 +18,7 @@ public class Main {
 		// MAIN MENU
 		// HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
 		Strategy strategy = new Level1Strategy();
-		Interview world = new Interview(strategy, 800, 800);
+		Interview world = new Interview(strategy, 1366, 768);
 		GameEngine game = new GameEngine();
 		game.start("Interview Game", world);
 	}

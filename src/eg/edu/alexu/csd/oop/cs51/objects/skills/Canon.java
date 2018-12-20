@@ -32,7 +32,7 @@ public class Canon {
         fillSkillArray();
         fillGiftArray();
         int rand = random.nextInt(100) + 1;
-        if (rand <= 10) {
+        if (rand <= -4) {
             int GiftIndex = random.nextInt(gifts.size());
             String gift = companies.get(GiftIndex);
             movableObject = FlyweightFactory.getGift(gift);
@@ -61,7 +61,7 @@ public class Canon {
 
     public void setmovableObject() {
         Point topLeft = new Point(0, 0);
-        Point topRight = new Point(100, 0);
+        Point topRight = new Point(1000, 0);
         int x = 0, y = 0;
         MovingState state = new MovingState();
         if (canonType.equals("left")) {

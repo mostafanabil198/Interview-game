@@ -39,6 +39,7 @@ public class Interview implements World {
 		canonObject = new CanonObject();
 		GameInfo.getInstance().getConstant().add(background);
 		GameInfo.getInstance().getMoving().add(canonObject);
+		GameInfo.getInstance().setRenderSpeed(speed);
 
 	}
 
@@ -69,6 +70,8 @@ public class Interview implements World {
 
 	@Override
 	public boolean refresh() {
+		
+		GameInfo.getInstance().updateHandPositions();
 		if (refreshCounter > fireRate) {
 			refreshCounter = 0;
 			canonLeft.createObject();
