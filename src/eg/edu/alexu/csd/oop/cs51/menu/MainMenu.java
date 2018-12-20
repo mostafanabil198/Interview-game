@@ -1,4 +1,4 @@
-package eg.edu.alexu.csd.oop.cs51;
+package eg.edu.alexu.csd.oop.cs51.menu;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
