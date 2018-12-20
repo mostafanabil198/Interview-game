@@ -2,17 +2,18 @@ package eg.edu.alexu.csd.oop.cs51.objects.states;
 
 import eg.edu.alexu.csd.oop.cs51.GameInfo;
 import eg.edu.alexu.csd.oop.cs51.objects.Movable;
-import eg.edu.alexu.csd.oop.cs51.objects.Skill;
 
 public class CollectState implements State {
-    private GameInfo gameInfo = GameInfo.getInstance();
+    private GameInfo gameInfo;
     private String position;
 
     public CollectState(String position) {
+        gameInfo = GameInfo.getInstance();
         this.position = position;
     }
 
     public CollectState(CollectState collectState) {
+        gameInfo = GameInfo.getInstance();
         this.position = new String(collectState.position);
     }
 
@@ -21,8 +22,12 @@ public class CollectState implements State {
         movable.setState(this);
 
         if (position.equals("right")) {
+            gameInfo.getControl().add(movable);
+            gameInfo.getMoving().remove(movable);
             gameInfo.addToRightStack(movable);
         } else if (position.equals("left")) {
+            gameInfo.getControl().add(movable);
+            gameInfo.getMoving().remove(movable);
             gameInfo.addToLeftStack(movable);
         }
 

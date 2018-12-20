@@ -14,4 +14,16 @@ public class CanonObject extends AbstractObject{
     public CanonObject(CanonObject canonLeft) {
         super(canonLeft);
     }
+
+    @Override
+    public AbstractObject clone() {
+        return new CanonObject(this);
+    }
+    @Override
+    public void setX(int x) {
+    }
+    
+    @Override
+    public void setY(int y) {
+    }
 }
