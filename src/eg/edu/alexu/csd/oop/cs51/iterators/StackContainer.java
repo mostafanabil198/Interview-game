@@ -67,12 +67,18 @@ public class StackContainer<T> implements Collections<T> {
 	@Override
 	public void clear() {
 		stack.clear();
-		
+
 	}
 
 	@Override
 	public Collection<T> getCollection() {
 		return stack;
+	}
+
+	@Override
+	public void addFirst(T a) {
+		stack.add(0, a);
+
 	}
 
 }

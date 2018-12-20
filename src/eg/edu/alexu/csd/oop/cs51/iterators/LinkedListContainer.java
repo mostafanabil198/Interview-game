@@ -29,29 +29,29 @@ public class LinkedListContainer<T> implements Collections<T> {
 
 	@Override
 	public T pop() {
-		if(!list.isEmpty())
-		return list.remove(list.size()-1);
+		if (!list.isEmpty())
+			return list.remove(list.size() - 1);
 		return null;
 	}
 
 	@Override
 	public boolean remove(T obj) {
-		if(!list.isEmpty())
-		return list.remove(obj);
+		if (!list.isEmpty())
+			return list.remove(obj);
 		return false;
 	}
 
 	@Override
 	public T removeLast() {
-		if(!list.isEmpty())
-		return pop();
+		if (!list.isEmpty())
+			return pop();
 		return null;
 	}
 
 	@Override
 	public T removeFirst() {
-		if(!list.isEmpty())
-		return list.remove(0);
+		if (!list.isEmpty())
+			return list.remove(0);
 		return null;
 	}
 
@@ -63,12 +63,18 @@ public class LinkedListContainer<T> implements Collections<T> {
 	@Override
 	public void clear() {
 		list.clear();
-		
+
 	}
 
 	@Override
 	public Collection<T> getCollection() {
 		return list;
+	}
+
+	@Override
+	public void addFirst(T a) {
+		list.add(0, a);
+
 	}
 
 }
