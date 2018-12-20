@@ -310,15 +310,6 @@ public class GameInfo {
 		this.constant = constant;
 	}
 	
-	public boolean isVisible() {
-		return visible;
-	}
-
-
-
-	public void setVisible(boolean visible) {
-		this.visible = visible;
-	}
 
 
 	public CompanyFactory getCompanyFactory() {
