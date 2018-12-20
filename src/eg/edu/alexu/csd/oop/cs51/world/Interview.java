@@ -70,9 +70,12 @@ public class Interview implements World {
 
 	@Override
 	public boolean refresh() {
-		
+		if(GameInfo.getInstance().getLeftStack().size() == 10 || GameInfo.getInstance().getRightStack().size() == 10) {
+			//5aasrrrrrrrrrrr
+			return false;
+		}
 		GameInfo.getInstance().updateHandPositions();
-		if (refreshCounter > 200) {
+		if (refreshCounter > fireRate) {
 			refreshCounter = 0;
 			canonLeft.createObject();
 			canonRight.createObject();
@@ -80,6 +83,7 @@ public class Interview implements World {
 		refreshCounter++;
 		GameInfo.getInstance().getCollision().notifyObservers();
 		if (GameInfo.getInstance().getGameTasks().size() == 0) {
+			//kasaaaab
 			return false;
 		}
 		return true;

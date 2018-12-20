@@ -68,9 +68,6 @@ public class GameInfo {
 		collision = new Collision();
 	}
 
-	
-
-
 	public static GameInfo getInstance() {
 		if (instance == null) {
 			synchronized (GameInfo.class) {
@@ -98,8 +95,13 @@ public class GameInfo {
 			rightColorCounter = 1;
 		}
 		// rightStack.add(skill);
-		int skillHight = rightStack.peek().getHeight();
-		rightStackHeight -= skillHight * rightStack.size();
+		if (rightStack.size() > 0) {
+			int skillHight = rightStack.peek().getHeight();
+
+			rightStackHeight -= skillHight * rightStack.size();
+		} else {
+			rightStackHeight = player.getHandHeightPosition();
+		}
 		skill.setX(rightHand - playerHandWidth);
 		skill.setY(rightStackHeight);
 
@@ -119,8 +121,12 @@ public class GameInfo {
 			leftColorCounter = 1;
 		}
 		// leftStack.add(skill);
-		int skillHight = leftStack.peek().getHeight();
-		leftStackHeight -= skillHight * leftStack.size();
+		if (leftStack.size() > 0) {
+			int skillHight = leftStack.peek().getHeight();
+			leftStackHeight -= skillHight * leftStack.size();
+		} else {
+			leftStackHeight = player.getHandHeightPosition();
+		}
 		skill.setX(leftHand);
 		skill.setY(leftStackHeight);
 
@@ -313,8 +319,6 @@ public class GameInfo {
 	public void setConstant(Collections<GameObject> constant) {
 		this.constant = constant;
 	}
-	
-
 
 	public CompanyFactory getCompanyFactory() {
 		return companyFactory;
@@ -341,10 +345,10 @@ public class GameInfo {
 		allSkills.add("Flutter");
 		allSkills.add("Linux");
 	}
-	
+
 	public void updateHandPositions() {
 		rightHand = player.getRightHandPosition();
 		leftHand = player.getLeftHandPosition();
-		
+
 	}
 }

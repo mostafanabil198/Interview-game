@@ -13,10 +13,11 @@ public class FlyweightFactory {
 	    { 
 	        Movable p = null; 
 	        if (vanishedSkills.containsKey(company)) {
+	   		 System.out.println(vanishedSkills.get(company).size());
 	        	if(!vanishedSkills.get(company).isEmpty()) {
 	        	      p = vanishedSkills.get(company).remove(0);
 	        	      System.out.println("returned from fly");
-	        	      p.setName(skillname);
+	        	      p.setName("FW");
 	        	}
 	        }
 	        
@@ -35,6 +36,7 @@ public class FlyweightFactory {
 	    }
 	 
 	 public static void addVanishedSkill(Movable o) {
+		 System.out.println("add to flyW");
 		 String company=o.getClass().getSimpleName();
 		 if(vanishedSkills.containsKey(company)) {
 			 vanishedSkills.get(company).add(o);

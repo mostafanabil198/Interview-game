@@ -16,15 +16,10 @@ public class VanishState implements State {
 
 	@Override
 	public void doAction(Movable movable) {
-		State prevState = movable.getState();
 		movable.setState(this);
 		movable.setVisible(false);
 		GameInfo.getInstance().getCollision().removeObserver((Observer) movable);
-		if (CollectState.class.isAssignableFrom(prevState.getClass())) {
-//			GameInfo.getInstance().getControl().remove(movable);
-			GameInfo.getInstance().getMoving().remove(movable);
-			FlyweightFactory.addVanishedSkill(movable);
-		} else if (MovingState.class.isAssignableFrom(prevState.getClass())) {
+		if (Skill.class.isAssignableFrom(movable.getClass())) {
 			GameInfo.getInstance().getMoving().remove(movable);
 			FlyweightFactory.addVanishedSkill(movable);
 		} else {

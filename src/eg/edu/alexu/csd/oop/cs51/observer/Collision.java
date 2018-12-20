@@ -5,10 +5,9 @@ import eg.edu.alexu.csd.oop.cs51.iterators.IteratorI;
 import eg.edu.alexu.csd.oop.cs51.iterators.LinkedListContainer;
 import eg.edu.alexu.csd.oop.cs51.objects.Movable;
 import eg.edu.alexu.csd.oop.cs51.objects.states.CollectState;
-import eg.edu.alexu.csd.oop.cs51.objects.states.MovingState;
 
 public class Collision {
-	private static final int GroundY = 658;
+	private static final int GroundY = 650;
 	private LinkedListContainer<Observer> list;
 	private IteratorI iterator;
 
@@ -39,8 +38,9 @@ public class Collision {
 				movable.update("noCollision");
 				continue;
 			}
-			if (movable.getY() == GroundY) {
+			if (movable.getY() >= GroundY) {
 				movable.update("vanish");
+				System.out.println("d5l l ground");
 			} else if (movable.getX() >= leftX && movable.getX() <= Math.abs(leftX + handWidth)
 					&& movable.getY() <= leftY && (movable.getY() + movable.getHeight()) >= leftY) {
 				movable.setY(leftY - movable.getHeight()+ 25);
