@@ -25,9 +25,9 @@ public class Task {
 				return true;
 			}
 		}
-		new VanishState().doAction(one);
-		new VanishState().doAction(two);
-		new VanishState().doAction(three);
+//		new VanishState().doAction(one);
+//		new VanishState().doAction(two);
+//		new VanishState().doAction(three);
 		return false;
 	}
 

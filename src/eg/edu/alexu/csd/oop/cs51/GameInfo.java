@@ -10,6 +10,7 @@ import eg.edu.alexu.csd.oop.cs51.iterators.LinkedListContainer;
 import eg.edu.alexu.csd.oop.cs51.iterators.StackContainer;
 import eg.edu.alexu.csd.oop.cs51.objects.Movable;
 import eg.edu.alexu.csd.oop.cs51.objects.player.Interviewee;
+import eg.edu.alexu.csd.oop.cs51.objects.states.VanishState;
 import eg.edu.alexu.csd.oop.cs51.observer.Collision;
 import eg.edu.alexu.csd.oop.cs51.snapshots.SnapShot;
 import eg.edu.alexu.csd.oop.cs51.tasks.Task;
@@ -165,6 +166,9 @@ public class GameInfo {
 
 			}
 		}
+		new VanishState().doAction(task1);
+		new VanishState().doAction(task2);
+		new VanishState().doAction(task3);
 
 	}
 
