@@ -60,6 +60,26 @@ public abstract class AbstractObject implements GameObject {
         return x;
     }
 
+    public void repaint(String name) {
+        BufferedImage img = null;
+        try {
+            img = ImageIO.read(new File(imagePath));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Graphics2D g2d = img.createGraphics();
+        g2d.setPaint(Color.WHITE);
+        g2d.setFont(new Font("Bernard MT Condensed", Font.BOLD, 24));
+        FontMetrics fm = g2d.getFontMetrics();
+        int y = img.getHeight()/2 + 20;
+        int x = img.getWidth()/2 - fm.stringWidth(name)/2;
+        g2d.drawString(name, x, y);
+        g2d.dispose();
+        BufferedImage imgScaled = resize(img, width, height);
+        
+        buffered_image[0] = imgScaled;
+    }
+    
     @Override
     public void setX(int x) {
         this.x = x;

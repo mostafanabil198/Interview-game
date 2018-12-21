@@ -23,10 +23,6 @@ public abstract class Movable extends AbstractObject implements Observer {
 		this.state = movable.state.clone();
 	}
 
-	private Movable(Movable movable, String newName) {
-		
-	}
-
 	public void setCollision(Collision collision) {
 		collision.addObserver(this);
 	}
@@ -41,6 +37,7 @@ public abstract class Movable extends AbstractObject implements Observer {
 
 	public void setName(String name) {
 		this.name = name;
+		repaint(name);
 	}
 
 	public State getState() {
