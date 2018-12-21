@@ -10,8 +10,8 @@ import eg.edu.alexu.csd.oop.cs51.observer.Collision;
 public class WeSkill extends Movable implements Skill {
 	private static final String PATH = "res/WeSkill.png";
 
-	public WeSkill(String name, Collision collision) {
-		super(PATH, name, collision);
+	public WeSkill(String name) {
+		super(PATH, name);
 	}
 
 	public WeSkill(WeSkill weSkill) {

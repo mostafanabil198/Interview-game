@@ -38,7 +38,7 @@ public class Canon {
             movableObject = FlyweightFactory.getGift(gift);
             if (movableObject == null) {
                 // factory lel gifts
-            	movableObject = new FaceBookSkill("cv", GameInfo.getInstance().getCollision());
+            	movableObject = new FaceBookSkill("cv");
             }
         } else {
             int CompanyIndex = random.nextInt(companies.size());

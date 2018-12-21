@@ -10,8 +10,8 @@ import eg.edu.alexu.csd.oop.cs51.observer.Collision;
 public class FaceBookSkill extends Movable implements Skill {
     private static final String PATH = "res/FaceBookSkill.png";
 
-    public FaceBookSkill(String name, Collision collision) {
-        super(PATH, name, collision);
+    public FaceBookSkill(String name) {
+        super(PATH, name);
     }
 
     public FaceBookSkill(FaceBookSkill faceBookSkill) {

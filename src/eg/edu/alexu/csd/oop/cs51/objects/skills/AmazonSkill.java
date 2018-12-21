@@ -10,8 +10,8 @@ import eg.edu.alexu.csd.oop.cs51.observer.Collision;
 public class AmazonSkill extends Movable implements Skill {
 	private static final String PATH = "res/AmazonSkill.png";
 
-    public AmazonSkill(String name, Collision collision) {
-        super(PATH, name, collision);
+    public AmazonSkill(String name) {
+        super(PATH, name);
     }
 
     public AmazonSkill(AmazonSkill amazonSkill) {

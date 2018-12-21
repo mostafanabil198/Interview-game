@@ -10,8 +10,8 @@ import eg.edu.alexu.csd.oop.cs51.observer.Collision;
 public class OrangeSkill extends Movable implements Skill {
 	private static final String PATH = "res/OrangeSkill.png";
 
-	public OrangeSkill(String name, Collision collision) {
-		super(PATH, name, collision);
+	public OrangeSkill(String name) {
+		super(PATH, name);
 	}
 
 	public OrangeSkill(OrangeSkill orangeSkill) {

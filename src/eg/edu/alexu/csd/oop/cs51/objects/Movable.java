@@ -11,11 +11,16 @@ public abstract class Movable extends AbstractObject implements Observer {
 	private String name;
 	private State state;
 
-	public Movable(String path, String name, Collision collision) {
-		super(OBJECT_WIDTH, OBJECT_HEIGHT, path, false, name);
-		collision.addObserver(this);
-		this.name = name;
-	}
+//	public Movable(String path, String name, Collision collision) {
+//		super(OBJECT_WIDTH, OBJECT_HEIGHT, path, false, name);
+//		collision.addObserver(this);
+//		this.name = name;
+//	}
+	
+	public Movable(String path, String name) {
+        super(OBJECT_WIDTH, OBJECT_HEIGHT, path, false, name);
+        this.name = name;
+    }
 
 	public Movable(Movable movable) {
 		super(movable);

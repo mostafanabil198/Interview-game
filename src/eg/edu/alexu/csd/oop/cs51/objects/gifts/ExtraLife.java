@@ -9,8 +9,8 @@ public class ExtraLife extends Movable {
 
     private static final String PATH = "res/cvSkill.jpg";
     
-    public ExtraLife(Collision collision) {
-        super(PATH, "", collision);
+    public ExtraLife() {
+        super(PATH, "");
     }
     
     @Override

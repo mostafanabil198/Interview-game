@@ -24,8 +24,8 @@ public class CompanyFactory implements ICompanyFactory {
 		for (int i = 0; i < classes.size(); i++) {
 			if (companyName.equals(classes.get(i).getSimpleName())) {
 				try {
-					Constructor con = classes.get(i).getConstructor(String.class, Collision.class);
-					Movable movable = (Movable) con.newInstance(skillName, GameInfo.getInstance().getCollision());
+					Constructor con = classes.get(i).getConstructor(String.class);
+					Movable movable = (Movable) con.newInstance(skillName);
 					return movable;
 				} catch (Exception e) {
 					e.printStackTrace();

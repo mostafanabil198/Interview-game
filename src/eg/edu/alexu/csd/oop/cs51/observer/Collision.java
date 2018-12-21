@@ -40,7 +40,7 @@ public class Collision {
 			}
 			if (movable.getY() >= GroundY) {
 				movable.update("vanish");
-				System.out.println("d5l l ground");
+//				System.out.println("d5l l ground");
 			} else if (movable.getX() >= leftX && movable.getX() <= Math.abs(leftX + handWidth)
 					&& movable.getY() <= leftY && (movable.getY() + movable.getHeight()) >= leftY) {
 				movable.setY(leftY - movable.getHeight()+ 25);
