@@ -72,7 +72,6 @@ public class GameInfo {
 		constant = new LinkedListContainer<GameObject>();
 		control.add(player);
 		collision = new Collision();
-		checkPoint = new SnapShot();
 	}
 
 	public static GameInfo getInstance() {
@@ -169,6 +168,7 @@ public class GameInfo {
 				score++;
 				gameTasks.remove(t);
 				t.getTaskObject().markAsDone();
+				checkPoint = new SnapShot();
 				break;
 
 			}
