@@ -3,6 +3,7 @@ package eg.edu.alexu.csd.oop.cs51.menu.control;
 import eg.edu.alexu.csd.oop.cs51.GameInfo;
 import eg.edu.alexu.csd.oop.cs51.factory.CompanyFactory;
 import eg.edu.alexu.csd.oop.cs51.objects.skills.SkillLoader;
+import eg.edu.alexu.csd.oop.cs51.snapshots.SnapShot;
 import eg.edu.alexu.csd.oop.cs51.strategy.Level1Strategy;
 import eg.edu.alexu.csd.oop.cs51.strategy.Level2Strategy;
 import eg.edu.alexu.csd.oop.cs51.strategy.Level3Strategy;
@@ -47,9 +48,11 @@ public class LevelsController {
 		CompanyFactory companyFactory = new CompanyFactory(skillLoader.getSkills());
 		GameInfo.getInstance().setCompanyFactory(companyFactory);
 		// Strategy strategy = new Level1Strategy();
-		Interview world = new Interview(strategy, 1366, 768);
 		GameEngine game = new GameEngine();
-		game.start("Interview Game", world);
+		Interview world = new Interview(strategy, 1366, 768,game);
+//		game.start("Interview Game", world);
+		GameInfo.getInstance().setCheckPoint(new SnapShot());
+
 		((Stage) easyBtn.getScene().getWindow()).close();
 
 		// });

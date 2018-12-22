@@ -21,7 +21,6 @@ public class SnapShot {
 	private int rightStackHeight;
 	private int leftHand;
 	private int rightHand;
-	private int numOfLives;
 
 	private Collections<GameObject> moving;
 	private Collections<GameObject> control;
@@ -42,7 +41,6 @@ public class SnapShot {
 		rightStackHeight = GameInfo.getInstance().getRightStackHeight();
 		leftHand = GameInfo.getInstance().getLeftHand();
 		rightHand = GameInfo.getInstance().getRightHand();
-		numOfLives = GameInfo.getInstance().getNumOfLives();
 
 	}
 
@@ -101,7 +99,7 @@ public class SnapShot {
 		GameInfo.getInstance().getLeftStack().clear();
 		GameInfo.getInstance().getRightStack().clear();
 		GameInfo.getInstance().getMoving().clear();
-		GameInfo.getInstance().getControl().clear();
+		//GameInfo.getInstance().getControl().clear();
 		// 3aizen n clear collision w add feh tani l gded b3d l clone
 		GameInfo.getInstance().getCollision().clear();
 		AbstractObject oldM, newM;
@@ -140,10 +138,10 @@ public class SnapShot {
 			}
 
 		}
-		iterator = control.createIterator();
-		while (iterator.hasNext()) {
-			GameInfo.getInstance().getControl().add((GameObject) ((AbstractObject) iterator.next()).clone());
-		}
+//		iterator = control.createIterator();
+//		while (iterator.hasNext()) {
+//			GameInfo.getInstance().getControl().add((GameObject) ((AbstractObject) iterator.next()).clone());
+//		}
 	}
 
 	public void startFromCheckpoint() {
@@ -158,7 +156,6 @@ public class SnapShot {
 		GameInfo.getInstance().setRightHand(rightHand);
 		GameInfo.getInstance().setLeftStackHeight(leftStackHeight);
 		GameInfo.getInstance().setRightStackHeight(rightStackHeight);
-		GameInfo.getInstance().setNumOfLives(numOfLives);
 
 		for (Movable m : GameInfo.getInstance().getLeftStack().getCollection()) {
 			System.out.println("Left" + m.getClass() + "  " + m.getState().getClass());

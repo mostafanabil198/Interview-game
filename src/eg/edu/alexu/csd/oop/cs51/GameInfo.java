@@ -78,7 +78,11 @@ public class GameInfo {
 		constant = new LinkedListContainer<GameObject>();
 		control.add(player);
 		collision = new Collision();
+		numOfLives = 2;
 		livesObject = new Lives();
+
+		
+
 	}
 
 	public static GameInfo getInstance() {
@@ -168,11 +172,11 @@ public class GameInfo {
 	}
 
 	private void checkTask(Movable task1, Movable task2, Movable task3) {
-		checkPoint = new SnapShot();
 		IteratorI i = gameTasks.createIterator();
+		boolean taskDone = false;
 		while (i.hasNext()) {
 			Task t = (Task) i.next();
-			if (t.checkAchived(task1, task2, task3)) {
+			if ((taskDone = t.checkAchived(task1, task2, task3))) {
 				score++;
 				gameTasks.remove(t);
 				t.getTaskObject().markAsDone();
@@ -183,6 +187,9 @@ public class GameInfo {
 		new VanishState().doAction(task1);
 		new VanishState().doAction(task2);
 		new VanishState().doAction(task3);
+		if (taskDone) {
+			checkPoint = new SnapShot();
+		}
 
 	}
 
@@ -232,16 +239,16 @@ public class GameInfo {
 
 	public void setGameTasks(Collections<Task> gameTasks) {
 		this.gameTasks = gameTasks;
-		TaskObjectsPositioner.position((List<Task>)gameTasks.getCollection());
+		TaskObjectsPositioner.position((List<Task>) gameTasks.getCollection());
 		IteratorI i = gameTasks.createIterator();
-		while(i.hasNext()) {
-		    constant.add((GameObject)i.next());
+		while (i.hasNext()) {
+			constant.add((GameObject) i.next());
 		}
 	}
 
 	public void addTask(Task task) {
 		gameTasks.add(task);
-		TaskObjectsPositioner.position((List<Task>)gameTasks.getCollection());
+		TaskObjectsPositioner.position((List<Task>) gameTasks.getCollection());
 		constant.add(task.getTaskObject());
 	}
 

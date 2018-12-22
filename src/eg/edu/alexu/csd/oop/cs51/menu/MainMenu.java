@@ -9,14 +9,19 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 public class MainMenu extends Application {
 
 	@Override
 	public void start(Stage primaryStage) {
+
 		FXMLLoader fxmlLoader = new FXMLLoader();
 		fxmlLoader.setLocation(getClass().getResource("view/MainMenu.fxml"));
-		BorderPane borderPane = null ;
+		BorderPane borderPane = null;
+		primaryStage.setOnCloseRequest((WindowEvent event1) -> {
+			System.exit(0);
+		});
 		Control c = new Control(primaryStage);
 		fxmlLoader.setController(c);
 		try {
@@ -28,8 +33,7 @@ public class MainMenu extends Application {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
+
 	}
 
 	public static void main(String[] args) {

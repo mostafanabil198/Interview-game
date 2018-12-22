@@ -15,7 +15,7 @@ public class Level2Strategy implements Strategy {
 	private static final int FIRE_RATE = 170;
 	private static final boolean OPAQUE = false;
 	private static final int REFRESH_SPEED = 10;
-	private static final int CONTROL_SPEED = 30;
+	private static final int CONTROL_SPEED = 35;
 
 	@Override
 	public Map<String, Object> doOperation() {
@@ -27,7 +27,6 @@ public class Level2Strategy implements Strategy {
 			String companyName = supported.get(i).getSimpleName();
 			Collections.shuffle(skills);
 			GameInfo.getInstance().addTask(new Task(skills.get(0), skills.get(1), skills.get(2), companyName));
-			System.out.println(skills.get(0) + " " + skills.get(1)+ " " + skills.get(2)+ " " + supported.get(i).getSimpleName());
 		}
 		map.put("fireRate", FIRE_RATE);
 		map.put("opaque", OPAQUE);

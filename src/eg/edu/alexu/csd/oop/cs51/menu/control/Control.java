@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import eg.edu.alexu.csd.oop.cs51.GameInfo;
 import eg.edu.alexu.csd.oop.cs51.menu.MainMenu;
+import eg.edu.alexu.csd.oop.cs51.music.Playmusic;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,9 +16,12 @@ import javafx.stage.Stage;
 public class Control {
 
 	private Stage stage;
+	private Playmusic music;
 
 	public Control(Stage stage) {
 		this.stage = stage;
+		music = new Playmusic();
+		music.start();
 	}
 
 	@FXML
@@ -70,9 +74,11 @@ public class Control {
 		if (GameInfo.getInstance().isMusicOn()) {
 			musicBtn.getStyleClass().clear();
 			musicBtn.getStyleClass().add("musicOn");
+			music.start();
 		} else {
 			musicBtn.getStyleClass().clear();
 			musicBtn.getStyleClass().add("musicOff");
+			music.stop();
 		}
 	}
 
