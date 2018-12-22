@@ -1,10 +1,12 @@
 package eg.edu.alexu.csd.oop.cs51.world;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import javax.swing.JOptionPane;
 
 import eg.edu.alexu.csd.oop.cs51.GameInfo;
+import eg.edu.alexu.csd.oop.cs51.logger.Logger;
 import eg.edu.alexu.csd.oop.cs51.music.Playmusic;
 import eg.edu.alexu.csd.oop.cs51.objects.constant.Background;
 import eg.edu.alexu.csd.oop.cs51.objects.constant.CanonObject;
@@ -86,6 +88,11 @@ public class Interview implements World {
 	@Override
 	public boolean refresh() {
 		if (GameInfo.getInstance().getLeftStack().size() == 10 || GameInfo.getInstance().getRightStack().size() == 10) {
+			try {
+				Logger.getInstance().info("stack is full");
+			} catch (InstantiationException | IllegalAccessException | ClassNotFoundException | IOException e) {
+				// TODO Auto-generated catch block
+			}
 			// 5aasrrrrrrrrrrr
 			GameInfo.getInstance().setNumOfLives(GameInfo.getInstance().getNumOfLives() - 1);
 			GameInfo.getInstance().getLivesObject().repaint();
@@ -97,6 +104,11 @@ public class Interview implements World {
 						JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]) == 0) {
 					GameInfo.getInstance().getCheckPoint().startFromCheckpoint();
 					gameController.resume();
+					try {
+						Logger.getInstance().info("back to check point");
+					} catch (InstantiationException | IllegalAccessException | ClassNotFoundException | IOException e) {
+						// TODO Auto-generated catch block
+					}
 				} else {
 					return false;
 				}
