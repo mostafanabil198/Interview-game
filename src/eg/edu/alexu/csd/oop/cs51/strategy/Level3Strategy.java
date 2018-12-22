@@ -12,20 +12,21 @@ import eg.edu.alexu.csd.oop.cs51.tasks.Task;
 public class Level3Strategy implements Strategy {
     private List<Class<? extends Movable>> supported;
 	private List<String> allSkills;
-	private static final int FIRE_RATE = 40;
+	private static final int FIRE_RATE = 150;
 	private static final boolean OPAQUE = false;
-	private static final int REFRESH_SPEED = 3;
-	private static final int CONTROL_SPEED = 15;
+	private static final int REFRESH_SPEED = 10;
+	private static final int CONTROL_SPEED = 30;
 
 	@Override
 	public Map<String, Object> doOperation() {
 		allSkills = GameInfo.getInstance().getAllSkills();
 		supported = GameInfo.getInstance().getCompanyFactory().getSupportedCompanies();
 		Collections.shuffle(supported);
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < 3; i++) {
 			Collections.shuffle(allSkills);
 			GameInfo.getInstance().addTask(
 					new Task(allSkills.get(0), allSkills.get(1), allSkills.get(2), supported.get(i).getSimpleName()));
+			System.out.println(allSkills.get(0) + " " + allSkills.get(1)+ " " + allSkills.get(2)+ " " + supported.get(i).getSimpleName());
 		}
 
 		Map<String, Object> map = new HashMap<>();

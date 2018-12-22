@@ -2,6 +2,7 @@ package eg.edu.alexu.csd.oop.cs51.world;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 
 import javax.sound.midi.Soundbank;
 
@@ -37,7 +38,7 @@ public class Interview implements World {
 		canonRight = new Canon("right", GameInfo.getInstance().getCompanyFactory());
 		background = new Background(width, height);
 		canonObject = new CanonObject();
-		GameInfo.getInstance().getConstant().add(background);
+		GameInfo.getInstance().getConstant().addFirst(background);
 		GameInfo.getInstance().getMoving().add(canonObject);
 		GameInfo.getInstance().setRenderSpeed(speed);
 
@@ -72,7 +73,14 @@ public class Interview implements World {
 	public boolean refresh() {
 		if(GameInfo.getInstance().getLeftStack().size() == 10 || GameInfo.getInstance().getRightStack().size() == 10) {
 			//5aasrrrrrrrrrrr
-			return false;
+			//return false;
+			Scanner scan = new Scanner(System.in);
+			int i = scan.nextInt();
+			if(i == 1) {
+				GameInfo.getInstance().getCheckPoint().startFromCheckpoint();
+			} else {
+				return false;
+			}
 		}
 		GameInfo.getInstance().updateHandPositions();
 		if (refreshCounter > fireRate) {

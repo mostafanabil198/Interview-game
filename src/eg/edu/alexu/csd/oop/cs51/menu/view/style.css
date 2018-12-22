@@ -1,5 +1,5 @@
 .menuAnch{
-    -fx-background-image : url("MainMenuBackground.jpg");
+    -fx-background-image : url("pic/MainMenuBackground.jpg");
 }
 
 .btn{
@@ -39,7 +39,7 @@
 
 }
 
-.sountOn{
+.soundOn{
         -fx-background-image : url("pic/soundOn.png");
 
 }

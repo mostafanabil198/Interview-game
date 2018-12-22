@@ -9,6 +9,8 @@ import eg.edu.alexu.csd.oop.cs51.iterators.IteratorI;
 import eg.edu.alexu.csd.oop.cs51.iterators.LinkedListContainer;
 import eg.edu.alexu.csd.oop.cs51.iterators.StackContainer;
 import eg.edu.alexu.csd.oop.cs51.objects.Movable;
+import eg.edu.alexu.csd.oop.cs51.objects.TaskObjectsPositioner;
+import eg.edu.alexu.csd.oop.cs51.objects.constant.TaskObject;
 import eg.edu.alexu.csd.oop.cs51.objects.player.Interviewee;
 import eg.edu.alexu.csd.oop.cs51.objects.states.VanishState;
 import eg.edu.alexu.csd.oop.cs51.observer.Collision;
@@ -30,6 +32,7 @@ public class GameInfo {
 	private int rightColorCounter;
 	private int numOfLives;
 	private int time;
+	private boolean musicOn, soundOn;
 
 	private Collections<Movable> leftStack, rightStack;
 
@@ -50,6 +53,8 @@ public class GameInfo {
 	// giftsfactory too
 
 	private GameInfo() {
+		musicOn = true;
+		soundOn = true;
 		leftStack = new StackContainer<Movable>();
 		rightStack = new StackContainer<Movable>();
 		gameTasks = new LinkedListContainer<Task>();
@@ -156,12 +161,14 @@ public class GameInfo {
 	}
 
 	private void checkTask(Movable task1, Movable task2, Movable task3) {
+		checkPoint = new SnapShot();
 		IteratorI i = gameTasks.createIterator();
 		while (i.hasNext()) {
 			Task t = (Task) i.next();
 			if (t.checkAchived(task1, task2, task3)) {
 				score++;
 				gameTasks.remove(t);
+				t.getTaskObject().markAsDone();
 				break;
 
 			}
@@ -218,10 +225,17 @@ public class GameInfo {
 
 	public void setGameTasks(Collections<Task> gameTasks) {
 		this.gameTasks = gameTasks;
+		TaskObjectsPositioner.position((List<Task>)gameTasks.getCollection());
+		IteratorI i = gameTasks.createIterator();
+		while(i.hasNext()) {
+		    constant.add((GameObject)i.next());
+		}
 	}
 
 	public void addTask(Task task) {
 		gameTasks.add(task);
+		TaskObjectsPositioner.position((List<Task>)gameTasks.getCollection());
+		constant.add(task.getTaskObject());
 	}
 
 	public int getLeftColorCounter() {
@@ -338,6 +352,22 @@ public class GameInfo {
 
 	public void setRightStackHeight(int rightStackHeight) {
 		this.rightStackHeight = rightStackHeight;
+	}
+
+	public boolean isMusicOn() {
+		return musicOn;
+	}
+
+	public void setMusicOn(boolean musicOn) {
+		this.musicOn = musicOn;
+	}
+
+	public boolean isSoundOn() {
+		return soundOn;
+	}
+
+	public void setSoundOn(boolean soundOn) {
+		this.soundOn = soundOn;
 	}
 
 	private void fillSkills() {
