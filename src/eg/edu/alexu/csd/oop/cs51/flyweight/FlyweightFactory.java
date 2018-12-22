@@ -43,7 +43,6 @@ public class FlyweightFactory {
 					vanishedSkills.get(company).add(o);
 				}
 			} else {
-				System.out.println("first time creating " + company + "arraylist");
 				vanishedSkills.put(company, new ArrayList<Movable>());
 				vanishedSkills.get(company).add(o);
 			}

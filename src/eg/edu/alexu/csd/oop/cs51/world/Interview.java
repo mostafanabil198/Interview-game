@@ -2,13 +2,10 @@ package eg.edu.alexu.csd.oop.cs51.world;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
-import java.util.Scanner;
-
-import javax.sound.midi.Soundbank;
 import javax.swing.JOptionPane;
 
 import eg.edu.alexu.csd.oop.cs51.GameInfo;
+import eg.edu.alexu.csd.oop.cs51.music.Playmusic;
 import eg.edu.alexu.csd.oop.cs51.objects.constant.Background;
 import eg.edu.alexu.csd.oop.cs51.objects.constant.CanonObject;
 import eg.edu.alexu.csd.oop.cs51.objects.skills.Canon;
@@ -16,9 +13,6 @@ import eg.edu.alexu.csd.oop.cs51.strategy.Strategy;
 import eg.edu.alexu.csd.oop.game.GameEngine;
 import eg.edu.alexu.csd.oop.game.GameObject;
 import eg.edu.alexu.csd.oop.game.World;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.ButtonType;
 import eg.edu.alexu.csd.oop.game.GameEngine.GameController;
 
 public class Interview implements World {
@@ -33,11 +27,13 @@ public class Interview implements World {
 	private int refreshCounter;
 	private GameEngine gameEngine;
 	private GameController gameController;
+	private Playmusic playMusic;
 
 	public Interview(Strategy strategy, int width, int height, GameEngine gameEngine) {
 		this.width = width;
 		this.height = height;
 		this.gameEngine = gameEngine;
+		playMusic = new Playmusic();
 		refreshCounter = 0;
 		Map<String, Object> levelData = strategy.doOperation();
 		this.opaque = (boolean) levelData.get("opaque");
@@ -52,6 +48,7 @@ public class Interview implements World {
 		GameInfo.getInstance().getMoving().add(canonObject);
 		GameInfo.getInstance().setRenderSpeed(speed);
 		gameController = gameEngine.start("Interview Game", this);
+
 	}
 
 	@Override
@@ -110,7 +107,8 @@ public class Interview implements World {
 		refreshCounter++;
 		GameInfo.getInstance().getCollision().notifyObservers();
 		if (GameInfo.getInstance().getGameTasks().size() == 0) {
-			// kasaaaab
+			gameController.pause();
+			JOptionPane.showMessageDialog(null, "WINNER WINNER ACCEPTED DINNER");
 			return false;
 		}
 		return true;

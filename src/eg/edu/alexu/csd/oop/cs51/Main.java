@@ -18,9 +18,9 @@ public class Main {
 		// MAIN MENU
 		// HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
 		Strategy strategy = new Level1Strategy();
-		Interview world = new Interview(strategy, 1360, 768);
+	//	Interview world = new Interview(strategy, 1360, 768);
 		GameEngine game = new GameEngine();
-		game.start("Interview Game", world);
+	//	game.start("Interview Game", world);
 	}
 
 }

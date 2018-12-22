@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
@@ -20,7 +21,10 @@
                </styleClass>
                <font>
                   <Font name="Bernard MT Condensed" size="45.0" />
-               </font></Button>
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
             <Button fx:id="mediumBtn" layoutX="493.0" layoutY="332.0" mnemonicParsing="false" prefHeight="113.0" prefWidth="381.0" text="Medium" textFill="WHITE">
                <styleClass>
                   <String fx:value="menuBtn" />
@@ -28,7 +32,10 @@
                </styleClass>
                <font>
                   <Font name="Bernard MT Condensed" size="45.0" />
-               </font></Button>
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
             <Button fx:id="hardBtn" layoutX="493.0" layoutY="467.0" mnemonicParsing="false" prefHeight="114.0" prefWidth="380.0" text="Hard" textFill="WHITE">
                <styleClass>
                   <String fx:value="menuBtn" />
@@ -36,7 +43,10 @@
                </styleClass>
                <font>
                   <Font name="Bernard MT Condensed" size="45.0" />
-               </font></Button>
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
             <Button fx:id="impossibleBtn" layoutX="493.0" layoutY="598.0" mnemonicParsing="false" prefHeight="113.0" prefWidth="381.0" text="Impossible" textFill="WHITE">
                <styleClass>
                   <String fx:value="menuBtn" />
@@ -44,7 +54,10 @@
                </styleClass>
                <font>
                   <Font name="Bernard MT Condensed" size="45.0" />
-               </font></Button>
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
             <Text fill="WHITE" layoutX="449.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="THE INTERVIEW GAME" textAlignment="CENTER" underline="true" wrappingWidth="490.6708984375">
                <effect>
                   <DropShadow height="58.32" radius="71.61" spread="0.38" width="230.12" />

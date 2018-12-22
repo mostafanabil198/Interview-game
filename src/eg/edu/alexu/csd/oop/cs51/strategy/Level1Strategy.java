@@ -33,7 +33,6 @@ public class Level1Strategy implements Strategy {
 		map.put("opaque", OPAQUE);
 		map.put("refreshSpeed", REFRESH_SPEED);
 		map.put("controlSpeed", CONTROL_SPEED);
-		System.out.println(allSkills.get(0) + " " + allSkills.get(1)+ " " + allSkills.get(2)+ " " + supported.get(0).getSimpleName());
 		return map;
 	}
 
