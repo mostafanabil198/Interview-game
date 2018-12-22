@@ -1,0 +1,51 @@
+.menuAnch{
+    -fx-background-image : url("MainMenuBackground.jpg");
+}
+
+.btn{
+     -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-radius: 0;
+    -fx-background-color: transparent;    
+}
+
+.btn:hover{
+     -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-radius: 0;
+    -fx-background-color: transparent;
+}
+
+.menuBtn{
+        -fx-background-image : url("pic/btn.png");
+
+}
+
+.menuBtn:hover{
+        -fx-background-image : url("pic/btnHover.png");
+}
+
+.musicOn{
+        -fx-background-image : url("pic/musicOn.png");
+
+}
+
+.musicOff{
+        -fx-background-image : url("pic/musicOff.png");
+
+}
+
+.sountOn{
+        -fx-background-image : url("pic/soundOn.png");
+
+}
+
+.soundOff{
+        -fx-background-image : url("pic/soundOff.png");
+
+}
+
