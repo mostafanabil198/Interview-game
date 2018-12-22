@@ -32,6 +32,7 @@ public class GameInfo {
 	private int rightColorCounter;
 	private int numOfLives;
 	private int time;
+	private boolean musicOn, soundOn;
 
 	private Collections<Movable> leftStack, rightStack;
 
@@ -52,6 +53,8 @@ public class GameInfo {
 	// giftsfactory too
 
 	private GameInfo() {
+		musicOn = true;
+		soundOn = true;
 		leftStack = new StackContainer<Movable>();
 		rightStack = new StackContainer<Movable>();
 		gameTasks = new LinkedListContainer<Task>();
@@ -348,6 +351,22 @@ public class GameInfo {
 
 	public void setRightStackHeight(int rightStackHeight) {
 		this.rightStackHeight = rightStackHeight;
+	}
+
+	public boolean isMusicOn() {
+		return musicOn;
+	}
+
+	public void setMusicOn(boolean musicOn) {
+		this.musicOn = musicOn;
+	}
+
+	public boolean isSoundOn() {
+		return soundOn;
+	}
+
+	public void setSoundOn(boolean soundOn) {
+		this.soundOn = soundOn;
 	}
 
 	private void fillSkills() {
