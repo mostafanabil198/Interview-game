@@ -2,17 +2,24 @@ package eg.edu.alexu.csd.oop.cs51.world;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Scanner;
 
 import javax.sound.midi.Soundbank;
+import javax.swing.JOptionPane;
 
 import eg.edu.alexu.csd.oop.cs51.GameInfo;
 import eg.edu.alexu.csd.oop.cs51.objects.constant.Background;
 import eg.edu.alexu.csd.oop.cs51.objects.constant.CanonObject;
 import eg.edu.alexu.csd.oop.cs51.objects.skills.Canon;
 import eg.edu.alexu.csd.oop.cs51.strategy.Strategy;
+import eg.edu.alexu.csd.oop.game.GameEngine;
 import eg.edu.alexu.csd.oop.game.GameObject;
 import eg.edu.alexu.csd.oop.game.World;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
+import eg.edu.alexu.csd.oop.game.GameEngine.GameController;
 
 public class Interview implements World {
 	private int fireRate;
@@ -24,10 +31,13 @@ public class Interview implements World {
 	private Background background;
 	private CanonObject canonObject;
 	private int refreshCounter;
+	private GameEngine gameEngine;
+	private GameController gameController;
 
-	public Interview(Strategy strategy, int width, int height) {
+	public Interview(Strategy strategy, int width, int height, GameEngine gameEngine) {
 		this.width = width;
 		this.height = height;
+		this.gameEngine = gameEngine;
 		refreshCounter = 0;
 		Map<String, Object> levelData = strategy.doOperation();
 		this.opaque = (boolean) levelData.get("opaque");
@@ -41,7 +51,7 @@ public class Interview implements World {
 		GameInfo.getInstance().getConstant().addFirst(background);
 		GameInfo.getInstance().getMoving().add(canonObject);
 		GameInfo.getInstance().setRenderSpeed(speed);
-
+		gameController = gameEngine.start("Interview Game", this);
 	}
 
 	@Override
@@ -71,14 +81,23 @@ public class Interview implements World {
 
 	@Override
 	public boolean refresh() {
-		if(GameInfo.getInstance().getLeftStack().size() == 10 || GameInfo.getInstance().getRightStack().size() == 10) {
-			//5aasrrrrrrrrrrr
-			//return false;
-			Scanner scan = new Scanner(System.in);
-			int i = scan.nextInt();
-			if(i == 1) {
-				GameInfo.getInstance().getCheckPoint().startFromCheckpoint();
+		if (GameInfo.getInstance().getLeftStack().size() == 10 || GameInfo.getInstance().getRightStack().size() == 10) {
+			// 5aasrrrrrrrrrrr
+			GameInfo.getInstance().setNumOfLives(GameInfo.getInstance().getNumOfLives() - 1);
+			if (GameInfo.getInstance().getNumOfLives() > 0) {
+				gameController.pause();
+				Object[] options = { "Yes", "No" };
+				JOptionPane optionPane = new JOptionPane();
+				if (optionPane.showOptionDialog(null, "Do you wanna start from the check point", "Quesstion",
+						JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]) == 0) {
+					GameInfo.getInstance().getCheckPoint().startFromCheckpoint();
+					gameController.resume();
+				} else {
+					return false;
+				}
+
 			} else {
+				gameController.pause();
 				return false;
 			}
 		}
@@ -91,11 +110,11 @@ public class Interview implements World {
 		refreshCounter++;
 		GameInfo.getInstance().getCollision().notifyObservers();
 		if (GameInfo.getInstance().getGameTasks().size() == 0) {
-			//kasaaaab
+			// kasaaaab
 			return false;
 		}
 		return true;
-		
+
 	}
 
 	@Override
