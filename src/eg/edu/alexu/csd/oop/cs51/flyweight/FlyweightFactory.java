@@ -51,12 +51,18 @@ public class FlyweightFactory {
 	}
 
 	public static void addVanishedGift(Movable o) {
-		String company = o.getClass().getSimpleName();
-		if (vanishedGifts.containsKey(company)) {
-			vanishedGifts.get(company).add(o);
-		} else {
-			vanishedGifts.put(company, new ArrayList<Movable>());
-			vanishedGifts.get(company).add(o);
+		if (o.getState().getClass().isAssignableFrom(VanishState.class)) {
+			String company = o.getClass().getSimpleName();
+			if (vanishedGifts.containsKey(company)) {
+				if (vanishedGifts.get(company).contains(o)) {
+					System.out.println(o + " added gift to the flyweight for the second time and it is still in");
+				} else {
+					vanishedGifts.get(company).add(o);
+				}
+			} else {
+				vanishedGifts.put(company, new ArrayList<Movable>());
+				vanishedGifts.get(company).add(o);
+			}
 		}
 	}
 }
