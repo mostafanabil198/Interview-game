@@ -23,14 +23,10 @@ public class EmptyStack extends Movable{
         if(spot.equals("vanish")) {
             new VanishState().doAction(this);
         } else if (spot.equals("leftStack")) {
-            GameInfo.getInstance().getLeftStack().clear();
-            int h = GameInfo.getInstance().getPlayer().getHandHeightPosition();
-            GameInfo.getInstance().setLeftStackHeight(h);
+            GameInfo.getInstance().vanishLeftStack();
             new VanishState().doAction(this);
         } else if (spot.equals("rightStack")) {
-            GameInfo.getInstance().getRightStack().clear();
-            int h = GameInfo.getInstance().getPlayer().getHandHeightPosition();
-            GameInfo.getInstance().setRightStackHeight(h);
+            GameInfo.getInstance().vanishRightStack();
             new VanishState().doAction(this);
         } else {
             MovingState state = (MovingState) getState();

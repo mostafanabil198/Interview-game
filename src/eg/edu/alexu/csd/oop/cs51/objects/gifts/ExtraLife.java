@@ -13,7 +13,7 @@ public class ExtraLife extends Movable {
     
     public ExtraLife() {
         super(PATH, "");
-        System.out.println("estra");
+        System.out.println("extra");
     }
     public ExtraLife(ExtraLife extraLife) {
         super(extraLife);
@@ -28,7 +28,8 @@ public class ExtraLife extends Movable {
             GameInfo.getInstance().setNumOfLives(lives + 1);
             new VanishState().doAction(this);
         } else if (spot.equals("rightStack")) {
-            //execute extra life
+            int lives = GameInfo.getInstance().getNumOfLives();
+            GameInfo.getInstance().setNumOfLives(lives + 1);
             new VanishState().doAction(this);
         } else {
             MovingState state = (MovingState) getState();

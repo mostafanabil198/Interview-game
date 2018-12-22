@@ -392,6 +392,25 @@ public class GameInfo {
 		leftHand = player.getLeftHandPosition();
 
 	}
+	
+	public void vanishRightStack() {
+	    IteratorI i = rightStack.createIterator();
+	    while(i.hasNext()) {
+	        Movable movable = (Movable) i.next();
+	        new VanishState().doAction(movable);
+	        rightStack.remove(movable);
+	    }
+	    rightStackHeight = player.getHandHeightPosition();
+	}
+	public void vanishLeftStack() {
+        IteratorI i = leftStack.createIterator();
+        while(i.hasNext()) {
+            Movable movable = (Movable) i.next();
+            new VanishState().doAction(movable);
+            leftStack.remove(movable);
+        }
+        leftStackHeight = player.getHandHeightPosition();
+    }
 	public List<String> getAllGifts(){
 	    return this.allGifts;
 	}

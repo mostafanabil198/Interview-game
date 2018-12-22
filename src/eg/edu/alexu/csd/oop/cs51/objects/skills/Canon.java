@@ -33,9 +33,10 @@ public class Canon {
         fillSkillArray();
         fillGiftArray();
         int rand = random.nextInt(100) + 1;
-        if (rand <= 10) {
+        if (rand <= 5) {
             int GiftIndex = random.nextInt(gifts.size());
             String gift = gifts.get(GiftIndex);
+            
             movableObject = FlyweightFactory.getGift(gift);
             if (movableObject == null) {
                 try {
