@@ -57,6 +57,7 @@ public class Lives implements GameObject{
     }
     
     public void repaint() {
+        lives = GameInfo.getInstance().getNumOfLives();
         BufferedImage img = null;
         try {
             img = ImageIO.read(new File(imgPath));

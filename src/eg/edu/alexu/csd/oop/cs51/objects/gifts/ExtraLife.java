@@ -9,7 +9,7 @@ import eg.edu.alexu.csd.oop.cs51.observer.Collision;
 
 public class ExtraLife extends Movable {
 
-    private static final String PATH = "res/gift.png";
+    private static final String PATH = "res/HeartGift.png";
     
     public ExtraLife() {
         super(PATH, "");
