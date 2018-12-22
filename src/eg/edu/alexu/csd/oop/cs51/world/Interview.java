@@ -38,7 +38,7 @@ public class Interview implements World {
 		canonRight = new Canon("right", GameInfo.getInstance().getCompanyFactory());
 		background = new Background(width, height);
 		canonObject = new CanonObject();
-		GameInfo.getInstance().getConstant().add(background);
+		GameInfo.getInstance().getConstant().addFirst(background);
 		GameInfo.getInstance().getMoving().add(canonObject);
 		GameInfo.getInstance().setRenderSpeed(speed);
 

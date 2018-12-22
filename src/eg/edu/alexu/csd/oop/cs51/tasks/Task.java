@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import eg.edu.alexu.csd.oop.cs51.objects.Movable;
+import eg.edu.alexu.csd.oop.cs51.objects.constant.TaskObject;
 import eg.edu.alexu.csd.oop.cs51.objects.states.VanishState;
 
 public class Task {
 
 	private List<String> skills;
 	private String companyName;
+	private TaskObject object;
 
 	public Task(String skill1, String skill2, String skill3, String companyName) {
 		skills = new ArrayList<String>();
@@ -17,6 +19,7 @@ public class Task {
 		skills.add(skill2);
 		skills.add(skill3);
 		this.companyName = companyName;
+		object = new TaskObject(this);
 	}
 
 	public boolean checkAchived(Movable one, Movable two, Movable three) {
@@ -25,10 +28,23 @@ public class Task {
 				return true;
 			}
 		}
-//		new VanishState().doAction(one);
-//		new VanishState().doAction(two);
-//		new VanishState().doAction(three);
 		return false;
+	}
+	
+	public String getCompanyName() {
+	    return companyName;
+	}
+	
+	public List<String> getSkills(){
+	    return skills;
+	}
+	
+	public TaskObject getTaskObject() {
+	    return object;
+	}
+	
+	public void markAsDone() {
+	    object.markAsDone();
 	}
 
 }
