@@ -1,5 +1,6 @@
 package eg.edu.alexu.csd.oop.cs51;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,6 +9,7 @@ import eg.edu.alexu.csd.oop.cs51.iterators.Collections;
 import eg.edu.alexu.csd.oop.cs51.iterators.IteratorI;
 import eg.edu.alexu.csd.oop.cs51.iterators.LinkedListContainer;
 import eg.edu.alexu.csd.oop.cs51.iterators.StackContainer;
+import eg.edu.alexu.csd.oop.cs51.logger.Logger;
 import eg.edu.alexu.csd.oop.cs51.objects.Movable;
 import eg.edu.alexu.csd.oop.cs51.objects.TaskObjectsPositioner;
 import eg.edu.alexu.csd.oop.cs51.objects.constant.Lives;
@@ -102,6 +104,11 @@ public class GameInfo {
 			rightStack.add(skill);
 			rightColorCounter++;
 			if (rightColorCounter == 3) {
+				try {
+					Logger.getInstance().info("collected three of "+ skill.getClass().getSimpleName());
+				} catch (InstantiationException | IllegalAccessException | ClassNotFoundException | IOException e) {
+					// TODO Auto-generated catch block
+				}
 				// method to check number of same color
 				checkTask(rightStack.pop(), rightStack.pop(), rightStack.pop());
 				rightColorCounter = numOfSameColor(rightStack);
@@ -130,6 +137,11 @@ public class GameInfo {
 			leftStack.add(skill);
 			leftColorCounter++;
 			if (leftColorCounter == 3) {
+				try {
+					Logger.getInstance().info("collected three of "+ skill.getClass().getSimpleName());
+				} catch (InstantiationException | IllegalAccessException | ClassNotFoundException | IOException e) {
+					// TODO Auto-generated catch block
+				}
 				checkTask(leftStack.pop(), leftStack.pop(), leftStack.pop());
 				leftColorCounter = numOfSameColor(leftStack);
 			}
@@ -177,6 +189,13 @@ public class GameInfo {
 		while (i.hasNext()) {
 			Task t = (Task) i.next();
 			if ((taskDone = t.checkAchived(task1, task2, task3))) {
+				try {
+					Logger.getInstance().info("Comlete task");
+					Logger.getInstance().info("new check point");
+
+				} catch (InstantiationException | IllegalAccessException | ClassNotFoundException | IOException e) {
+					// TODO Auto-generated catch block
+				}
 				score++;
 				gameTasks.remove(t);
 				t.getTaskObject().markAsDone();

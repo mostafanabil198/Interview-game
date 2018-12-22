@@ -2,6 +2,7 @@ package eg.edu.alexu.csd.oop.cs51.objects.skills;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -13,6 +14,7 @@ import java.util.jar.JarFile;
 
 import javax.imageio.ImageIO;
 
+import eg.edu.alexu.csd.oop.cs51.logger.Logger;
 import eg.edu.alexu.csd.oop.cs51.objects.Movable;
 import eg.edu.alexu.csd.oop.cs51.objects.Skill;
 
@@ -75,6 +77,11 @@ public class SkillLoader {
 			}
 			loader.close();
 		} catch (Exception e) {
+			try {
+				Logger.getInstance().warnning("No classes loaded");
+			} catch (InstantiationException | IllegalAccessException | ClassNotFoundException | IOException ex) {
+				// TODO Auto-generated catch block
+			}
 		}
 	}
 
