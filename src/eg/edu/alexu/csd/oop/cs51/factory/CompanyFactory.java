@@ -9,7 +9,7 @@ import eg.edu.alexu.csd.oop.cs51.objects.Movable;
 import eg.edu.alexu.csd.oop.cs51.objects.Skill;
 import eg.edu.alexu.csd.oop.cs51.observer.Collision;
 
-public class CompanyFactory implements ICompanyFactory {
+public class CompanyFactory implements IFactory {
 
 	private List<Class<? extends Movable>> classes;
 

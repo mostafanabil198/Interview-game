@@ -7,7 +7,8 @@ import java.util.Random;
 
 import eg.edu.alexu.csd.oop.cs51.GameInfo;
 import eg.edu.alexu.csd.oop.cs51.factory.CompanyFactory;
-import eg.edu.alexu.csd.oop.cs51.factory.ICompanyFactory;
+import eg.edu.alexu.csd.oop.cs51.factory.GiftFactory;
+import eg.edu.alexu.csd.oop.cs51.factory.IFactory;
 import eg.edu.alexu.csd.oop.cs51.flyweight.FlyweightFactory;
 import eg.edu.alexu.csd.oop.cs51.objects.Movable;
 import eg.edu.alexu.csd.oop.cs51.objects.states.MovingState;
@@ -19,7 +20,7 @@ public class Canon {
     private Random random;
     private Movable movableObject;
     private String canonType;
-    private ICompanyFactory factory;
+    private IFactory factory;
 
     public Canon(String type, CompanyFactory factory) {
         this.companies = factory.getCompaniesNames();
@@ -32,13 +33,19 @@ public class Canon {
         fillSkillArray();
         fillGiftArray();
         int rand = random.nextInt(100) + 1;
-        if (rand <= -4) {
+        if (rand <= 5) {
             int GiftIndex = random.nextInt(gifts.size());
-            String gift = companies.get(GiftIndex);
+            String gift = gifts.get(GiftIndex);
+            
             movableObject = FlyweightFactory.getGift(gift);
             if (movableObject == null) {
-                // factory lel gifts
-            	movableObject = new FaceBookSkill("cv");
+                try {
+                    movableObject= new GiftFactory().createNewMovable(null, gift);
+                    System.out.println("gift");
+                } catch (InstantiationException | IllegalAccessException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
             }
         } else {
             int CompanyIndex = random.nextInt(companies.size());
@@ -87,6 +94,6 @@ public class Canon {
     }
 
     public void fillGiftArray() {
-        // fill the gift array
+        gifts = GameInfo.getInstance().getAllGifts();
     }
 }

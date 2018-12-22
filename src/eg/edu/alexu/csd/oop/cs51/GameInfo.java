@@ -48,6 +48,7 @@ public class GameInfo {
 	private Interviewee player;
 
 	private List<String> allSkills;
+	private List<String> allGifts;
 
 	private CompanyFactory companyFactory;
 	// giftsfactory too
@@ -67,6 +68,7 @@ public class GameInfo {
 		leftHand = player.getLeftHandPosition();
 		rightHand = player.getRightHandPosition();
 		fillSkills();
+		fillGifts();
 		moving = new LinkedListContainer<GameObject>();
 		control = new LinkedListContainer<GameObject>();
 		constant = new LinkedListContainer<GameObject>();
@@ -383,10 +385,37 @@ public class GameInfo {
 		allSkills.add("Flutter");
 		allSkills.add("Linux");
 	}
+	private void fillGifts() {
+	    allGifts=new ArrayList<String>();
+	    allGifts.add("ExtraLife");
+	    allGifts.add("EmptyStack");
+	}
 
 	public void updateHandPositions() {
 		rightHand = player.getRightHandPosition();
 		leftHand = player.getLeftHandPosition();
 
+	}
+	
+	public void vanishRightStack() {
+	    IteratorI i = rightStack.createIterator();
+	    while(i.hasNext()) {
+	        Movable movable = (Movable) i.next();
+	        new VanishState().doAction(movable);
+	        rightStack.remove(movable);
+	    }
+	    rightStackHeight = player.getHandHeightPosition();
+	}
+	public void vanishLeftStack() {
+        IteratorI i = leftStack.createIterator();
+        while(i.hasNext()) {
+            Movable movable = (Movable) i.next();
+            new VanishState().doAction(movable);
+            leftStack.remove(movable);
+        }
+        leftStackHeight = player.getHandHeightPosition();
+    }
+	public List<String> getAllGifts(){
+	    return this.allGifts;
 	}
 }
