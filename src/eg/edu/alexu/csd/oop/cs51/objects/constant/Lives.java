@@ -24,10 +24,10 @@ public class Lives implements GameObject{
     private boolean visible;
     private BufferedImage[] buffered_image;
     
-    public Lives() {
+    public Lives(int noLives) {
         x = 100;
         y = 10;
-        lives = 0;
+        lives = noLives;
         this.visible = true;
         buffered_image = new BufferedImage[1];
         BufferedImage img = null;
@@ -57,16 +57,24 @@ public class Lives implements GameObject{
     }
     
     public void repaint() {
-        lives = GameInfo.getInstance().getNumOfLives();
-        Graphics2D g2d = buffered_image[0].createGraphics();
+        BufferedImage img = null;
+        try {
+            img = ImageIO.read(new File(imgPath));
+            img = resize(img, WIDTH, HEIGHT);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Graphics2D g2d = img.createGraphics();
         g2d.setPaint(Color.BLACK);
         g2d.setFont(new Font("Bernard MT Condensed", Font.BOLD, 24));
-        g2d.setStroke(new BasicStroke(2));
         FontMetrics fm = g2d.getFontMetrics();
-        int y = buffered_image[0].getHeight()/2 + fm.getHeight()/2 - 5;
+        int y = img.getHeight()/2 + fm.getHeight()/2 - 5;
         int x = 45;
-        g2d.drawLine(x, y, x + fm.stringWidth(" X"+lives) + 3 , y);
+        g2d.drawString(" X"+lives, x, y);
         g2d.dispose();
+        BufferedImage imgScaled = resize(img, WIDTH, HEIGHT);
+        
+        buffered_image[0] = imgScaled;
         
     }
     

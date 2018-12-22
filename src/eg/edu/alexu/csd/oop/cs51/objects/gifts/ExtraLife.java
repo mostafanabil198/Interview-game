@@ -35,6 +35,7 @@ public class ExtraLife extends Movable {
             MovingState state = (MovingState) getState();
             state.updatePosition(this);
         }
+        GameInfo.getInstance().getLivesObject().repaint();
         
     }
 

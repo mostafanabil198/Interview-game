@@ -79,7 +79,7 @@ public class GameInfo {
 		control.add(player);
 		collision = new Collision();
 		numOfLives = 2;
-		livesObject = new Lives();
+		livesObject = new Lives(numOfLives);
 
 		
 

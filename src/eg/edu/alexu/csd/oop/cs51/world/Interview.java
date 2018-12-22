@@ -82,6 +82,7 @@ public class Interview implements World {
 		if (GameInfo.getInstance().getLeftStack().size() == 10 || GameInfo.getInstance().getRightStack().size() == 10) {
 			// 5aasrrrrrrrrrrr
 			GameInfo.getInstance().setNumOfLives(GameInfo.getInstance().getNumOfLives() - 1);
+			GameInfo.getInstance().getLivesObject().repaint();
 			if (GameInfo.getInstance().getNumOfLives() > 0) {
 				gameController.pause();
 				Object[] options = { "Yes", "No" };
