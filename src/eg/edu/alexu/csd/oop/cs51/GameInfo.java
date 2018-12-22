@@ -9,6 +9,8 @@ import eg.edu.alexu.csd.oop.cs51.iterators.IteratorI;
 import eg.edu.alexu.csd.oop.cs51.iterators.LinkedListContainer;
 import eg.edu.alexu.csd.oop.cs51.iterators.StackContainer;
 import eg.edu.alexu.csd.oop.cs51.objects.Movable;
+import eg.edu.alexu.csd.oop.cs51.objects.TaskObjectsPositioner;
+import eg.edu.alexu.csd.oop.cs51.objects.constant.TaskObject;
 import eg.edu.alexu.csd.oop.cs51.objects.player.Interviewee;
 import eg.edu.alexu.csd.oop.cs51.objects.states.VanishState;
 import eg.edu.alexu.csd.oop.cs51.observer.Collision;
@@ -162,6 +164,7 @@ public class GameInfo {
 			if (t.checkAchived(task1, task2, task3)) {
 				score++;
 				gameTasks.remove(t);
+				t.getTaskObject().markAsDone();
 				break;
 
 			}
@@ -218,10 +221,17 @@ public class GameInfo {
 
 	public void setGameTasks(Collections<Task> gameTasks) {
 		this.gameTasks = gameTasks;
+		TaskObjectsPositioner.position((List<Task>)gameTasks.getCollection());
+		IteratorI i = gameTasks.createIterator();
+		while(i.hasNext()) {
+		    constant.add((GameObject)i.next());
+		}
 	}
 
 	public void addTask(Task task) {
 		gameTasks.add(task);
+		TaskObjectsPositioner.position((List<Task>)gameTasks.getCollection());
+		constant.add(task.getTaskObject());
 	}
 
 	public int getLeftColorCounter() {
