@@ -3,8 +3,11 @@ package eg.edu.alexu.csd.oop.cs51.snapshots;
 import eg.edu.alexu.csd.oop.cs51.GameInfo;
 import eg.edu.alexu.csd.oop.cs51.iterators.Collections;
 import eg.edu.alexu.csd.oop.cs51.iterators.IteratorI;
+import eg.edu.alexu.csd.oop.cs51.iterators.LinkedListContainer;
+import eg.edu.alexu.csd.oop.cs51.iterators.StackContainer;
 import eg.edu.alexu.csd.oop.cs51.objects.AbstractObject;
 import eg.edu.alexu.csd.oop.cs51.objects.Movable;
+import eg.edu.alexu.csd.oop.cs51.observer.Observer;
 import eg.edu.alexu.csd.oop.game.GameObject;
 
 public class SnapShot {
@@ -24,6 +27,10 @@ public class SnapShot {
 	private Collections<GameObject> control;
 
 	public SnapShot() {
+		leftStack = new StackContainer<>();
+		rightStack = new StackContainer<>();
+		moving = new LinkedListContainer<>();
+		control = new LinkedListContainer<>();
 		score = GameInfo.getInstance().getScore();
 		fillStacksForSave();
 		leftColorCounter = GameInfo.getInstance().getLeftColorCounter();
@@ -45,17 +52,36 @@ public class SnapShot {
 		moving.clear();
 		control.clear();
 		IteratorI iterator = GameInfo.getInstance().getLeftStack().createIterator();
+		Movable oldM, newM;
 		while (iterator.hasNext()) {
-			leftStack.add((Movable) ((Movable) iterator.next()).clone());
+			oldM = (Movable) ((Movable) iterator.next());
+			newM = (Movable) oldM.clone();
+			leftStack.add(newM);
+			moving.add((GameObject) newM);
 		}
 		iterator = GameInfo.getInstance().getRightStack().createIterator();
 		while (iterator.hasNext()) {
-			rightStack.add((Movable) ((Movable) iterator.next()).clone());
+			oldM = (Movable) ((Movable) iterator.next());
+			newM = (Movable) oldM.clone();
+			rightStack.add(newM);
+			moving.add((GameObject) newM);
 		}
 
 		iterator = GameInfo.getInstance().getMoving().createIterator();
 		while (iterator.hasNext()) {
-			moving.add((GameObject) ((AbstractObject) iterator.next()).clone());
+			GameObject o = (GameObject) iterator.next();
+			if (Movable.class.isAssignableFrom(o.getClass())) {
+				oldM = (Movable) o;
+				if (GameInfo.getInstance().getRightStack().getCollection().contains(oldM)
+						|| GameInfo.getInstance().getLeftStack().getCollection().contains(oldM)) {
+					continue;
+				}
+				newM = (Movable) oldM.clone();
+				moving.add((GameObject) newM);
+			} else {
+				moving.add(o);
+			}
+
 		}
 
 		iterator = GameInfo.getInstance().getControl().createIterator();
@@ -76,18 +102,43 @@ public class SnapShot {
 		GameInfo.getInstance().getRightStack().clear();
 		GameInfo.getInstance().getMoving().clear();
 		GameInfo.getInstance().getControl().clear();
+		// 3aizen n clear collision w add feh tani l gded b3d l clone
+		GameInfo.getInstance().getCollision().clear();
+		AbstractObject oldM, newM;
+
 		IteratorI iterator = leftStack.createIterator();
 		while (iterator.hasNext()) {
-			GameInfo.getInstance().getLeftStack().add((Movable) ((Movable) iterator.next()).clone());
+			oldM = ((Movable) iterator.next());
+			newM = (Movable) oldM.clone();
+			GameInfo.getInstance().getLeftStack().add((Movable) newM);
+			GameInfo.getInstance().getMoving().addFirst((GameObject) newM);
+			GameInfo.getInstance().getCollision().addObserver((Observer) newM);
 		}
 		iterator = rightStack.createIterator();
 		while (iterator.hasNext()) {
-			GameInfo.getInstance().getRightStack().add((Movable) ((Movable) iterator.next()).clone());
+			oldM = ((Movable) iterator.next());
+			newM = (Movable) oldM.clone();
+			GameInfo.getInstance().getRightStack().add((Movable) newM);
+			GameInfo.getInstance().getMoving().addFirst((GameObject) newM);
+			GameInfo.getInstance().getCollision().addObserver((Observer) newM);
+
 		}
 
 		iterator = moving.createIterator();
 		while (iterator.hasNext()) {
-			GameInfo.getInstance().getMoving().add((GameObject) ((AbstractObject) iterator.next()).clone());
+			oldM = ((AbstractObject) iterator.next());
+			newM = (AbstractObject) oldM.clone();
+
+			if (rightStack.getCollection().contains(oldM) || leftStack.getCollection().contains(oldM)) {
+				continue;
+			}
+			if (Movable.class.isAssignableFrom(newM.getClass())) {
+				GameInfo.getInstance().getMoving().addFirst((GameObject) newM);
+				GameInfo.getInstance().getCollision().addObserver((Observer) newM);
+			} else {
+				GameInfo.getInstance().getMoving().add((GameObject) newM);
+			}
+
 		}
 		iterator = control.createIterator();
 		while (iterator.hasNext()) {
@@ -108,6 +159,13 @@ public class SnapShot {
 		GameInfo.getInstance().setLeftStackHeight(leftStackHeight);
 		GameInfo.getInstance().setRightStackHeight(rightStackHeight);
 		GameInfo.getInstance().setNumOfLives(numOfLives);
+
+		for (Movable m : GameInfo.getInstance().getLeftStack().getCollection()) {
+			System.out.println("Left" + m.getClass() + "  " + m.getState().getClass());
+		}
+		for (Movable m : GameInfo.getInstance().getRightStack().getCollection()) {
+			System.out.println("Right " + m.getClass() + "  " + m.getState().getClass());
+		}
 
 	}
 

@@ -161,6 +161,7 @@ public class GameInfo {
 	}
 
 	private void checkTask(Movable task1, Movable task2, Movable task3) {
+		checkPoint = new SnapShot();
 		IteratorI i = gameTasks.createIterator();
 		while (i.hasNext()) {
 			Task t = (Task) i.next();
@@ -168,7 +169,6 @@ public class GameInfo {
 				score++;
 				gameTasks.remove(t);
 				t.getTaskObject().markAsDone();
-				checkPoint = new SnapShot();
 				break;
 
 			}

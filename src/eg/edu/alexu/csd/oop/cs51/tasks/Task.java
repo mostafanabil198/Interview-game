@@ -24,27 +24,31 @@ public class Task {
 
 	public boolean checkAchived(Movable one, Movable two, Movable three) {
 		if (one.getClass().getSimpleName().equals(companyName)) {
-			if (skills.contains(one.getName()) && skills.contains(two.getName()) && skills.contains(three.getName())) {
+			List<String> skillsT = new ArrayList<>();
+			skillsT.add(skills.get(0));
+			skillsT.add(skills.get(1));
+			skillsT.add(skills.get(2));
+			if (skillsT.remove(one.getName()) && skillsT.remove(two.getName()) && skillsT.remove(three.getName())) {
 				return true;
 			}
 		}
 		return false;
 	}
-	
+
 	public String getCompanyName() {
-	    return companyName;
+		return companyName;
 	}
-	
-	public List<String> getSkills(){
-	    return skills;
+
+	public List<String> getSkills() {
+		return skills;
 	}
-	
+
 	public TaskObject getTaskObject() {
-	    return object;
+		return object;
 	}
-	
+
 	public void markAsDone() {
-	    object.markAsDone();
+		object.markAsDone();
 	}
 
 }
