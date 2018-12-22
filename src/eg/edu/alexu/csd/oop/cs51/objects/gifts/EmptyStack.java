@@ -11,7 +11,7 @@ import eg.edu.alexu.csd.oop.cs51.objects.states.VanishState;
 
 public class EmptyStack extends Movable{
 
-    private static final String PATH = "res/gift.png";
+    private static final String PATH = "res/bomb.png";
     
     public EmptyStack() {
         super(PATH, "");

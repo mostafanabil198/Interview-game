@@ -34,12 +34,12 @@ import sun.audio.ContinuousAudioDataStream;
 public class MainSalah {
 
     public static void main(String[] args) throws UnsupportedAudioFileException, IOException, LineUnavailableException, InterruptedException {
-    	 Playmusic playmusic=new Playmusic();
-    	 playmusic.start();
-    	 Thread.sleep(10000);
-    	playmusic.stop();
-    	Thread.sleep(10000);
-    	 playmusic.start();
+//    	 Playmusic playmusic=new Playmusic();
+//    	 playmusic.start();
+//    	 Thread.sleep(10000);
+//    	playmusic.stop();
+//    	Thread.sleep(10000);
+//    	 playmusic.start();
     	
     	
     	
@@ -87,7 +87,56 @@ public class MainSalah {
 //    			
 //    		}
 //    	}
+    	/*Clip clip;
+    	try {
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("revive.wav"));
+             clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+            clip.start();
+        } catch(Exception ex) {
+            System.out.println("Error with playing sound.");
+            ex.printStackTrace();
+        }
+    	Thread.sleep(2500);
+    	try {
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("taskcompleted.wav"));
+             clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+            clip.start();
+        } catch(Exception ex) {
+            System.out.println("Error with playing sound.");
+            ex.printStackTrace();
+        }
+    	Thread.sleep(2500);
+    	try {
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("coins.wav"));
+             clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+            clip.start();
+        } catch(Exception ex) {
+            System.out.println("Error with playing sound.");
+            ex.printStackTrace();
+        }
+    	Thread.sleep(2500);
+    	try {
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("Explosion+7.wav"));
+             clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+            clip.start();
+        } catch(Exception ex) {
+            System.out.println("Error with playing sound.");
+            ex.printStackTrace();
+        }*/
     	
+    	PlaySoundEffects playSoundEffects=new PlaySoundEffects();
+    	playSoundEffects.setPlayEffects(false);
+    	playSoundEffects.playEffect("bomb");
+    	Thread.sleep(2000);
+    	playSoundEffects.playEffect("collected");
+    	Thread.sleep(2000);
+    	playSoundEffects.playEffect("revive");
+    	Thread.sleep(2000);
+    	playSoundEffects.playEffect("taskcompleted");
         
     }
     public static void music() throws UnsupportedAudioFileException, IOException, LineUnavailableException, InterruptedException {
