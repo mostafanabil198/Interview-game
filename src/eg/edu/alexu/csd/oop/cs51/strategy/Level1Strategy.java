@@ -22,7 +22,7 @@ public class Level1Strategy implements Strategy {
 		allSkills = GameInfo.getInstance().getAllSkills();
 		supported = GameInfo.getInstance().getCompanyFactory().getSupportedCompanies();
 		Collections.shuffle(supported);
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < 1; i++) {
 			Collections.shuffle(allSkills);
 			GameInfo.getInstance().addTask(
 					new Task(allSkills.get(0), allSkills.get(1), allSkills.get(2), supported.get(i).getSimpleName()));
@@ -33,6 +33,7 @@ public class Level1Strategy implements Strategy {
 		map.put("opaque", OPAQUE);
 		map.put("refreshSpeed", REFRESH_SPEED);
 		map.put("controlSpeed", CONTROL_SPEED);
+		System.out.println(allSkills.get(0) + " " + allSkills.get(1)+ " " + allSkills.get(2)+ " " + supported.get(0).getSimpleName());
 		return map;
 	}
 
