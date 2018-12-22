@@ -7,6 +7,8 @@ import eg.edu.alexu.csd.oop.cs51.iterators.LinkedListContainer;
 import eg.edu.alexu.csd.oop.cs51.iterators.StackContainer;
 import eg.edu.alexu.csd.oop.cs51.objects.AbstractObject;
 import eg.edu.alexu.csd.oop.cs51.objects.Movable;
+import eg.edu.alexu.csd.oop.cs51.objects.Skill;
+import eg.edu.alexu.csd.oop.cs51.objects.constant.Shadow;
 import eg.edu.alexu.csd.oop.cs51.observer.Observer;
 import eg.edu.alexu.csd.oop.game.GameObject;
 
@@ -48,7 +50,7 @@ public class SnapShot {
 		leftStack.clear();
 		rightStack.clear();
 		moving.clear();
-		control.clear();
+		//control.clear();
 		IteratorI iterator = GameInfo.getInstance().getLeftStack().createIterator();
 		Movable oldM, newM;
 		while (iterator.hasNext()) {
@@ -69,6 +71,9 @@ public class SnapShot {
 		while (iterator.hasNext()) {
 			GameObject o = (GameObject) iterator.next();
 			if (Movable.class.isAssignableFrom(o.getClass())) {
+				if(!Skill.class.isAssignableFrom(o.getClass())) {
+					continue;
+				}
 				oldM = (Movable) o;
 				if (GameInfo.getInstance().getRightStack().getCollection().contains(oldM)
 						|| GameInfo.getInstance().getLeftStack().getCollection().contains(oldM)) {
@@ -82,10 +87,10 @@ public class SnapShot {
 
 		}
 
-		iterator = GameInfo.getInstance().getControl().createIterator();
-		while (iterator.hasNext()) {
-			control.add((GameObject) ((AbstractObject) iterator.next()).clone());
-		}
+//		iterator = GameInfo.getInstance().getControl().createIterator();
+//		while (iterator.hasNext()) {
+//			control.add((GameObject) ((AbstractObject) iterator.next()).clone());
+//		}
 
 		/*
 		 * for(int i = 0; i < GameInfo.getInstance().getLeftStack().size(); i++) {
@@ -124,9 +129,12 @@ public class SnapShot {
 
 		iterator = moving.createIterator();
 		while (iterator.hasNext()) {
+			try {
 			oldM = ((AbstractObject) iterator.next());
 			newM = (AbstractObject) oldM.clone();
-
+			} catch(Exception e){
+				continue;
+			}
 			if (rightStack.getCollection().contains(oldM) || leftStack.getCollection().contains(oldM)) {
 				continue;
 			}
@@ -138,6 +146,10 @@ public class SnapShot {
 			}
 
 		}
+		if(GameInfo.getInstance().isOpaque()) {
+			GameInfo.getInstance().getMoving().add(new Shadow());
+		}
+		
 //		iterator = control.createIterator();
 //		while (iterator.hasNext()) {
 //			GameInfo.getInstance().getControl().add((GameObject) ((AbstractObject) iterator.next()).clone());

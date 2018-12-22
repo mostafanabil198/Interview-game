@@ -7,6 +7,7 @@ import eg.edu.alexu.csd.oop.cs51.snapshots.SnapShot;
 import eg.edu.alexu.csd.oop.cs51.strategy.Level1Strategy;
 import eg.edu.alexu.csd.oop.cs51.strategy.Level2Strategy;
 import eg.edu.alexu.csd.oop.cs51.strategy.Level3Strategy;
+import eg.edu.alexu.csd.oop.cs51.strategy.Level4Strategy;
 import eg.edu.alexu.csd.oop.cs51.strategy.Strategy;
 import eg.edu.alexu.csd.oop.cs51.world.Interview;
 import eg.edu.alexu.csd.oop.game.GameEngine;
@@ -38,6 +39,10 @@ public class LevelsController {
 			Strategy strategy = new Level3Strategy();
 			startGame(strategy);
 		});
+		impossibleBtn.setOnAction((event) -> {
+			Strategy strategy = new Level4Strategy();
+			startGame(strategy);
+		});
 	}
 
 	public void startGame(Strategy strategy) {
@@ -49,8 +54,8 @@ public class LevelsController {
 		GameInfo.getInstance().setCompanyFactory(companyFactory);
 		// Strategy strategy = new Level1Strategy();
 		GameEngine game = new GameEngine();
-		Interview world = new Interview(strategy, 1366, 768,game);
-//		game.start("Interview Game", world);
+		Interview world = new Interview(strategy, 1366, 768, game);
+		// game.start("Interview Game", world);
 		GameInfo.getInstance().setCheckPoint(new SnapShot());
 
 		((Stage) easyBtn.getScene().getWindow()).close();

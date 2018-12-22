@@ -8,6 +8,7 @@ import eg.edu.alexu.csd.oop.cs51.GameInfo;
 import eg.edu.alexu.csd.oop.cs51.music.Playmusic;
 import eg.edu.alexu.csd.oop.cs51.objects.constant.Background;
 import eg.edu.alexu.csd.oop.cs51.objects.constant.CanonObject;
+import eg.edu.alexu.csd.oop.cs51.objects.constant.Shadow;
 import eg.edu.alexu.csd.oop.cs51.objects.skills.Canon;
 import eg.edu.alexu.csd.oop.cs51.strategy.Strategy;
 import eg.edu.alexu.csd.oop.game.GameEngine;
@@ -44,8 +45,13 @@ public class Interview implements World {
 		canonRight = new Canon("right", GameInfo.getInstance().getCompanyFactory());
 		background = new Background(width, height);
 		canonObject = new CanonObject();
+
 		GameInfo.getInstance().getConstant().addFirst(background);
 		GameInfo.getInstance().getMoving().add(canonObject);
+		if (opaque) {
+			GameInfo.getInstance().setOpaque(true);
+			GameInfo.getInstance().getMoving().add(new Shadow());
+		}
 		GameInfo.getInstance().getConstant().add(GameInfo.getInstance().getLivesObject());
 		GameInfo.getInstance().setRenderSpeed(speed);
 		gameController = gameEngine.start("Interview Game", this);

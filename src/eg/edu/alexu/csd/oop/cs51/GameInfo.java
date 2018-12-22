@@ -32,8 +32,15 @@ public class GameInfo {
 	private int rightColorCounter;
 	private int numOfLives;
 	private int time;
-	private boolean musicOn, soundOn;
+	private boolean musicOn, soundOn,opaque;
 
+	public boolean isOpaque() {
+		return opaque;
+	}
+
+	public void setOpaque(boolean opaque) {
+		this.opaque = opaque;
+	}
 	private Collections<Movable> leftStack, rightStack;
 
 	private Collections<Task> gameTasks;
@@ -58,6 +65,7 @@ public class GameInfo {
     }
 
     private GameInfo() {
+    	opaque = false;
 		musicOn = true;
 		soundOn = true;
 		leftStack = new StackContainer<Movable>();
