@@ -10,7 +10,7 @@ import eg.edu.alexu.csd.oop.cs51.iterators.LinkedListContainer;
 import eg.edu.alexu.csd.oop.cs51.iterators.StackContainer;
 import eg.edu.alexu.csd.oop.cs51.objects.Movable;
 import eg.edu.alexu.csd.oop.cs51.objects.TaskObjectsPositioner;
-import eg.edu.alexu.csd.oop.cs51.objects.constant.TaskObject;
+import eg.edu.alexu.csd.oop.cs51.objects.constant.Lives;
 import eg.edu.alexu.csd.oop.cs51.objects.player.Interviewee;
 import eg.edu.alexu.csd.oop.cs51.objects.states.VanishState;
 import eg.edu.alexu.csd.oop.cs51.observer.Collision;
@@ -51,9 +51,13 @@ public class GameInfo {
 	private List<String> allGifts;
 
 	private CompanyFactory companyFactory;
-	// giftsfactory too
+	
+	private Lives livesObject;
+	public Lives getLivesObject() {
+        return livesObject;
+    }
 
-	private GameInfo() {
+    private GameInfo() {
 		musicOn = true;
 		soundOn = true;
 		leftStack = new StackContainer<Movable>();
@@ -74,6 +78,7 @@ public class GameInfo {
 		constant = new LinkedListContainer<GameObject>();
 		control.add(player);
 		collision = new Collision();
+		livesObject = new Lives();
 	}
 
 	public static GameInfo getInstance() {

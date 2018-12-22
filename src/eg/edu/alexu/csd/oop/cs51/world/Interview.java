@@ -40,6 +40,7 @@ public class Interview implements World {
 		canonObject = new CanonObject();
 		GameInfo.getInstance().getConstant().addFirst(background);
 		GameInfo.getInstance().getMoving().add(canonObject);
+		GameInfo.getInstance().getConstant().add(GameInfo.getInstance().getLivesObject());
 		GameInfo.getInstance().setRenderSpeed(speed);
 
 	}
