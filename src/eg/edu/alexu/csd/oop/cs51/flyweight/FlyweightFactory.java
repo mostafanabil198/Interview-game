@@ -25,8 +25,8 @@ public class FlyweightFactory {
 	public static Movable getGift(String gift) {
 		Movable p = null;
 		if (vanishedGifts.containsKey(gift)) {
-			if (!vanishedSkills.get(gift).isEmpty()) {
-				p = vanishedSkills.get(gift).remove(0);
+			if (!vanishedGifts.get(gift).isEmpty()) {
+				p = vanishedGifts.get(gift).remove(0);
 			}
 		}
 
