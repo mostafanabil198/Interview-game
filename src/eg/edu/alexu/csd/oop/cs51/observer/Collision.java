@@ -4,7 +4,10 @@ import eg.edu.alexu.csd.oop.cs51.GameInfo;
 import eg.edu.alexu.csd.oop.cs51.iterators.IteratorI;
 import eg.edu.alexu.csd.oop.cs51.iterators.LinkedListContainer;
 import eg.edu.alexu.csd.oop.cs51.objects.Movable;
+import eg.edu.alexu.csd.oop.cs51.objects.gifts.EmptyStack;
+import eg.edu.alexu.csd.oop.cs51.objects.gifts.ExtraLife;
 import eg.edu.alexu.csd.oop.cs51.objects.states.CollectState;
+import eg.edu.alexu.csd.oop.cs51.objects.states.State;
 
 public class Collision {
 	private static final int GroundY = 650;
@@ -33,6 +36,9 @@ public class Collision {
 		while (iterator.hasNext()) {
 			Observer observer = (Observer) iterator.next();
 			Movable movable = ((Movable) observer);
+			if(ExtraLife.class.isAssignableFrom(movable.getClass()) || EmptyStack.class.isAssignableFrom(movable.getClass())) {
+			    State s = movable.getState();
+			}
 			if (movable.getState().getClass().equals(CollectState.class)) {
 				// list.remove(observer);
 				movable.update("noCollision");

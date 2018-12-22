@@ -1,22 +1,21 @@
 package eg.edu.alexu.csd.oop.cs51.objects.gifts;
 
-
 import eg.edu.alexu.csd.oop.cs51.GameInfo;
+import eg.edu.alexu.csd.oop.cs51.objects.AbstractObject;
 import eg.edu.alexu.csd.oop.cs51.objects.Movable;
 import eg.edu.alexu.csd.oop.cs51.objects.states.MovingState;
 import eg.edu.alexu.csd.oop.cs51.objects.states.VanishState;
-import eg.edu.alexu.csd.oop.cs51.observer.Collision;
 
-public class ExtraLife extends Movable {
+public class EmptyStack extends Movable{
 
     private static final String PATH = "res/gift.png";
     
-    public ExtraLife() {
+    public EmptyStack() {
         super(PATH, "");
-        System.out.println("estra");
+        System.out.println("stack");
     }
-    public ExtraLife(ExtraLife extraLife) {
-        super(extraLife);
+    public EmptyStack(EmptyStack emptyStack) {
+        super(emptyStack);
     }
     
     @Override
@@ -24,11 +23,14 @@ public class ExtraLife extends Movable {
         if(spot.equals("vanish")) {
             new VanishState().doAction(this);
         } else if (spot.equals("leftStack")) {
-            int lives = GameInfo.getInstance().getNumOfLives();
-            GameInfo.getInstance().setNumOfLives(lives + 1);
+            GameInfo.getInstance().getLeftStack().clear();
+            int h = GameInfo.getInstance().getPlayer().getHandHeightPosition();
+            GameInfo.getInstance().setLeftStackHeight(h);
             new VanishState().doAction(this);
         } else if (spot.equals("rightStack")) {
-            //execute extra life
+            GameInfo.getInstance().getRightStack().clear();
+            int h = GameInfo.getInstance().getPlayer().getHandHeightPosition();
+            GameInfo.getInstance().setRightStackHeight(h);
             new VanishState().doAction(this);
         } else {
             MovingState state = (MovingState) getState();
@@ -39,7 +41,8 @@ public class ExtraLife extends Movable {
 
     @Override
     public Movable clone() {
-        return new ExtraLife(this);
+        return new EmptyStack(this);
     }
+
 
 }

@@ -48,6 +48,7 @@ public class GameInfo {
 	private Interviewee player;
 
 	private List<String> allSkills;
+	private List<String> allGifts;
 
 	private CompanyFactory companyFactory;
 	// giftsfactory too
@@ -67,6 +68,7 @@ public class GameInfo {
 		leftHand = player.getLeftHandPosition();
 		rightHand = player.getRightHandPosition();
 		fillSkills();
+		fillGifts();
 		moving = new LinkedListContainer<GameObject>();
 		control = new LinkedListContainer<GameObject>();
 		constant = new LinkedListContainer<GameObject>();
@@ -379,10 +381,18 @@ public class GameInfo {
 		allSkills.add("Flutter");
 		allSkills.add("Linux");
 	}
+	private void fillGifts() {
+	    allGifts=new ArrayList<String>();
+	    allGifts.add("ExtraLife");
+	    allGifts.add("EmptyStack");
+	}
 
 	public void updateHandPositions() {
 		rightHand = player.getRightHandPosition();
 		leftHand = player.getLeftHandPosition();
 
+	}
+	public List<String> getAllGifts(){
+	    return this.allGifts;
 	}
 }
