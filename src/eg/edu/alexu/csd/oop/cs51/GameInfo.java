@@ -70,6 +70,7 @@ public class GameInfo {
 		constant = new LinkedListContainer<GameObject>();
 		control.add(player);
 		collision = new Collision();
+		checkPoint = new SnapShot();
 	}
 
 	public static GameInfo getInstance() {
