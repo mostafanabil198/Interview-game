@@ -103,6 +103,7 @@ public class Interview implements World {
 				if (optionPane.showOptionDialog(null, "Do you wanna start from the check point", "Quesstion",
 						JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]) == 0) {
 					GameInfo.getInstance().getCheckPoint().startFromCheckpoint();
+					GameInfo.getInstance().getPlaySoundEffects().playEffect("revive");
 					gameController.resume();
 					try {
 						Logger.getInstance().info("back to check point");

@@ -33,6 +33,7 @@ public class EmptyStack extends Movable{
 			}
             GameInfo.getInstance().vanishLeftStack();
             new VanishState().doAction(this);
+            GameInfo.getInstance().getPlaySoundEffects().playEffect("bomb");
         } else if (spot.equals("rightStack")) {
         	try {
 				Logger.getInstance().info("bumb gift was collected");
@@ -41,6 +42,7 @@ public class EmptyStack extends Movable{
 			}
             GameInfo.getInstance().vanishRightStack();
             new VanishState().doAction(this);
+            GameInfo.getInstance().getPlaySoundEffects().playEffect("bomb");
         } else {
             MovingState state = (MovingState) getState();
             state.updatePosition(this);

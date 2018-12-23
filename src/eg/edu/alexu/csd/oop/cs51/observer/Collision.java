@@ -49,10 +49,12 @@ public class Collision {
 				// System.out.println("d5l l ground");
 			} else if (movable.getX() >= leftX && movable.getX() <= Math.abs(leftX + handWidth)
 					&& movable.getY() <= leftY && (movable.getY() + movable.getHeight()) >= leftY) {
+				GameInfo.getInstance().getPlaySoundEffects().playEffect("collected");
 				movable.setY(leftY - movable.getHeight() + 25);
 				movable.update("leftStack");
 			} else if (movable.getX() <= rightX && movable.getX() >= Math.abs(rightX - handWidth)
 					&& movable.getY() <= rightY && (movable.getY() + movable.getHeight()) >= rightY) {
+				GameInfo.getInstance().getPlaySoundEffects().playEffect("collected");
 				movable.setY(rightY - movable.getHeight() + 25);
 				movable.update("rightStack");
 			} else {

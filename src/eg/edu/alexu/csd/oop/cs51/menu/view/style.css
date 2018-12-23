@@ -2,6 +2,10 @@
     -fx-background-image : url("pic/MainMenuBackground.jpg");
 }
 
+.howToAnch{
+    -fx-background-image : url("pic/howTo.png");
+}
+
 .btn{
      -fx-background-repeat: no-repeat;
     -fx-background-position: center;

@@ -26,7 +26,7 @@ public class Playmusic implements Runnable{
 		while(running.get()) {
 		      try {
 		        clip = AudioSystem.getClip();
-		        AudioInputStream inputStream = AudioSystem.getAudioInputStream(new File("v.wav"));
+		        AudioInputStream inputStream = AudioSystem.getAudioInputStream(new File("res/music/v.wav"));
 		        clip.open(inputStream);
 		        clip.start(); 
 		      } catch (Exception e) {

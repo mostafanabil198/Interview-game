@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -23,6 +24,12 @@ public class Control {
 		music = new Playmusic();
 		music.start();
 	}
+
+	@FXML
+	public AnchorPane howToPlayAnch;
+
+	@FXML
+	public AnchorPane menuAnch;
 
 	@FXML
 	public Button soundBtn;
@@ -48,6 +55,7 @@ public class Control {
 
 	@FXML
 	public void howToPlay() {
+		howToPlayAnch.setVisible(true);
 
 	}
 
@@ -80,6 +88,11 @@ public class Control {
 			musicBtn.getStyleClass().add("musicOff");
 			music.stop();
 		}
+	}
+
+	@FXML
+	public void closeHowTo() {
+		howToPlayAnch.setVisible(false);
 	}
 
 }

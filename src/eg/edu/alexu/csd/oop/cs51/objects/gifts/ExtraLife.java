@@ -35,6 +35,7 @@ public class ExtraLife extends Movable {
             int lives = GameInfo.getInstance().getNumOfLives();
             GameInfo.getInstance().setNumOfLives(lives + 1);
             new VanishState().doAction(this);
+            GameInfo.getInstance().getPlaySoundEffects().playEffect("revive");
         } else if (spot.equals("rightStack")) {
         	try {
 				Logger.getInstance().info("collect extra life");
@@ -44,6 +45,7 @@ public class ExtraLife extends Movable {
             int lives = GameInfo.getInstance().getNumOfLives();
             GameInfo.getInstance().setNumOfLives(lives + 1);
             new VanishState().doAction(this);
+            GameInfo.getInstance().getPlaySoundEffects().playEffect("revive");
         } else {
             MovingState state = (MovingState) getState();
             state.updatePosition(this);

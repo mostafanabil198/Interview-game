@@ -10,6 +10,7 @@ import eg.edu.alexu.csd.oop.cs51.iterators.IteratorI;
 import eg.edu.alexu.csd.oop.cs51.iterators.LinkedListContainer;
 import eg.edu.alexu.csd.oop.cs51.iterators.StackContainer;
 import eg.edu.alexu.csd.oop.cs51.logger.Logger;
+import eg.edu.alexu.csd.oop.cs51.music.PlaySoundEffects;
 import eg.edu.alexu.csd.oop.cs51.objects.Movable;
 import eg.edu.alexu.csd.oop.cs51.objects.TaskObjectsPositioner;
 import eg.edu.alexu.csd.oop.cs51.objects.constant.Lives;
@@ -35,6 +36,11 @@ public class GameInfo {
 	private int numOfLives;
 	private int time;
 	private boolean musicOn, soundOn,opaque;
+	private PlaySoundEffects playSoundEffects;
+
+	public PlaySoundEffects getPlaySoundEffects() {
+		return playSoundEffects;
+	}
 
 	public boolean isOpaque() {
 		return opaque;
@@ -90,6 +96,7 @@ public class GameInfo {
 		collision = new Collision();
 		numOfLives = 2;
 		livesObject = new Lives(numOfLives);
+		playSoundEffects = new PlaySoundEffects();
 
 		
 
@@ -207,6 +214,7 @@ public class GameInfo {
 				score++;
 				gameTasks.remove(t);
 				t.getTaskObject().markAsDone();
+				GameInfo.getInstance().getPlaySoundEffects().playEffect("taskcompleted");
 				break;
 
 			}
