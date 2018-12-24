@@ -3,7 +3,7 @@
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
   <class id="1" language="java" name="eg.edu.alexu.csd.oop.cs51.factory.GiftFactory" project="Game" 
     file="/Game/src/eg/edu/alexu/csd/oop/cs51/factory/GiftFactory.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="478" y="461"/>    
+    <position height="-1" width="-1" x="390" y="87"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -21,7 +21,7 @@
   </interface>  
   <class id="3" language="java" name="eg.edu.alexu.csd.oop.cs51.factory.CompanyFactory" project="Game" 
     file="/Game/src/eg/edu/alexu/csd/oop/cs51/factory/CompanyFactory.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1029" y="429"/>    
+    <position height="-1" width="-1" x="975" y="88"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      

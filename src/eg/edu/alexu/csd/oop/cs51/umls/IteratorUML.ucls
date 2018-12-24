@@ -3,7 +3,7 @@
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
   <class id="1" language="java" name="eg.edu.alexu.csd.oop.cs51.iterators.StackIterator" project="Game" 
     file="/Game/src/eg/edu/alexu/csd/oop/cs51/iterators/StackIterator.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="841" y="623"/>    
+    <position height="-1" width="-1" x="228" y="442"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -21,7 +21,7 @@
   </interface>  
   <interface id="3" language="java" name="eg.edu.alexu.csd.oop.cs51.iterators.IteratorI" project="Game" 
     file="/Game/src/eg/edu/alexu/csd/oop/cs51/iterators/IteratorI.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="979" y="131"/>    
+    <position height="-1" width="-1" x="414" y="394"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -30,7 +30,7 @@
   </interface>  
   <class id="4" language="java" name="eg.edu.alexu.csd.oop.cs51.iterators.StackContainer" project="Game" 
     file="/Game/src/eg/edu/alexu/csd/oop/cs51/iterators/StackContainer.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="232" y="542"/>    
+    <position height="-1" width="-1" x="229" y="195"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -39,7 +39,7 @@
   </class>  
   <class id="5" language="java" name="eg.edu.alexu.csd.oop.cs51.iterators.LinkedListContainer" project="Game" 
     file="/Game/src/eg/edu/alexu/csd/oop/cs51/iterators/LinkedListContainer.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="570" y="552"/>    
+    <position height="-1" width="-1" x="603" y="194"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -48,7 +48,7 @@
   </class>  
   <class id="6" language="java" name="eg.edu.alexu.csd.oop.cs51.iterators.LinkedListIterator" project="Game" 
     file="/Game/src/eg/edu/alexu/csd/oop/cs51/iterators/LinkedListIterator.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1257" y="570"/>    
+    <position height="-1" width="-1" x="602" y="437"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -56,20 +56,20 @@
     </display>  
   </class>  
   <realization id="7">    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="3"/>  
-  </realization>  
-  <realization id="8">    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="3"/>  
-  </realization>  
-  <realization id="9">    
     <end type="SOURCE" refId="5"/>    
     <end type="TARGET" refId="2"/>  
   </realization>  
-  <realization id="10">    
+  <realization id="8">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="3"/>  
+  </realization>  
+  <realization id="9">    
     <end type="SOURCE" refId="4"/>    
     <end type="TARGET" refId="2"/>  
+  </realization>  
+  <realization id="10">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="3"/>  
   </realization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    

@@ -3,7 +3,7 @@
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
   <interface id="1" language="java" name="eg.edu.alexu.csd.oop.cs51.observer.Observer" project="Game" 
     file="/Game/src/eg/edu/alexu/csd/oop/cs51/observer/Observer.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="556" y="150"/>    
+    <position height="-1" width="-1" x="692" y="217"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -12,7 +12,7 @@
   </interface>  
   <class id="2" language="java" name="eg.edu.alexu.csd.oop.cs51.observer.Collision" project="Game" 
     file="/Game/src/eg/edu/alexu/csd/oop/cs51/observer/Collision.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1151" y="195"/>    
+    <position height="-1" width="-1" x="889" y="226"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -21,7 +21,7 @@
   </class>  
   <class id="3" language="java" name="eg.edu.alexu.csd.oop.cs51.objects.Movable" project="Game" 
     file="/Game/src/eg/edu/alexu/csd/oop/cs51/objects/Movable.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="138" width="200" x="579" y="329"/>    
+    <position height="138" width="200" x="363" y="148"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -37,91 +37,13 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="eg.edu.alexu.csd.oop.cs51.objects.skills.WeSkill" project="Game" 
-    file="/Game/src/eg/edu/alexu/csd/oop/cs51/objects/skills/WeSkill.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="183" y="556"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="6" language="java" name="eg.edu.alexu.csd.oop.cs51.objects.skills.YoutubeSkill" project="Game" 
-    file="/Game/src/eg/edu/alexu/csd/oop/cs51/objects/skills/YoutubeSkill.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="288" y="743"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="7" language="java" name="eg.edu.alexu.csd.oop.cs51.objects.skills.WhatsAppSkill" project="Game" 
-    file="/Game/src/eg/edu/alexu/csd/oop/cs51/objects/skills/WhatsAppSkill.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="537" y="742"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="8" language="java" name="eg.edu.alexu.csd.oop.cs51.objects.skills.OrangeSkill" project="Game" 
-    file="/Game/src/eg/edu/alexu/csd/oop/cs51/objects/skills/OrangeSkill.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="797" y="738"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="9" language="java" name="eg.edu.alexu.csd.oop.cs51.objects.skills.AmazonSkill" project="Game" 
-    file="/Game/src/eg/edu/alexu/csd/oop/cs51/objects/skills/AmazonSkill.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1063" y="734"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="10" language="java" name="eg.edu.alexu.csd.oop.cs51.objects.skills.FaceBookSkill" project="Game" 
-    file="/Game/src/eg/edu/alexu/csd/oop/cs51/objects/skills/FaceBookSkill.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1065" y="484"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <generalization id="11">    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="3"/>  
-  </generalization>  
-  <realization id="12">    
+  <realization id="5">    
     <end type="SOURCE" refId="3"/>    
     <end type="TARGET" refId="1"/>  
   </realization>  
-  <generalization id="13">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="3"/>  
-  </generalization>  
-  <generalization id="14">    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="3"/>  
-  </generalization>  
-  <generalization id="15">    
-    <end type="SOURCE" refId="8"/>    
-    <end type="TARGET" refId="3"/>  
-  </generalization>  
-  <generalization id="16">    
-    <end type="SOURCE" refId="10"/>    
-    <end type="TARGET" refId="3"/>  
-  </generalization>  
-  <generalization id="17">    
+  <generalization id="6">    
     <end type="SOURCE" refId="3"/>    
     <end type="TARGET" refId="4"/>  
-  </generalization>  
-  <generalization id="18">    
-    <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="3"/>  
   </generalization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    

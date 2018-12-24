@@ -3,7 +3,7 @@
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
   <class id="1" language="java" name="eg.edu.alexu.csd.oop.cs51.objects.states.MovingState" project="Game" 
     file="/Game/src/eg/edu/alexu/csd/oop/cs51/objects/states/MovingState.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="380" y="482"/>    
+    <position height="-1" width="-1" x="389" y="149"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -12,7 +12,7 @@
   </class>  
   <interface id="2" language="java" name="eg.edu.alexu.csd.oop.cs51.objects.states.State" project="Game" 
     file="/Game/src/eg/edu/alexu/csd/oop/cs51/objects/states/State.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="761" y="121"/>    
+    <position height="-1" width="-1" x="627" y="68"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -21,7 +21,7 @@
   </interface>  
   <class id="3" language="java" name="eg.edu.alexu.csd.oop.cs51.objects.states.VanishState" project="Game" 
     file="/Game/src/eg/edu/alexu/csd/oop/cs51/objects/states/VanishState.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="759" y="646"/>    
+    <position height="-1" width="-1" x="624" y="208"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -30,7 +30,7 @@
   </class>  
   <class id="4" language="java" name="eg.edu.alexu.csd.oop.cs51.objects.states.CollectState" project="Game" 
     file="/Game/src/eg/edu/alexu/csd/oop/cs51/objects/states/CollectState.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1098" y="449"/>    
+    <position height="-1" width="-1" x="870" y="104"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
